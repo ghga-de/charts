@@ -41,34 +41,34 @@ spec:
           - -c
         env:
         - name: METADATA_SEARCH_SERVICE_API_ROOT_PATH
-          value: /api/search
+          value: {{ .Values.apiRootPath }}
         - name: METADATA_SEARCH_SERVICE_CORS_ALLOWED_HEADERS
-          value: '["*"]'
+          value: {{ .Values.corsAllowedHeaders }}
         - name: METADATA_SEARCH_SERVICE_CORS_ALLOWED_METHODS
-          value: '["*"]'
+          value: {{ .Values.corsAllowedMethods }}
         - name: METADATA_SEARCH_SERVICE_CORS_ALLOWED_ORIGINS
-          value: '["*"]'
+          value: {{ .Values.corsAllowedOrigins }}
         - name: METADATA_SEARCH_SERVICE_CORS_ALLOW_CREDENTIALS
-          value: "true"
+          value: {{ .Values.corsAllowedCredentials }}
         - name: METADATA_SEARCH_SERVICE_DB_NAME
-          value: metadata-db
+          value: {{ .Values.dbName }}
         - name: METADATA_SEARCH_SERVICE_HOST
-          value: 0.0.0.0
+          value: {{ .Values.serviceHost }}
         - name: METADATA_SEARCH_SERVICE_PORT
-          value: "8080"
+          value: {{ .Values.servicePort }}
         - name: METADATA_SEARCH_SERVICE_LOG_LEVEL
-          value: debug
+          value: {{ .Values.logLevel }}
         image: ghga/metadata-search-service:0.0.0-43-1a72aeb-main
         name: metadata-search-service
         ports:
-        - containerPort: 8080
+        - containerPort: {{ .Values.servicePort }}
         resources:
           limits:
-            cpu: 500m
-            memory: 256M
+            cpu: {{ .Values.resources.limits.cpu }}
+            memory: {{ .Values.resources.limits.memory }}
           requests:
-            cpu: 100m
-            memory: 64M
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
         securityContext:
           runAsUser: 1000
           capabilities:
@@ -81,11 +81,11 @@ spec:
           allowPrivilegeEscalation: false
         readinessProbe:
           tcpSocket:
-            port: 8080
+            port: {{ .Values.servicePort }}
           initialDelaySeconds: 10
           periodSeconds: 15
         livenessProbe:
           tcpSocket:
-            port: 8080
+            port: {{ .Values.servicePort }}
           initialDelaySeconds: 10
           periodSeconds: 15

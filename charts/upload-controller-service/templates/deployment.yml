@@ -5,7 +5,7 @@ metadata:
   labels:
     app: upload-controller-service
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicas }}
   revisionHistoryLimit: 1
   selector:
     matchLabels:
@@ -47,7 +47,7 @@ spec:
         args: [ '-c', 'source /vault/secrets/variables && ucs run-api']
         ports:
         - name: http
-          containerPort: 8080
+          containerPort: {{ .Values.ucsPort }}
           protocol: TCP
         volumeMounts:
         - name: config

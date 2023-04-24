@@ -43,23 +43,23 @@ spec:
             - -c
           env:
             - name: METADATA_REPOSITORY_SERVICE_API_ROOT_PATH
-              value: /api/repository
+              value: {{ .Values.apiRootPath }}
             - name: METADATA_REPOSITORY_SERVICE_CORS_ALLOWED_HEADERS
-              value: '["*"]'
+              value: {{ .Values.corsAllowedHeaders }}
             - name: METADATA_REPOSITORY_SERVICE_CORS_ALLOWED_METHODS
-              value: '["*"]'
+              value: {{ .Values.corsAllowedMethods }}
             - name: METADATA_REPOSITORY_SERVICE_CORS_ALLOWED_ORIGINS
-              value: '["*"]'
+              value: {{ .Values.corsAllowedOrigins }}
             - name: METADATA_REPOSITORY_SERVICE_CORS_ALLOW_CREDENTIALS
-              value: "true"
+              value: {{ .Values.corsAllowedCredentials }}
             - name: METADATA_REPOSITORY_SERVICE_DB_NAME
-              value: metadata-catalog
+              value: {{ .Values.dbName }}
             - name: METADATA_REPOSITORY_SERVICE_HOST
-              value: 0.0.0.0
-            - name: METADATA_REPOSITORY_SERVICE_LOG_LEVEL
-              value: debug
+              value: {{ .Values.serviceHost }}
             - name: METADATA_REPOSITORY_SERVICE_PORT
-              value: "8080"
+              value: {{ .Values.servicePort }}
+            - name: METADATA_REPOSITORY_SERVICE_LOG_LEVEL
+              value: {{ .Values.logLevel }}
           image: ghga/metadata-repository-service:0.0.0-69-75b06e7-main
           name: metadata-repository-service
           securityContext:
@@ -67,27 +67,27 @@ spec:
             capabilities:
               drop:
                 - ALL
-            readOnlyRootFilesystem: true #
+            readOnlyRootFilesystem: true
             runAsNonRoot: true
             allowPrivilegeEscalation: false
             seccompProfile:
               type: "RuntimeDefault"
           ports:
-           - containerPort: 8080
+           - containerPort: {{ .Values.servicePort }}
           resources:
             limits:
-              cpu: 1000m
-              memory: 1024M
+              cpu: {{ .Values.resources.limits.cpu }}
+              memory: {{ .Values.resources.limits.memory }}
             requests:
-              cpu: 100m
-              memory: 64M
+              cpu: {{ .Values.resources.requests.cpu }}
+              memory: {{ .Values.resources.requests.memory }}
           readinessProbe:
             tcpSocket:
-              port: 8080
+              port: {{ .Values.servicePort }}
             initialDelaySeconds: 10
             periodSeconds: 15
           livenessProbe:
             tcpSocket:
-              port: 8080
+              port: {{ .Values.servicePort }}
             initialDelaySeconds: 10
             periodSeconds: 15

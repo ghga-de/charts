@@ -37,11 +37,11 @@ spec:
       containers:
       - env:
         - name: AUTH_SERVICE_HOST
-          value: 0.0.0.0
+          value: {{ .Values.authHost }}
         - name: AUTH_SERVICE_PORT
-          value: "8080"
+          value: {{ .Values.authPort }}
         - name: AUTH_SERVICE_DB_NAME
-          value: auth-db
+          value: {{ .Values.authDbName }}
         image: ghga/auth-service:0.0.0-60-e8c69d2-main
         command: ["bash"]
         args:  [ '-c', 'source /vault/secrets/int-keys && source /vault/secrets/variables && shred /vault/secrets/* && auth-service']
@@ -57,22 +57,22 @@ spec:
           runAsNonRoot: true
           allowPrivilegeEscalation: false
         ports:
-        - containerPort: 8080
+        - containerPort: {{ .Values.authPort }}
         resources:
           limits:
-            cpu: 500m
-            memory: 256M
+            cpu: {{ .Values.resources.limits.cpu }}
+            memory: {{ .Values.resources.limits.memory }}
           requests:
-            cpu: 100m
-            memory: 64M
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
         readinessProbe:
           tcpSocket:
-            port: 8080
+            port: {{ .Values.authPort }}
           initialDelaySeconds: 10
           periodSeconds: 15
         livenessProbe:
           tcpSocket:
-            port: 8080
+            port: {{ .Values.authPort }}
           initialDelaySeconds: 10
           periodSeconds: 15
       restartPolicy: Always

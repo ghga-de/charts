@@ -5,7 +5,7 @@ metadata:
   labels:
     app: drs3
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicas }}
   revisionHistoryLimit: 1
   selector:
     matchLabels:
@@ -42,7 +42,7 @@ spec:
         args:  [ '-c', 'source /vault/secrets/variables && dcs']
         env:
           - name: DRS3_PORT
-            value: "8080"
+            value: {{ .Values.drs3Port }}
         securityContext:
           runAsUser: 1000
           capabilities:
@@ -53,15 +53,15 @@ spec:
           allowPrivilegeEscalation: false
         ports:
         - name: http
-          containerPort: 8080
+          containerPort: {{ .Values.drs3Port }}
           protocol: TCP
         resources:
           limits:
-            cpu: 1500m
-            memory: 2048M
+            cpu: {{ .Values.resources.limits.cpu }}
+            memory: {{ .Values.resources.limits.memory }}
           requests:
-            cpu: 100m
-            memory: 256M
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
         volumeMounts:
         - name: config
           mountPath: "/home/appuser"
