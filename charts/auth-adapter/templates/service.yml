@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: auth-adapter
-    version: 1
+    version: "1"
   name: auth-adapter
 spec:
   type: ClusterIP
