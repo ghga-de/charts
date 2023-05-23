@@ -1,0 +1,36 @@
+bases:
+- environments.yaml
+
+repositories:
+ - name: ghga
+   url: https://ghga-de.github.io/charts/
+
+helmDefaults:
+  wait: true
+
+templates:
+  default: &default
+    chart: ghga/{{`{{ .Release.Name }}`}}
+    version: ~0.0.1
+    namespace: data-portal-test
+    values:
+    - config/{{`{{ .Release.Name }}`}}/{{`{{ .Environment.Name }}`}}.yaml
+
+releases:
+- name: auth-adapter
+  <<: *default
+
+- name: auth-km-cronjob
+  <<: *default
+
+- name: data-portal-ui
+  <<: *default
+
+- name: download-controller-service
+  <<: *default
+
+- name: upload-controller-service
+  <<: *default
+
+- name: user-management
+  <<: *default

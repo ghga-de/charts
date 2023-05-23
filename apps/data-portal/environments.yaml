@@ -1,0 +1,15 @@
+environments:
+  default:
+    values:
+    - config/default.yaml
+    kubeContext: docker-desktop
+  dev:
+    values:
+    - config/default.yaml
+    - config/dev.yaml
+    kubeContext: GHGAinfra2
+  prod:
+    values:
+    - config/default.yaml
+    - config/prod.yaml
+    kubeContext: GHGAprod2
