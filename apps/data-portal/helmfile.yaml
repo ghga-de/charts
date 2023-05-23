@@ -10,27 +10,25 @@ helmDefaults:
 
 templates:
   default: &default
-    chart: ghga/{{`{{ .Release.Name }}`}}
     version: ~0.0.1
-    namespace: data-portal-test
+    namespace: testing
     values:
+    - config/{{`{{ .Release.Name }}`}}/default.yaml
     - config/{{`{{ .Release.Name }}`}}/{{`{{ .Environment.Name }}`}}.yaml
 
 releases:
 - name: auth-adapter
+  chart: ghga/auth-adapter
   <<: *default
 
 - name: auth-km-cronjob
+  chart: ghga/auth-km-cronjob
+  <<: *default
+
+- name: auth-km-ext-cronjob
+  chart: ghga/auth-km-cronjob
   <<: *default
 
 - name: data-portal-ui
-  <<: *default
-
-- name: download-controller-service
-  <<: *default
-
-- name: upload-controller-service
-  <<: *default
-
-- name: user-management
+  chart: ghga/data-portal-ui
   <<: *default

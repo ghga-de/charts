@@ -7,7 +7,7 @@ environments:
     values:
     - config/default.yaml
     - config/dev.yaml
-    kubeContext: GHGAinfra2
+    kubeContext: GHGAinfra
   prod:
     values:
     - config/default.yaml
