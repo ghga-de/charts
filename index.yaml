@@ -12,4 +12,117 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/auth-adapter-0.0.1/auth-adapter-0.0.1.tgz
     version: 0.0.1
-generated: "2023-04-19T15:02:42.734999848Z"
+  auth-km-cronjob:
+  - apiVersion: v2
+    appVersion: 0.0.0-27-ed3c6c3-main
+    created: "2023-05-23T13:11:37.986882824Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.0
+    description: This job is to refresh the internal and external auth keys.
+    digest: c471fd6682071241fe7858e02421aa685dbd3578303e9da9dccf178a3c531339
+    name: auth-km-cronjob
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/auth-km-cronjob-0.0.1/auth-km-cronjob-0.0.1.tgz
+    version: 0.0.1
+  data-portal-ui:
+  - apiVersion: v2
+    appVersion: 0.0.0-193-6587ec5-main
+    created: "2023-05-23T13:11:38.136324574Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.0
+    description: The Metadata Search Service is a service for providing a unified
+      search interface over a metadata store.
+    digest: a8ad65bac32904330e28005ebb673df75f61122931857d3c63d65d4dba9c71f3
+    name: data-portal-ui
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/data-portal-ui-0.0.1/data-portal-ui-0.0.1.tgz
+    version: 0.0.1
+  download-controller-service:
+  - apiVersion: v2
+    appVersion: 0.4.0-19-gc61daa8-main
+    created: "2023-05-23T13:11:38.309712451Z"
+    description: This service implements the GA4GH DRS, while providing the option
+      to serve files from localstack S3.
+    digest: 69aa6a50180fdc65aadea98b791fd7947cba4345b6795e5a6b93178d50914848
+    name: download-controller-service
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/download-controller-service-0.0.1/download-controller-service-0.0.1.tgz
+    version: 0.0.1
+  ghga-common:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-05-23T13:11:38.460345417Z"
+    description: A Helm chart for Kubernetes
+    digest: 2a7fe963bbf6b3ebe5b71a67a3e8cb309481e4326372a6da0a616343723abec4
+    name: ghga-common
+    type: library
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/ghga-common-0.1.0/ghga-common-0.1.0.tgz
+    version: 0.1.0
+  metadata-catalog:
+  - apiVersion: v2
+    appVersion: 0.0.0-59-031dafb-main
+    created: "2023-05-23T13:11:38.597059292Z"
+    description: Metadata catalog user interface.
+    digest: b6888e040f86f202d1a5b08e997c3772ed94759ec9266618909b31d3bfe19c2b
+    name: metadata-catalog
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/metadata-catalog-0.0.1/metadata-catalog-0.0.1.tgz
+    version: 0.0.1
+  metadata-repository-service:
+  - apiVersion: v2
+    appVersion: 0.0.0-69-75b06e7-main
+    created: "2023-05-23T13:11:38.747366053Z"
+    description: The Metadata Repository Service is storing study or dataset-related
+      metadata and implements a RESTful API for controlled submission and manipulation
+      of this metadata.
+    digest: 2443f7ec2dbb8c72f07dabd0428b7b82f8a56aaea162adcacaaf57bcb6999f61
+    name: metadata-repository-service
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/metadata-repository-service-0.0.1/metadata-repository-service-0.0.1.tgz
+    version: 0.0.1
+  metadata-search-service:
+  - apiVersion: v2
+    appVersion: 0.0.0-43-1a72aeb-main
+    created: "2023-05-23T13:11:38.888137783Z"
+    description: The Metadata Search Service is a service for providing a unified
+      search interface over a metadata store.
+    digest: 5798031f728b5e6eefaaede5ece554d3578ed5f6a9e45076f1a34b4ca0d046d4
+    name: metadata-search-service
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/metadata-search-service-0.0.1/metadata-search-service-0.0.1.tgz
+    version: 0.0.1
+  upload-controller-service:
+  - apiVersion: v2
+    appVersion: 0.3.0-23-gf1fda2f-main
+    created: "2023-05-23T13:11:39.04613605Z"
+    description: This service implements the GA4GH DRS, while providing the option
+      to serve files from localstack S3.
+    digest: 0c68e7080ca7adf0edd4aeed41f0f3dc0ed3486d6d725049aa9c0315bdfc93f1
+    name: upload-controller-service
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/upload-controller-service-0.0.1/upload-controller-service-0.0.1.tgz
+    version: 0.0.1
+  user-management:
+  - apiVersion: v2
+    appVersion: 0.0.0-60-e8c69d2-main
+    created: "2023-05-23T13:11:39.209916896Z"
+    description: User management
+    digest: 9440a573460d7084e2a4fa7e575edb7dc6f236457fa0b8a85e2ccc0bcb7ff3a3
+    name: user-management
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/user-management-0.0.1/user-management-0.0.1.tgz
+    version: 0.0.1
+generated: "2023-05-23T13:11:39.209924296Z"
