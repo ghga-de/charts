@@ -1,0 +1,11 @@
+parameters:
+  run_auth_adapter: true
+  include_apis: []
+  oidc_authority_url: https://proxy.aai.lifescience-ri.eu
+  oidc_userinfo_endpoint: https://proxy.aai.lifescience-ri.eu/OIDC/userinfo
+  basic_user_auth: "blob"
+  basic_user_pwd: "fish"
+  db_url: ""
+  oidc_client_id: ""
+  auth_key: null
+  auth_ext_keys: null

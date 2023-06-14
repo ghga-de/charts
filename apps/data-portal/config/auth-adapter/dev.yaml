@@ -1,3 +1,9 @@
+parameters:
+  run_auth_adapter: true
+  include_apis: []
+  oidc_authority_url: https://proxy.aai.lifescience-ri.eu
+  oidc_userinfo_endpoint: https://proxy.aai.lifescience-ri.eu/OIDC/userinfo
+
 podAnnotations:
   vault.hashicorp.com/agent-inject: "true"
   vault.hashicorp.com/agent-init-first: "true"

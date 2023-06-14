@@ -1,0 +1,7 @@
+parameters:
+  host: "0.0.0.0"
+  port: 8080
+  svc_repository_url: "/api/repository"
+  svc_search_url: "/api/search"
+  client_url: "https://data.ghga-dev.de/"
+  oidc_client_id: ""

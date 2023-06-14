@@ -13,22 +13,25 @@ templates:
     version: ~0.0.1
     namespace: testing
     values:
-    - config/{{`{{ .Release.Name }}`}}/default.yaml
     - config/{{`{{ .Release.Name }}`}}/{{`{{ .Environment.Name }}`}}.yaml
 
 releases:
 - name: auth-adapter
-  chart: ghga/auth-adapter
+  chart: ../../charts/auth-adapter
   <<: *default
 
-- name: auth-km-cronjob
-  chart: ghga/auth-km-cronjob
+- name: user-registry
+  chart: ../../charts/auth-adapter
   <<: *default
 
-- name: auth-km-ext-cronjob
-  chart: ghga/auth-km-cronjob
+- name: claim-repository
+  chart: ../../charts/auth-adapter
   <<: *default
 
 - name: data-portal-ui
-  chart: ghga/data-portal-ui
+  chart: ../../charts/data-portal-ui
   <<: *default
+
+# - name: download-controller-service
+#   chart: ../../charts/download-controller-service
+#   <<: *default
