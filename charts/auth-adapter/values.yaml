@@ -6,7 +6,7 @@ horizontalPodAutoscaler:
   averageMemoryUtilization: 75
 image:
   name: "ghga/auth-service"
-  tag: "0.4.2"
+  tag: "0.5.0"
 podAnnotations: {}
 port: "8080"
 resources:
