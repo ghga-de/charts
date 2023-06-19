@@ -9,7 +9,7 @@ command: ["sh", "-c"]
 args:
   - if [ -d "/vault/secrets" ]; then
       for f in /vault/secrets/*; do
-        [ -f "$f" ] && . "$f" && shred -fuz "$f";
+        [ -f "$f" ] && . "$f";
       done
     fi;
     {{ first . }};

@@ -30,8 +30,7 @@ parameters:
   db_url: null
 
   # Required for auth-adapter only and injected through Vault
-  basic_auth_pwd: null
-  basic_auth_user: null
+  basic_auth_credentials: null
   oidc_client_id: ghga-data-portal
 
   # Required for auth-adapter only
@@ -59,7 +58,7 @@ parameters:
   cors_allowed_headers: null
   cors_allowed_methods: null
   cors_allowed_origins: null
-  db_name: user-management
+  db_name: auth-db
   docs_url: /docs
   host: 0.0.0.0
   log_level: debug
@@ -74,12 +73,3 @@ authService:
   emissary:
     enabled: false
     name: authentication
-  basicAuth:
-    username: ""
-    password: ""
-  database:
-    url: ""
-    name: auth-db
-  oidcClientId: ""
-  authKey: ""
-  authExtKeys: ""

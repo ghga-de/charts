@@ -1,12 +1,26 @@
-apiVersion: autoscaling/v1
+{{ if .Values.horizontalPodAutoscaler.enabled }}
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: hpa-drs3-autoscaler
+  name: hpa-work-package-autoscaler
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: drs3
+    name: work-package
   minReplicas: 1
   maxReplicas: 10
-  targetCPUUtilizationPercentage: 80
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 75
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 75
+{{ end }}

@@ -1,3 +1,9 @@
+parameters:
+  auth_key: null
+  work_package_signing_key: null
+  kafka_servers:
+  - kafka-dev:9092
+
 podAnnotations:
   vault.hashicorp.com/agent-inject: "true"
   vault.hashicorp.com/agent-init-first: "true"

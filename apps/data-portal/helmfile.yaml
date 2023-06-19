@@ -2,8 +2,10 @@ bases:
 - environments.yaml
 
 repositories:
- - name: ghga
-   url: https://ghga-de.github.io/charts/
+- name: ghga
+  url: https://ghga-de.github.io/charts/
+- name: bitnami
+  url: https://charts.bitnami.com/bitnami
 
 helmDefaults:
   wait: true
@@ -51,6 +53,10 @@ releases:
 - name: auth-km-wps-cronjob
   chart: ../../charts/auth-km-cronjob
   <<: *default
+
+- name: kafka-dev
+  chart: bitnami/kafka
+  namespace: data-portal
 
 # - name: download-controller-service
 #   chart: ../../charts/download-controller-service
