@@ -11,7 +11,7 @@ helmDefaults:
 templates:
   default: &default
     version: ~0.0.1
-    namespace: testing
+    namespace: data-portal
     values:
     - config/{{`{{ .Release.Name }}`}}/{{`{{ .Environment.Name }}`}}.yaml
 
@@ -30,6 +30,22 @@ releases:
 
 - name: data-portal-ui
   chart: ../../charts/data-portal-ui
+  <<: *default
+
+- name: work-package
+  chart: ../../charts/work-package
+  <<: *default
+
+- name: auth-km-cronjob
+  chart: ../../charts/auth-km-cronjob
+  <<: *default
+
+- name: auth-km-ext-cronjob
+  chart: ../../charts/auth-km-cronjob
+  <<: *default
+
+- name: auth-km-wps-cronjob
+  chart: ../../charts/auth-km-cronjob
   <<: *default
 
 # - name: download-controller-service

@@ -19,6 +19,11 @@ resources:
 
 config_prefix: data_portal_ui
 
+mapping:
+  enabled: false
+  hostname: ""
+  prefix: /
+
 parameters:
   host: "0.0.0.0"
   port: 8080

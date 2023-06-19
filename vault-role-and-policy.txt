@@ -1,0 +1,25 @@
+vault write auth/kubernetes/role/work-package-role \
+  alias_name_source=serviceaccount_uid \
+  bound_service_account_names=work-package \
+  bound_service_account_namespaces=data-portal \
+  token_explicit_max_ttl=0s \
+  token_max_ttl=0s \
+  token_no_default_policy=false \
+  token_num_uses=0 \
+  token_period=0s \
+  token_policies=work-package-policy \
+  token_ttl=1h \
+  token_type=default
+
+
+vault policy write work-package-policy /tmp/wps_policy.hcl
+---
+path "secret/data/work-package" {
+  capabilities = ["read"]
+}
+path "secret/data/auth/priv/wps" {
+  capabilities = ["read"]
+}
+path "secret/data/auth/pub/int" {
+  capabilities = ["read"]
+}

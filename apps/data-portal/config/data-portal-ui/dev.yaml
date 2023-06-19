@@ -5,6 +5,11 @@ parameters:
   svc_search_url: "/api/search"
   client_url: "https://data.ghga-dev.de/"
 
+mapping:
+  enabled: true
+  hostname: data.ghga-dev.de
+  prefix: /
+
 podAnnotations:
   vault.hashicorp.com/agent-inject: "true"
   vault.hashicorp.com/agent-init-first: "true"

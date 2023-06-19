@@ -1,6 +1,6 @@
 cronSchedule: '0 2 12 12 *'
 service:
-  keyType: "external"
+  keyType: "wps"
 
 serviceAccount:
   enabled: false
