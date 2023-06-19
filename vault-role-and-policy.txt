@@ -14,7 +14,7 @@ vault write auth/kubernetes/role/work-package-role \
 
 vault policy write work-package-policy /tmp/wps_policy.hcl
 ---
-path "secret/data/work-package" {
+path "secret/data/wps" {
   capabilities = ["read"]
 }
 path "secret/data/auth/priv/wps" {

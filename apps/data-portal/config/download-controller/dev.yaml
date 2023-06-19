@@ -1,0 +1,30 @@
+parameters:
+  auth_key: null
+  s3_access_key_id: null
+  s3_endpoint_url: null
+  s3_secret_access_key: null
+  s3_session_token: null
+  kafka_servers:
+  - kafka-dev:9092
+
+podAnnotations:
+  vault.hashicorp.com/agent-inject: "true"
+  vault.hashicorp.com/agent-init-first: "true"
+  vault.hashicorp.com/tls-skip-verify: "true"
+  vault.hashicorp.com/agent-pre-populate-only: "true"
+  vault.hashicorp.com/agent-inject-secret-dcs: "secret/data/dcs"
+  vault.hashicorp.com/agent-inject-template-dcs: |
+    {{ with secret "secret/data/dcs" -}}
+    export DCS_DB_CONNECTION_STR="{{ .Data.data.DB_CONNECTION_STR }}"
+    export S3_ACCESS_KEY_ID={{ .Data.data.S3_ACCESS_KEY_ID }}"
+    export S3_ENDPOINT_URL={{ .Data.data.S3_ENDPOINT_URL }}"
+    export S3_SECRET_ACCESS_KEY={{ .Data.data.S3_SECRET_ACCESS_KEY }}"
+    export S3_SESSION_TOKEN={{ .Data.data.S3_SESSION_TOKEN }}"
+    {{- end }}
+  vault.hashicorp.com/agent-inject-secret-auth-keys: "secret/data/auth/pub/int"
+  vault.hashicorp.com/agent-inject-template-auth-keys: |
+    {{ with secret "secret/data/auth/pub/int" -}}
+    export WPS_AUTH_KEY='{{ .Data.data.data }}'
+    {{- end }}
+  vault.hashicorp.com/role: "download-controller-role"
+  vault.hashicorp.com/agent-run-as-same-user: "true"

@@ -18,6 +18,10 @@ templates:
     - config/{{`{{ .Release.Name }}`}}/{{`{{ .Environment.Name }}`}}.yaml
 
 releases:
+- name: kafka-dev
+  chart: bitnami/kafka
+  namespace: data-portal
+
 - name: auth-adapter
   chart: ../../charts/auth-adapter
   <<: *default
@@ -42,6 +46,10 @@ releases:
   chart: ../../charts/access-request
   <<: *default
 
+- name: download-controller
+  chart: ../../charts/download-controller
+  <<: *default
+
 - name: auth-km-cronjob
   chart: ../../charts/auth-km-cronjob
   <<: *default
@@ -53,11 +61,3 @@ releases:
 - name: auth-km-wps-cronjob
   chart: ../../charts/auth-km-cronjob
   <<: *default
-
-- name: kafka-dev
-  chart: bitnami/kafka
-  namespace: data-portal
-
-# - name: download-controller-service
-#   chart: ../../charts/download-controller-service
-#   <<: *default

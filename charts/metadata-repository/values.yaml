@@ -1,9 +1,9 @@
-apiRootPath: "/api/search"
+apiRootPath: "/api/repository"
 corsAllowedHeaders: '["*"]'
 corsAllowedMethods: '["*"]'
 corsAllowedOrigins: '["*"]'
 corsAllowedCredentials: 'true'
-dbName: "metadata-db"
+dbName: "metadata-catalog"
 serviceHost: "0.0.0.0"
 servicePort: "8080"
 logLevel: "debug"
