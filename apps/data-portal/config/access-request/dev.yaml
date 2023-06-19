@@ -1,0 +1,17 @@
+podAnnotations:
+  vault.hashicorp.com/agent-inject: "true"
+  vault.hashicorp.com/agent-init-first: "true"
+  vault.hashicorp.com/tls-skip-verify: "true"
+  vault.hashicorp.com/agent-pre-populate-only: "true"
+  vault.hashicorp.com/agent-inject-secret-db: "secret/data/ars"
+  vault.hashicorp.com/agent-inject-template-db: |
+    {{ with secret "secret/data/ars" -}}
+    export ARS_DB_CONNECTION_STR="{{ .Data.data.DB_CONNECTION_STR }}"
+    {{- end }}
+  vault.hashicorp.com/agent-inject-secret-auth-keys: "secret/data/auth/pub/int"
+  vault.hashicorp.com/agent-inject-template-auth-keys: |
+    {{ with secret "secret/data/auth/pub/int" -}}
+    export ARS_AUTH_KEY='{{ .Data.data.data }}'
+    {{- end }}
+  vault.hashicorp.com/role: "access-request-role"
+  vault.hashicorp.com/agent-run-as-same-user: "true"

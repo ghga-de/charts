@@ -36,6 +36,10 @@ releases:
   chart: ../../charts/work-package
   <<: *default
 
+- name: access-request
+  chart: ../../charts/access-request
+  <<: *default
+
 - name: auth-km-cronjob
   chart: ../../charts/auth-km-cronjob
   <<: *default
