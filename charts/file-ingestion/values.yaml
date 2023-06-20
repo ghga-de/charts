@@ -45,7 +45,6 @@ parameters:
   db_connection_str: "**********"
   db_name: ars
   docs_url: /docs
-  download_access_url: http://claims-repository-svc:8080/download_access
   host: "0.0.0.0"
   kafka_servers:
   - kafka-kafka-bootstrap:9092
