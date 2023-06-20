@@ -14,6 +14,7 @@ podAnnotations:
   vault.hashicorp.com/agent-inject-template-variables: |
     {{ with secret "secret/data/auth-adapter/data" -}}
     export AUTH_SERVICE_DB_URL="{{ .Data.data.db_url }}"
+    export AUTH_SERVICE_ADD_AS_DATA_STEWARDS='{{ .Data.data.add_as_data_stewards }}'
     {{- end }}
   vault.hashicorp.com/agent-inject-secret-int-keys: "secret/data/auth/pub/int"
   vault.hashicorp.com/agent-inject-template-int-keys: |
