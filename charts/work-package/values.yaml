@@ -19,37 +19,47 @@ resources:
 
 config_prefix: wps
 
+mapping:
+  enabled: false
+  hostname: ""
+  prefix: /
+
 parameters:
-  api_root_path: /
-  auth_algs:
-  - ES256
-  auth_check_claims:
-    email: null
-    exp: null
-    iat: null
-    name: null
-  auth_key: '{}'
-  auth_map_claims: {}
-  auto_reload: true
-  cors_allow_credentials: false
-  cors_allowed_headers: []
-  cors_allowed_methods: []
-  cors_allowed_origins: []
-  dataset_overview_event_topic: metadata
-  dataset_overview_event_type: metadata_dataset_overview
-  datasets_collection: datasets
-  db_connection_str: "**********"
-  db_name: wps
-  docs_url: /docs
-  download_access_url: http://claims-repository-svc:8080/download_access
-  host: "0.0.0.0"
-  kafka_servers: []
-  log_level: info
-  openapi_url: /openapi.json
-  port: 8080
-  service_instance_id: 'wps_1'
-  service_name: wps
-  work_package_signing_key: '{}'
-  work_package_valid_days: 30
-  work_packages_collection: workPackages
-  workers: 1
+  default:
+    api_root_path: /
+    auth_algs:
+    - ES256
+    auth_check_claims:
+      email: null
+      exp: null
+      iat: null
+      name: null
+    auth_key: '{}'
+    auth_map_claims: {}
+    auto_reload: true
+    cors_allow_credentials: false
+    cors_allowed_headers: []
+    cors_allowed_methods: []
+    cors_allowed_origins: []
+    dataset_overview_event_topic: metadata
+    dataset_overview_event_type: metadata_dataset_overview
+    datasets_collection: datasets
+    db_connection_str: "**********"
+    db_name: wps
+    docs_url: /docs
+    download_access_url: http://claims-repository-svc:8080/download_access
+    host: "0.0.0.0"
+    kafka_servers: []
+    log_level: info
+    openapi_url: /openapi.json
+    port: 8080
+    service_instance_id: 'wps_1'
+    service_name: wps
+    work_package_signing_key: '{}'
+    work_package_valid_days: 30
+    work_packages_collection: workPackages
+    workers: 1
+  rest:
+    service_instance_id: 'wps_rest_1'
+  consumer:
+    service_instance_id: 'wps_consumer_1'

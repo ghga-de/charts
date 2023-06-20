@@ -17,4 +17,4 @@ podAnnotations:
     {{- end }}
 
 parameters:
-  db_name: metadata-db
+  db_name: metadata-demo

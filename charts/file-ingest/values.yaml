@@ -5,8 +5,8 @@ horizontalPodAutoscaler:
   averageCpuUtilization: 75
   averageMemoryUtilization: 75
 image:
-  name: "ghga/"
-  tag: "0.1.1"
+  name: "ghga/file-ingest-service"
+  tag: "0.1.2"
 podAnnotations: {}
 port: "8080"
 resources:
@@ -17,7 +17,7 @@ resources:
     cpu: "100m"
     memory: "64M"
 
-config_prefix: ars
+config_prefix: fis
 
 mapping:
   enabled: false
@@ -26,31 +26,28 @@ mapping:
   rewrite: null
 
 parameters:
-  api_root_path: ""
-  auth_algs:
-  - ES256
-  auth_check_claims:
-    email: null
-    exp: null
-    iat: null
-    name: null
-  auth_key: '{}'
-  auth_map_claims: {}
-  auto_reload: true
+  api_root_path: /
+  auto_reload: false
   cors_allow_credentials: false
   cors_allowed_headers: []
   cors_allowed_methods: []
   cors_allowed_origins: []
-  data_steward_email: helpdesk@ghga.de
-  db_connection_str: "**********"
-  db_name: ars
+  debug_vault: false
   docs_url: /docs
-  host: "0.0.0.0"
-  kafka_servers:
-  - kafka-kafka-bootstrap:9092
+  host: 0.0.0.0
+  kafka_servers: []
   log_level: info
   openapi_url: /openapi.json
   port: 8080
-  service_instance_id: '1'
-  service_name: ars
+  private_key: ""
+  publisher_topic: interrogations
+  publisher_type: validation_success
+  service_instance_id: "fis_1"
+  service_name: fis
+  source_bucket_id: staging
+  token_hashes: []
+  vault_host: http://vault
+  vault_port: 8200
+  vault_role_id: '**********'
+  vault_secret_id: '**********'
   workers: 1

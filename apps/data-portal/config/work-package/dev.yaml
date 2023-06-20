@@ -1,8 +1,9 @@
 parameters:
-  auth_key: null
-  work_package_signing_key: null
-  kafka_servers:
-  - kafka-dev:9092
+  default:
+    auth_key: null
+    work_package_signing_key: null
+    kafka_servers:
+    - kafka-dev:9092
 
 mapping:
   enabled: true

@@ -1,11 +1,12 @@
 parameters:
-  auth_key: null
-  s3_access_key_id: null
-  s3_endpoint_url: null
-  s3_secret_access_key: null
-  s3_session_token: null
-  kafka_servers:
-  - kafka-dev:9092
+  default:
+    auth_key: null
+    s3_access_key_id: null
+    s3_endpoint_url: null
+    s3_secret_access_key: null
+    s3_session_token: null
+    kafka_servers:
+    - kafka-dev:9092
 
 mapping:
   enabled: true
