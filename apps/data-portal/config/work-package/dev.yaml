@@ -4,6 +4,11 @@ parameters:
   kafka_servers:
   - kafka-dev:9092
 
+mapping:
+  enabled: true
+  hostname: data.ghga-dev.de
+  prefix: /api/wps/
+
 podAnnotations:
   vault.hashicorp.com/agent-inject: "true"
   vault.hashicorp.com/agent-init-first: "true"

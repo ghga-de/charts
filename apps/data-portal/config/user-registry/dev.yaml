@@ -3,6 +3,11 @@ parameters:
   include_apis:
   - users
 
+mapping:
+  enabled: true
+  hostname: data.ghga-dev.de
+  prefix: /api/auth/
+
 podAnnotations:
   vault.hashicorp.com/agent-inject: "true"
   vault.hashicorp.com/agent-init-first: "true"

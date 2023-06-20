@@ -1,0 +1,15 @@
+mapping:
+  enabled: true
+  hostname: data.ghga-dev.de
+  prefix: /api/search/
+
+podAnnotations:
+  vault.hashicorp.com/agent-inject: "true"
+  vault.hashicorp.com/agent-init-first: "true"
+  vault.hashicorp.com/tls-skip-verify: "true"
+  vault.hashicorp.com/agent-pre-populate-only: "true"
+  vault.hashicorp.com/agent-inject-secret-db: "secret/data/metadata-repository-service"
+  vault.hashicorp.com/agent-inject-template-db: |
+    {{ with secret "secret/data/metadata-repository-service" -}}
+    export METADATA_SEARCH_SERVICE_DB_URL="{{ .Data.data.db_url }}"
+    {{- end }}
