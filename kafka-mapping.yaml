@@ -1,0 +1,12 @@
+apiVersion: getambassador.io/v2
+kind: Mapping
+metadata:
+  name: kafka-ui
+  namespace: data-portal
+spec:
+  ambassador_id:
+  - --apiVersion-v3alpha1-only--default
+  # bypass_auth: true
+  host: kafka.ghga-dev.de
+  prefix: /
+  service: kafka-ui:80

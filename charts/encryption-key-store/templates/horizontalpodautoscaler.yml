@@ -1,12 +1,13 @@
+{{ if .Values.horizontalPodAutoscaler.enabled }}
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: hpa-metadata-catalog-autoscaler
+  name: hpa-access-request-autoscaler
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: metadata-catalog
+    name: access-request
   minReplicas: 1
   maxReplicas: 10
   metrics:
@@ -22,3 +23,4 @@ spec:
       target:
         type: Utilization
         averageUtilization: 75
+{{ end }}

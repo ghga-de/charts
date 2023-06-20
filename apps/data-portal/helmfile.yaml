@@ -5,14 +5,16 @@ repositories:
 - name: ghga
   url: https://ghga-de.github.io/charts/
 - name: bitnami
-  url: https://charts.bitnami.com/bitnami
+  url: registry-1.docker.io/bitnamicharts
+  oci: true
+- name: kafka-ui
+  url: https://provectus.github.io/kafka-ui-charts
 
 helmDefaults:
   wait: true
 
 templates:
   default: &default
-    version: ~0.0.1
     namespace: data-portal
     values:
     - config/{{`{{ .Release.Name }}`}}/{{`{{ .Environment.Name }}`}}.yaml
@@ -20,7 +22,12 @@ templates:
 releases:
 - name: kafka-dev
   chart: bitnami/kafka
-  namespace: data-portal
+  version: 22.1.6
+  <<: *default
+
+- name: kafka-ui
+  chart: kafka-ui/kafka-ui
+  <<: *default
 
 - name: auth-adapter
   chart: ../../charts/auth-adapter
