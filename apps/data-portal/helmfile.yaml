@@ -42,7 +42,7 @@ releases:
   chart: ../../charts/auth-adapter
   <<: *default
 
-- name: claim-repository
+- name: claims-repository
   chart: ../../charts/auth-adapter
   <<: *default
 
