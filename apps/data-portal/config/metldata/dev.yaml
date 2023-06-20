@@ -1,0 +1,21 @@
+
+mapping:
+  enabled: true
+  hostname: data.ghga-dev.de
+  prefix: /api/metldata
+
+parameters:
+  db_name: metadata_artifacts
+
+podAnnotations:
+  vault.hashicorp.com/agent-inject: "true"
+  vault.hashicorp.com/agent-init-first: "true"
+  vault.hashicorp.com/tls-skip-verify: "true"
+  vault.hashicorp.com/agent-pre-populate-only: "true"
+  vault.hashicorp.com/role: "metldata-role"
+  vault.hashicorp.com/agent-inject-secret-metldata: "secret/data/metldata"
+  vault.hashicorp.com/agent-inject-template-metldata: |
+    {{ with secret "secret/data/metldata" -}}
+    export METLDATA_DB_CONNECTION_STR='{{ .Data.data.DB_CONNECTION_STR }}'
+    export METLDATA_LOADER_TOKEN_HASHES='{{ .Data.data.LOADER_TOKEN_HASHES }}'
+    {{- end }}

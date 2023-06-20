@@ -24,7 +24,7 @@ spec:
       containers:
       - image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
         {{- include "ghga-common.command-args" (list "wps run-rest")  | nindent 8 }}
-        name: {{ .Release.Name }}
+        name: {{ .Release.Name }}-rest
         securityContext:
           runAsUser: 1000
           capabilities:
@@ -54,6 +54,31 @@ spec:
             port: {{ .Values.port }}
           initialDelaySeconds: 10
           periodSeconds: 15
+        volumeMounts:
+        - name: config
+          mountPath: "/home/appuser/.{{ .Values.config_prefix }}.yaml"
+          subPath: .{{ .Values.config_prefix }}.yaml
+          readOnly: true
+      - image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
+        {{- include "ghga-common.command-args" (list "wps consume-events")  | nindent 8 }}
+        name: {{ .Release.Name }}-consumer
+        securityContext:
+          runAsUser: 1000
+          capabilities:
+            drop:
+            - ALL
+          seccompProfile:
+            type: "RuntimeDefault"
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+        resources:
+          limits:
+            cpu: {{ .Values.resources.limits.cpu }}
+            memory: {{ .Values.resources.limits.memory }}
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
         volumeMounts:
         - name: config
           mountPath: "/home/appuser/.{{ .Values.config_prefix }}.yaml"

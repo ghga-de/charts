@@ -13,6 +13,8 @@ podAnnotations:
   vault.hashicorp.com/agent-init-first: "true"
   vault.hashicorp.com/tls-skip-verify: "true"
   vault.hashicorp.com/agent-pre-populate-only: "true"
+  vault.hashicorp.com/agent-run-as-same-user: "true"
+  vault.hashicorp.com/role: "auth-adapter-role"
   vault.hashicorp.com/agent-inject-secret-variables: "secret/data/auth-adapter/data"
   vault.hashicorp.com/agent-inject-template-variables: |
     {{ with secret "secret/data/auth-adapter/data" -}}
@@ -34,5 +36,3 @@ podAnnotations:
     {{ with secret "secret/data/auth/pub/ext" -}}
     export AUTH_SERVICE_AUTH_EXT_KEYS='{{ .Data.data.data }}'
     {{- end }}
-  vault.hashicorp.com/role: "auth-adapter-role"
-  vault.hashicorp.com/agent-run-as-same-user: "true"

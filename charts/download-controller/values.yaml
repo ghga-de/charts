@@ -7,7 +7,7 @@ horizontalPodAutoscaler:
   averageMemoryUtilization: 75
 image:
   name: "ghga/download-controller-service"
-  tag: "0.6.0"
+  tag: "0.6.1"
 port: "8080"
 resources:
   limits:
@@ -61,6 +61,10 @@ parameters:
   port: 8080
   presigned_url_expires_after: 10
   retry_access_after: 120
+  s3_access_key_id: "**********"
+  s3_endpoint_url: "**********"
+  s3_secret_access_key: "**********"
+  s3_session_token: "**********"
   service_instance_id: 'dcs_1'
   service_name: dcs
   unstaged_download_event_topic: downloads

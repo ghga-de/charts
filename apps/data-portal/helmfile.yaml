@@ -29,6 +29,11 @@ releases:
   chart: kafka-ui/kafka-ui
   <<: *default
 
+- name: minio
+  chart: bitnami/minio
+  version: 12.6.4
+  <<: *default
+
 - name: auth-adapter
   chart: ../../charts/auth-adapter
   <<: *default
@@ -49,8 +54,24 @@ releases:
   chart: ../../charts/work-package
   <<: *default
 
+- name: metldata
+  chart: ../../charts/metldata
+  <<: *default
+
+- name: metadata-search
+  chart: ../../charts/metadata-search
+  <<: *default
+
+- name: metadata-repository
+  chart: ../../charts/metadata-repository
+  <<: *default
+
 - name: access-request
   chart: ../../charts/access-request
+  <<: *default
+
+- name: internal-file-registry
+  chart: ../../charts/internal-file-registry
   <<: *default
 
 - name: download-controller

@@ -5,8 +5,8 @@ horizontalPodAutoscaler:
   averageCpuUtilization: 75
   averageMemoryUtilization: 75
 image:
-  name: "ghga/"
-  tag: "0.1.1"
+  name: "ghga/internal-file-registry-service"
+  tag: "0.4.0"
 podAnnotations: {}
 port: "8080"
 resources:
@@ -17,7 +17,7 @@ resources:
     cpu: "100m"
     memory: "64M"
 
-config_prefix: ars
+config_prefix: ifrs
 
 mapping:
   enabled: false
@@ -26,32 +26,26 @@ mapping:
   rewrite: null
 
 parameters:
-  api_root_path: ""
-  auth_algs:
-  - ES256
-  auth_check_claims:
-    email: null
-    exp: null
-    iat: null
-    name: null
-  auth_key: '{}'
-  auth_map_claims: {}
-  auto_reload: true
-  cors_allow_credentials: false
-  cors_allowed_headers: []
-  cors_allowed_methods: []
-  cors_allowed_origins: []
-  data_steward_email: helpdesk@ghga.de
+  aws_config_ini: null
   db_connection_str: "**********"
-  db_name: ars
-  docs_url: /docs
-  download_access_url: http://claims-repository-svc:8080/download_access
-  host: "0.0.0.0"
-  kafka_servers:
-  - kafka-kafka-bootstrap:9092
-  log_level: info
-  openapi_url: /openapi.json
-  port: 8080
-  service_instance_id: '1'
-  service_name: ars
-  workers: 1
+  db_name: ifrs
+  file_deleted_event_topic: internal_registrations
+  file_deleted_event_type: internal_file_deleted
+  file_registered_event_topic: internal_registrations
+  file_registered_event_type: internal_file_registered
+  file_staged_event_topic: internal_registrations
+  file_staged_event_type: internal_file_staged
+  files_to_delete_topic: purges
+  files_to_delete_type: files_to_delete
+  files_to_register_topic: interrogations
+  files_to_register_type: validation_success
+  files_to_stage_topic: downloads
+  files_to_stage_type: unstaged_drs_object_requested
+  kafka_servers: []
+  permanent_bucket: permanent
+  s3_access_key_id: "**********"
+  s3_endpoint_url: "**********"
+  s3_secret_access_key: "**********"
+  s3_session_token: "**********"
+  service_instance_id: "ifrs_1"
+  service_name: internal_file_registry

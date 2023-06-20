@@ -1,0 +1,25 @@
+
+parameters:
+  kafka_servers:
+  - kafka-dev:9092
+
+mapping:
+  enabled: true
+  hostname: data.ghga-dev.de
+  prefix: /api/ifrs/
+
+podAnnotations:
+  vault.hashicorp.com/agent-inject: "true"
+  vault.hashicorp.com/agent-init-first: "true"
+  vault.hashicorp.com/tls-skip-verify: "true"
+  vault.hashicorp.com/agent-pre-populate-only: "true"
+  vault.hashicorp.com/agent-run-as-same-user: "true"
+  vault.hashicorp.com/role: "internal-file-registry-role"
+  vault.hashicorp.com/agent-inject-secret-ifrs: "secret/data/ifrs"
+  vault.hashicorp.com/agent-inject-template-ifrs: |
+    {{ with secret "secret/data/ifrs" -}}
+    export IFRS_DB_CONNECTION_STR="{{ .Data.data.DB_CONNECTION_STR }}"
+    export IFRS_S3_ACCESS_KEY_ID="{{ .Data.data.S3_ACCESS_KEY_ID }}"
+    export IFRS_S3_ENDPOINT_URL="{{ .Data.data.S3_ENDPOINT_URL }}"
+    export IFRS_S3_SECRET_ACCESS_KEY="{{ .Data.data.S3_SECRET_ACCESS_KEY }}"
+    {{- end }}

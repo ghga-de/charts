@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: {{ .Release.Name }}
   labels:
-    app: access-request
-  name: access-request
+    app: {{ .Release.Name }}
 spec:
   revisionHistoryLimit: 1
   selector:
     matchLabels:
-      app: access-request
+      app: {{ .Release.Name }}
   template:
     metadata:
       annotations:
@@ -23,7 +23,7 @@ spec:
       serviceAccountName: {{ .Release.Name }}
       containers:
       - image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
-        {{- include "ghga-common.command-args" (list "ars")  | nindent 8 }}
+        {{- include "ghga-common.command-args" (list "ifrs")  | nindent 8 }}
         name: {{ .Release.Name }}
         securityContext:
           runAsUser: 1000
@@ -44,16 +44,6 @@ spec:
           requests:
             cpu: {{ .Values.resources.requests.cpu }}
             memory: {{ .Values.resources.requests.memory }}
-        readinessProbe:
-          tcpSocket:
-            port: {{ .Values.port }}
-          initialDelaySeconds: 10
-          periodSeconds: 15
-        livenessProbe:
-          tcpSocket:
-            port: {{ .Values.port }}
-          initialDelaySeconds: 10
-          periodSeconds: 15
         volumeMounts:
         - name: config
           mountPath: "/home/appuser/.{{ .Values.config_prefix }}.yaml"

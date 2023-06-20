@@ -14,6 +14,8 @@ podAnnotations:
   vault.hashicorp.com/agent-init-first: "true"
   vault.hashicorp.com/tls-skip-verify: "true"
   vault.hashicorp.com/agent-pre-populate-only: "true"
+  vault.hashicorp.com/agent-run-as-same-user: "true"
+  vault.hashicorp.com/role: "work-package-role"
   vault.hashicorp.com/agent-inject-secret-db: "secret/data/wps"
   vault.hashicorp.com/agent-inject-template-db: |
     {{ with secret "secret/data/wps" -}}
@@ -29,5 +31,3 @@ podAnnotations:
     {{ with secret "secret/data/auth/priv/wps" -}}
     export WPS_WORK_PACKAGE_SIGNING_KEY='{{ .Data.data.data }}'
     {{- end }}
-  vault.hashicorp.com/role: "work-package-role"
-  vault.hashicorp.com/agent-run-as-same-user: "true"

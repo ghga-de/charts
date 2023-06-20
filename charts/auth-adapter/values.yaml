@@ -19,6 +19,12 @@ resources:
 
 config_prefix: auth_service
 
+mapping:
+  enabled: false
+  hostname: ""
+  prefix: /
+  rewrite: null
+
 parameters:
   # Specify execution mode as auth-adapter, user-registry or claims-repository
   run_auth_adapter: null

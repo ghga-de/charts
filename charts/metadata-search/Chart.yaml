@@ -1,4 +1,4 @@
-name: metadata-search-service
+name: metadata-search
 description: The Metadata Search Service is a service for providing a unified search interface over a metadata store.
 type: application
 
@@ -11,8 +11,13 @@ version: 0.0.1
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "0.0.0-43-1a72aeb-main"
+appVersion: "0.0.0"
 
 # The major version of the API. Minor versions and patches are not relevant as they do not
 # introduce breaking changes.
 apiVersion: v2
+
+dependencies:
+- name: ghga-common
+  version: 0.1.1
+  repository: file://../ghga-common

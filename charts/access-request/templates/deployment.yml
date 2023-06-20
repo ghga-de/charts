@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: {{ .Release.Name }}
   labels:
-    app: access-request
-  name: access-request
+    app: {{ .Release.Name }}
 spec:
   revisionHistoryLimit: 1
   selector:
     matchLabels:
-      app: access-request
+      app: {{ .Release.Name }}
   template:
     metadata:
       annotations:
