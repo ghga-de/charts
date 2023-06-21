@@ -70,6 +70,10 @@ releases:
   chart: ../../charts/access-request
   <<: *default
 
+- name: encryption-key-store
+  chart: ../../charts/encryption-key-store
+  <<: *default
+
 - name: internal-file-registry
   chart: ../../charts/internal-file-registry
   <<: *default
