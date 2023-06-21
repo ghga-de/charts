@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - helmfile-template
 
 jobs:
   template-dev:
@@ -22,8 +23,10 @@ jobs:
           helm-plugins: >
             https://github.com/databus23/helm-diff
           helmfile-args: template --environment dev --file apps/data-portal --output-dir-template $GITHUB_WORKSPACE/gitops/GHGAinfra/data-portal
-
+      - run: ls -lah
+      - run: ls -lah $GITHUB_WORKSPACE
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          repository: $GITHUB_WORKSPACE
           branch: gitops
           file_pattern: 'gitops/'
