@@ -7,6 +7,10 @@ on:
 jobs:
   template-dev:
     runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -17,9 +21,9 @@ jobs:
           helm-version: 'v3.12.0'
           helm-plugins: >
             https://github.com/databus23/helm-diff
-          helmfile-args: template --environment dev --file apps/data-portal --output-dir-template $(pwd)/gitops/GHGAinfra/data-portal
+          helmfile-args: template --environment dev --file apps/data-portal --output-dir-template $GITHUB_WORKSPACE/gitops/GHGAinfra/data-portal
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: gitops
-          file_pattern: 'gitops/*'
+          file_pattern: 'gitops/'
