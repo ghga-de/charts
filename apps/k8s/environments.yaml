@@ -1,0 +1,7 @@
+environments:
+  default:
+    kubeContext: kind-kind
+  dev:
+    kubeContext: GHGAinfra
+  prod:
+    kubeContext: GHGAprod2

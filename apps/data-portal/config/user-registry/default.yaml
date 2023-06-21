@@ -1,0 +1,6 @@
+parameters:
+  run_auth_adapter: false
+  include_apis:
+  - users
+  db_url: ""
+  auth_key: null

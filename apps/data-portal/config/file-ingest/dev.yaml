@@ -1,0 +1,30 @@
+parameters:
+  kafka_servers:
+  - kafka-dev:9092
+  private_key: null
+  token_hashes: null
+  vault_host: http://hashicorp-vault.vault.svc.cluster.local
+  vault_port: 8200
+  vault_role_id: null
+  vault_secret_id: null
+
+mapping:
+  enabled: true
+  hostname: "data.ghga-dev.de"
+  prefix: /api/fis/
+
+podAnnotations:
+  vault.hashicorp.com/agent-inject: "true"
+  vault.hashicorp.com/agent-init-first: "true"
+  vault.hashicorp.com/tls-skip-verify: "true"
+  vault.hashicorp.com/agent-pre-populate-only: "true"
+  vault.hashicorp.com/agent-run-as-same-user: "true"
+  vault.hashicorp.com/role: "file-ingest-role"
+  vault.hashicorp.com/agent-inject-secret-fis: "secret/data/fis_ekss"
+  vault.hashicorp.com/agent-inject-template-fis: |
+    {{ with secret "secret/data/fis_ekss" -}}
+    export FIS_PRIVATE_KEY='{{ .Data.data.PRIVATE_KEY }}'
+    export FIS_TOKEN_HASHES='{{ .Data.data.TOKEN_HASHES }}'
+    export FIS_VAULT_ROLE_ID='{{ .Data.data.VAULT_ROLE_ID }}'
+    export FIS_VAULT_SECRET_ID='{{ .Data.data.VAULT_SECRET_ID }}'
+    {{- end }}

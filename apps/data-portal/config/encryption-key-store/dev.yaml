@@ -1,0 +1,28 @@
+parameters:
+  server_private_key: null
+  server_public_key: null
+  vault_host: http://hashicorp-vault.vault.svc.cluster.local
+  vault_port: 8200
+  vault_role_id: null
+  vault_secret_id: null
+
+mapping:
+  enabled: true
+  hostname: "data.ghga-dev.de"
+  prefix: /api/ekss/
+
+podAnnotations:
+  vault.hashicorp.com/agent-inject: "true"
+  vault.hashicorp.com/agent-init-first: "true"
+  vault.hashicorp.com/tls-skip-verify: "true"
+  vault.hashicorp.com/agent-pre-populate-only: "true"
+  vault.hashicorp.com/agent-run-as-same-user: "true"
+  vault.hashicorp.com/role: "encryption-key-store-role"
+  vault.hashicorp.com/agent-inject-secret-ekss: "secret/data/fis_ekss"
+  vault.hashicorp.com/agent-inject-template-ekss: |
+    {{ with secret "secret/data/fis_ekss" -}}
+    export EKSS_SERVER_PRIVATE_KEY='{{ .Data.data.SERVER_PRIVATE_KEY }}'
+    export EKSS_SERVER_PUBLIC_KEY='{{ .Data.data.SERVER_PUBLIC_KEY }}'
+    export EKSS_VAULT_ROLE_ID='{{ .Data.data.VAULT_ROLE_ID }}'
+    export EKSS_VAULT_SECRET_ID='{{ .Data.data.VAULT_SECRET_ID }}'
+    {{- end }}

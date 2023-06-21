@@ -2,33 +2,94 @@ bases:
 - environments.yaml
 
 repositories:
- - name: ghga
-   url: https://ghga-de.github.io/charts/
+- name: ghga
+  url: https://ghga-de.github.io/charts/
+- name: bitnami
+  url: registry-1.docker.io/bitnamicharts
+  oci: true
+- name: kafka-ui
+  url: https://provectus.github.io/kafka-ui-charts
 
 helmDefaults:
   wait: true
 
 templates:
   default: &default
-    version: ~0.0.1
-    namespace: testing
+    namespace: data-portal
     values:
-    - config/{{`{{ .Release.Name }}`}}/default.yaml
     - config/{{`{{ .Release.Name }}`}}/{{`{{ .Environment.Name }}`}}.yaml
 
 releases:
+- name: kafka-dev
+  chart: bitnami/kafka
+  version: 22.1.6
+  <<: *default
+
+- name: kafka-ui
+  chart: kafka-ui/kafka-ui
+  <<: *default
+
+- name: minio
+  chart: bitnami/minio
+  version: 12.6.4
+  <<: *default
+
 - name: auth-adapter
-  chart: ghga/auth-adapter
+  chart: ../../charts/auth-adapter
   <<: *default
 
-- name: auth-km-cronjob
-  chart: ghga/auth-km-cronjob
+- name: user-registry
+  chart: ../../charts/auth-adapter
   <<: *default
 
-- name: auth-km-ext-cronjob
-  chart: ghga/auth-km-cronjob
+- name: claims-repository
+  chart: ../../charts/auth-adapter
   <<: *default
 
 - name: data-portal-ui
-  chart: ghga/data-portal-ui
+  chart: ../../charts/data-portal-ui
+  <<: *default
+
+- name: work-package
+  chart: ../../charts/work-package
+  <<: *default
+
+- name: metldata
+  chart: ../../charts/metldata
+  <<: *default
+
+- name: metadata-search
+  chart: ../../charts/metadata-search
+  <<: *default
+
+- name: metadata-repository
+  chart: ../../charts/metadata-repository
+  <<: *default
+
+- name: access-request
+  chart: ../../charts/access-request
+  <<: *default
+
+- name: encryption-key-store
+  chart: ../../charts/encryption-key-store
+  <<: *default
+
+- name: internal-file-registry
+  chart: ../../charts/internal-file-registry
+  <<: *default
+
+- name: download-controller
+  chart: ../../charts/download-controller
+  <<: *default
+
+- name: auth-km-cronjob
+  chart: ../../charts/auth-km-cronjob
+  <<: *default
+
+- name: auth-km-ext-cronjob
+  chart: ../../charts/auth-km-cronjob
+  <<: *default
+
+- name: auth-km-wps-cronjob
+  chart: ../../charts/auth-km-cronjob
   <<: *default
