@@ -1,3 +1,11 @@
+resources:
+  limits:
+    cpu: "1"
+    memory: "2Gi"
+  requests:
+    cpu: "500m"
+    memory: "256Mi"
+
 mapping:
   enabled: true
   hostname: data.ghga-dev.de
