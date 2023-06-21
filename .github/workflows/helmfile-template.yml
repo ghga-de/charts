@@ -22,7 +22,7 @@ jobs:
           helm-version: 'v3.12.0'
           helm-plugins: >
             https://github.com/databus23/helm-diff
-          helmfile-args: template --environment dev --file apps/data-portal --output-dir-template $GITHUB_WORKSPACE/gitops/GHGAinfra/data-portal
+          helmfile-args: template --environment dev --file apps/data-portal --output-dir-template $(GITHUB_WORKSPACE)/gitops/GHGAinfra/data-portal
       - run: ls -lah
       - run: ls -lah $GITHUB_WORKSPACE
       - uses: stefanzweifel/git-auto-commit-action@v4
