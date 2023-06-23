@@ -23,7 +23,7 @@ jobs:
           helm-plugins: >
             https://github.com/databus23/helm-diff
           helmfile-args: template --environment dev --file apps/data-portal --output-dir-template ${{ github.workspace }}/GHGAinfra/data-portal
-      - run: ls -lah ./apps/data-portal/
+      - run: ls -lah ./GHGAinfra/data-portal
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           repository: .
