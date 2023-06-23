@@ -4,6 +4,8 @@ parameters:
     work_package_signing_key: null
     kafka_servers:
     - kafka-dev:9092
+    download_access_url: http://claims-repository-svc:8080/download-access
+    db_name: wps
 
 mapping:
   enabled: true
