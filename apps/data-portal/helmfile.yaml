@@ -9,6 +9,8 @@ repositories:
   oci: true
 - name: kafka-ui
   url: https://provectus.github.io/kafka-ui-charts
+- name: localstack
+  url: https://localstack.github.io/helm-charts
 
 helmDefaults:
   wait: true
@@ -32,6 +34,11 @@ releases:
 - name: minio
   chart: bitnami/minio
   version: 12.6.4
+  <<: *default
+
+- name: localstack
+  chart: localstack/localstack
+  version: 0.6.0
   <<: *default
 
 - name: auth-adapter
@@ -76,6 +83,10 @@ releases:
 
 - name: internal-file-registry
   chart: ../../charts/internal-file-registry
+  <<: *default
+
+- name: file-ingest
+  chart: ../../charts/file-ingest
   <<: *default
 
 - name: download-controller
