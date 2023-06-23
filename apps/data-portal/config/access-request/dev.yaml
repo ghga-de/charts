@@ -1,3 +1,9 @@
+parameters:
+  kafka_servers:
+  - kafka-dev:9092
+  download_access_url: http://claims-repository-svc:8080/download_access
+  db_name: ars
+  data_steward_email: helpdesk@ghga.de
 
 mapping:
   enabled: true
