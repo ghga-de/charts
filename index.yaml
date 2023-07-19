@@ -131,6 +131,22 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/data-portal-ui-0.0.1/data-portal-ui-0.0.1.tgz
     version: 0.0.1
+  download-controller:
+  - apiVersion: v2
+    appVersion: 0.6.1
+    created: "2023-07-19T11:54:45.552937513Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: This service implements the GA4GH DRS, while providing the option
+      to serve files from localstack S3.
+    digest: 766923381ef6fe7fe4abcc3830ed225f64dfbcdc6b8e08ece8b927229c2d2ac4
+    name: download-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/download-controller-0.0.2/download-controller-0.0.2.tgz
+    version: 0.0.2
   download-controller-service:
   - apiVersion: v2
     appVersion: 0.6.1
@@ -378,4 +394,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2023-07-19T11:50:21.830448037Z"
+generated: "2023-07-19T11:54:45.553021214Z"
