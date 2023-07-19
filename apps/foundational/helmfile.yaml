@@ -13,10 +13,10 @@ repositories:
 helmDefaults:
   wait: true
 
-default: &default
-  values:
-  - config/{{`{{ .Release.Name }}`}}/{{`{{ .Environment.Name }}`}}.yaml
-
+templates:
+  default: &default
+    values:
+    - config/{{`{{ .Release.Name }}`}}/{{`{{ .Environment.Name }}`}}.yaml
 
 releases:
 - name: kafka-dev
