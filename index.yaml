@@ -3,6 +3,20 @@ entries:
   access-request:
   - apiVersion: v2
     appVersion: 0.1.1
+    created: "2023-07-19T11:50:21.457800125Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: Access request service
+    digest: aaa600f67179c6c22b7a46ce80a8dfcb7d8cf5bf3f1b71716da21d50183ca749
+    name: access-request
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/access-request-0.0.3/access-request-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.1.1
     created: "2023-06-21T10:28:28.412532107Z"
     dependencies:
     - name: ghga-common
@@ -72,6 +86,21 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/auth-km-cronjob-0.0.1/auth-km-cronjob-0.0.1.tgz
     version: 0.0.1
   data-portal-ui:
+  - apiVersion: v2
+    appVersion: 0.1.4
+    created: "2023-07-19T11:50:21.581313173Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: The Metadata Search Service is a service for providing a unified
+      search interface over a metadata store.
+    digest: 062a64de19d7713b1abf268711d06eed0618e97f7227008e12610b42ca658b60
+    name: data-portal-ui
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/data-portal-ui-0.0.3/data-portal-ui-0.0.3.tgz
+    version: 0.0.3
   - apiVersion: v2
     appVersion: 0.1.1
     created: "2023-06-21T10:28:28.825681955Z"
@@ -145,6 +174,21 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/encryption-key-store-0.0.2/encryption-key-store-0.0.2.tgz
     version: 0.0.2
   file-ingest:
+  - apiVersion: v2
+    appVersion: 0.1.3
+    created: "2023-07-19T11:50:21.70982232Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: A lightweight service to propagate file upload metadata to the GHGA
+      file backend services
+    digest: 5cd787a09d199b12831a097a74a5e359c0401531a2f1ccbb0d4b015f56130f16
+    name: file-ingest
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/file-ingest-0.0.3/file-ingest-0.0.3.tgz
+    version: 0.0.3
   - apiVersion: v2
     appVersion: 0.1.2
     created: "2023-06-21T10:28:29.245164966Z"
@@ -308,6 +352,20 @@ entries:
   work-package:
   - apiVersion: v2
     appVersion: 0.1.2
+    created: "2023-07-19T11:50:21.830415335Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: Work package service
+    digest: f59f8c06772cbb9277b8b1b8995bbae908e5d869e01287d46cd448242c7b3788
+    name: work-package
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/work-package-0.0.3/work-package-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.1.2
     created: "2023-06-21T10:28:30.226294245Z"
     dependencies:
     - name: ghga-common
@@ -320,4 +378,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2023-06-21T10:28:30.226318245Z"
+generated: "2023-07-19T11:50:21.830448037Z"
