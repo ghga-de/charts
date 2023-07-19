@@ -12,8 +12,9 @@ jobs:
       # added or changed files to the repository.
       contents: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
 
       - uses: helmfile/helmfile-action@v1.0.0
         with:
@@ -21,12 +22,29 @@ jobs:
           helm-version: 'v3.12.0'
           helm-plugins: >
             https://github.com/databus23/helm-diff
-          helmfile-args: template --environment dev --file apps/data-portal --output-dir-template ${{ github.workspace }}/gitops/GHGAinfra/data-portal
+          helmfile-args: template --environment dev --file apps/data-portal --output-dir-template /tmp/gitops/GHGAinfra/data-portal
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          repository: .
-          branch: gitops
-          file_pattern: 'gitops/'
-          skip_dirty_check: true
-          disable_globbing: true
+      - name: Commit changes to gitops/
+        run: |
+          git fetch
+          git switch gitops
+          rm -rf ./gitops
+          mv /tmp/gitops .
+          # Check for changes
+          if [[ -n $(git status -s | grep "gitops/") ]]; then
+            echo "There are changes to commit."
+
+            # Set up Git user
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+            # Add all changes
+            git add ./gitops
+
+            # Commit changes
+            git commit -m "Apply automatic changes"
+            git push -f
+            echo "Changes committed."
+          else
+            echo "No changes to commit."
+          fi
