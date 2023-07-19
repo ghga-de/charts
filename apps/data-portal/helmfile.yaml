@@ -2,15 +2,8 @@ bases:
 - environments.yaml
 
 repositories:
-- name: ghga
+- name: ghga-de
   url: https://ghga-de.github.io/charts/
-- name: bitnami
-  url: registry-1.docker.io/bitnamicharts
-  oci: true
-- name: kafka-ui
-  url: https://provectus.github.io/kafka-ui-charts
-- name: localstack
-  url: https://localstack.github.io/helm-charts
 
 helmDefaults:
   wait: true
@@ -18,89 +11,71 @@ helmDefaults:
 templates:
   default: &default
     namespace: data-portal
+    version: ~0.0.1
     values:
     - config/{{`{{ .Release.Name }}`}}/{{`{{ .Environment.Name }}`}}.yaml
 
 releases:
-- name: kafka-dev
-  chart: bitnami/kafka
-  version: 22.1.6
-  <<: *default
-
-- name: kafka-ui
-  chart: kafka-ui/kafka-ui
-  <<: *default
-
-- name: minio
-  chart: bitnami/minio
-  version: 12.6.4
-  <<: *default
-
-- name: localstack
-  chart: localstack/localstack
-  version: 0.6.0
-  <<: *default
-
 - name: auth-adapter
-  chart: ../../charts/auth-adapter
+  chart: ghga-de/auth-adapter
   <<: *default
 
 - name: user-registry
-  chart: ../../charts/auth-adapter
+  chart: ghga-de/auth-adapter
   <<: *default
 
 - name: claims-repository
-  chart: ../../charts/auth-adapter
+  chart: ghga-de/auth-adapter
   <<: *default
 
 - name: data-portal-ui
-  chart: ../../charts/data-portal-ui
+  chart: ghga-de/data-portal-ui
   <<: *default
 
 - name: work-package
-  chart: ../../charts/work-package
+  chart: ghga-de/work-package
   <<: *default
 
 - name: metldata
-  chart: ../../charts/metldata
+  chart: ghga-de/metldata
   <<: *default
 
 - name: metadata-search
-  chart: ../../charts/metadata-search
+  chart: ghga-de/metadata-search
   <<: *default
 
 - name: metadata-repository
-  chart: ../../charts/metadata-repository
+  chart: ghga-de/metadata-repository
   <<: *default
 
 - name: access-request
-  chart: ../../charts/access-request
+  chart: ghga-de/access-request
   <<: *default
 
 - name: encryption-key-store
-  chart: ../../charts/encryption-key-store
+  chart: ghga-de/encryption-key-store
   <<: *default
 
 - name: internal-file-registry
-  chart: ../../charts/internal-file-registry
+  chart: ghga-de/internal-file-registry
   <<: *default
 
 - name: file-ingest
-  chart: ../../charts/file-ingest
+  chart: ghga-de/file-ingest
   <<: *default
 
 - name: download-controller
-  chart: ../../charts/download-controller
+  chart: ghga-de/download-controller
   <<: *default
 
 - name: auth-km-cronjob
-  chart: ../../charts/auth-km-cronjob
+  chart: ghga-de/auth-km-cronjob
   <<: *default
 
 - name: auth-km-ext-cronjob
-  chart: ../../charts/auth-km-cronjob
+  chart: ghga-de/auth-km-cronjob
   <<: *default
 
 - name: auth-km-wps-cronjob
-  chart: ../../charts/auth-km-cronjob
+  chart: ghga-de/auth-km-cronjob
   <<: *default
