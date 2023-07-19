@@ -1,0 +1,5 @@
+lint:
+  enabled: true
+  charts:
+    ignoreWarnings:
+      - "chart-maintainers"
