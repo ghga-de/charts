@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: {{ .Release.Name }}
   labels:
-    app: work-package
-  name: work-package
+    app: {{ .Release.Name }}
 spec:
   revisionHistoryLimit: 1
   selector:
