@@ -8,7 +8,7 @@ spec:
   revisionHistoryLimit: 1
   selector:
     matchLabels:
-      app: work-package
+      app: {{ .Release.Name }}
   template:
     metadata:
       annotations:
