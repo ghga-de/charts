@@ -358,6 +358,22 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/metldata-0.0.2/metldata-0.0.2.tgz
     version: 0.0.2
+  test-oidc-provider:
+  - apiVersion: v2
+    appVersion: 0.2.1
+    created: "2023-10-05T12:00:34.021792953Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: A dummy OpenID Connect provider (OP) that can be user for testing
+      purposes.
+    digest: 62a813f90d0f88df179d9b66d53df97985eeb436641d223553b6f32f91c9919b
+    name: test-oidc-provider
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/test-oidc-provider-0.0.1/test-oidc-provider-0.0.1.tgz
+    version: 0.0.1
   upload-controller-service:
   - apiVersion: v2
     appVersion: 0.3.0-23-gf1fda2f-main
@@ -424,4 +440,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2023-09-14T12:13:55.475471165Z"
+generated: "2023-10-05T12:00:34.021974856Z"
