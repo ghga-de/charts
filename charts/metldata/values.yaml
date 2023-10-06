@@ -41,3 +41,5 @@ parameters:
   openapi_url: /openapi.json
   port: 8080
   workers: 1
+
+shareProcessNamespace: false
