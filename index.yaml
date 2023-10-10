@@ -376,6 +376,21 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/internal-file-registry-0.0.2/internal-file-registry-0.0.2.tgz
     version: 0.0.2
+  mass:
+  - apiVersion: v2
+    appVersion: 0.3.2
+    created: "2023-10-10T14:20:28.765598205Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: Metadata Artifact Search Service
+    digest: 77c0d8d3ff23d658dfa9ae8f0eb1d12d0044c7749f3c4993d5e03b927c27eea0
+    name: mass
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/mass-0.0.1/mass-0.0.1.tgz
+    version: 0.0.1
   metadata-catalog:
   - apiVersion: v2
     appVersion: 0.0.0-59-031dafb-main
@@ -507,6 +522,21 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/metldata-0.0.2/metldata-0.0.2.tgz
     version: 0.0.2
+  notification:
+  - apiVersion: v2
+    appVersion: 0.1.2
+    created: "2023-10-10T14:20:28.931099107Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: Notification service
+    digest: a745ee296275141fa89e3f758874121929ff452819f1471d9be9e965582c9085
+    name: notification
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/notification-0.0.1/notification-0.0.1.tgz
+    version: 0.0.1
   test-oidc-provider:
   - apiVersion: v2
     appVersion: 0.2.1
@@ -606,6 +636,21 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/user-management-0.0.1/user-management-0.0.1.tgz
     version: 0.0.1
+  well-known-value:
+  - apiVersion: v2
+    appVersion: 0.1.1
+    created: "2023-10-10T14:20:29.28320213Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: Well-known Value Service
+    digest: db32ec6f3bdd6fe1c00d0612ab528fe67118d2ca97db6b6cb00e3b0384a47ea9
+    name: well-known-value
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/well-known-value-0.0.1/well-known-value-0.0.1.tgz
+    version: 0.0.1
   work-package:
   - apiVersion: v2
     appVersion: 0.1.2
@@ -663,4 +708,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2023-10-10T13:46:16.523513293Z"
+generated: "2023-10-10T14:20:29.283262831Z"
