@@ -208,6 +208,21 @@ entries:
   download-controller:
   - apiVersion: v2
     appVersion: 0.6.1
+    created: "2023-10-11T14:02:28.193799275Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: This service implements the GA4GH DRS, while providing the option
+      to serve files from localstack S3.
+    digest: 98e24a9005d41962eb99b62f5fe739af47e84d2293e27cb8326493b4c6ca30dc
+    name: download-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/download-controller-0.0.4/download-controller-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 0.6.1
     created: "2023-10-10T13:10:25.898018362Z"
     dependencies:
     - name: ghga-common
@@ -362,6 +377,21 @@ entries:
   internal-file-registry:
   - apiVersion: v2
     appVersion: 0.4.0
+    created: "2023-10-11T14:02:28.437796534Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: This service acts as a registry for the internal location and representation
+      of files.
+    digest: e3f7671f3a1e88a120b0b778e8620fd283cb80d130b45e4b9f08e43ffc92f373
+    name: internal-file-registry
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/internal-file-registry-0.0.5/internal-file-registry-0.0.5.tgz
+    version: 0.0.5
+  - apiVersion: v2
+    appVersion: 0.4.0
     created: "2023-10-11T12:55:21.032272434Z"
     dependencies:
     - name: ghga-common
@@ -406,6 +436,20 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/internal-file-registry-0.0.2/internal-file-registry-0.0.2.tgz
     version: 0.0.2
   mass:
+  - apiVersion: v2
+    appVersion: 0.3.4
+    created: "2023-10-11T14:02:28.634852086Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: Metadata Artifact Search Service
+    digest: 2ae1e06b3ebf641637405b9066e20241fec610332a2182bb8a637fa134c5cb1f
+    name: mass
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/mass-0.0.3/mass-0.0.3.tgz
+    version: 0.0.3
   - apiVersion: v2
     appVersion: 0.3.4
     created: "2023-10-11T11:55:52.057552339Z"
@@ -568,6 +612,20 @@ entries:
   notification:
   - apiVersion: v2
     appVersion: 0.1.2
+    created: "2023-10-11T14:02:28.859452188Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: Notification service
+    digest: 96e8b1bf67ba5d736b691319f2c09021cd2f55493be51418f9eb7b33f1edaf01
+    name: notification
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/notification-0.0.5/notification-0.0.5.tgz
+    version: 0.0.5
+  - apiVersion: v2
+    appVersion: 0.1.2
     created: "2023-10-11T12:55:21.260965504Z"
     dependencies:
     - name: ghga-common
@@ -724,6 +782,20 @@ entries:
   well-known-value:
   - apiVersion: v2
     appVersion: 0.1.1
+    created: "2023-10-11T14:02:29.045793486Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: Well-known Value Service
+    digest: 3aa629a810043a3e4372736183b4c893a1f685dfb251db0fd73ef37484f43436
+    name: well-known-value
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/well-known-value-0.0.2/well-known-value-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 0.1.1
     created: "2023-10-10T14:20:29.28320213Z"
     dependencies:
     - name: ghga-common
@@ -793,4 +865,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2023-10-11T12:55:21.261039909Z"
+generated: "2023-10-11T14:02:29.046171495Z"
