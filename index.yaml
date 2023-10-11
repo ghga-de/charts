@@ -362,6 +362,21 @@ entries:
   internal-file-registry:
   - apiVersion: v2
     appVersion: 0.4.0
+    created: "2023-10-11T12:55:21.032272434Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: This service acts as a registry for the internal location and representation
+      of files.
+    digest: a98d8384d3fd65285981666d24c72c282c2e947e3b6430792b99ed5190566154
+    name: internal-file-registry
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/internal-file-registry-0.0.4/internal-file-registry-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 0.4.0
     created: "2023-10-10T13:10:26.571942909Z"
     dependencies:
     - name: ghga-common
@@ -551,6 +566,20 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/metldata-0.0.2/metldata-0.0.2.tgz
     version: 0.0.2
   notification:
+  - apiVersion: v2
+    appVersion: 0.1.2
+    created: "2023-10-11T12:55:21.260965504Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: Notification service
+    digest: ee64fb0bc811b47614b11b4bc432264b6ed8380549c3e17763b5fbda4a98763c
+    name: notification
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/notification-0.0.4/notification-0.0.4.tgz
+    version: 0.0.4
   - apiVersion: v2
     appVersion: 0.1.2
     created: "2023-10-11T08:22:48.936804216Z"
@@ -764,4 +793,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2023-10-11T11:55:52.058516398Z"
+generated: "2023-10-11T12:55:21.261039909Z"
