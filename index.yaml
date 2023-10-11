@@ -539,6 +539,20 @@ entries:
   notification:
   - apiVersion: v2
     appVersion: 0.1.2
+    created: "2023-10-11T08:22:48.936804216Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: Notification service
+    digest: 3f27079fef9d3d461a2cf8b76a98e3ea82a83087383623374b709877699458bb
+    name: notification
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/notification-0.0.3/notification-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.1.2
     created: "2023-10-10T14:41:08.603577638Z"
     dependencies:
     - name: ghga-common
@@ -736,4 +750,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2023-10-10T14:44:49.048697026Z"
+generated: "2023-10-11T08:22:48.937097216Z"
