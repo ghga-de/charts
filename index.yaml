@@ -575,6 +575,20 @@ entries:
     version: 0.0.1
   encryption-key-store:
   - apiVersion: v2
+    appVersion: 0.3.8
+    created: "2023-10-24T12:02:21.7506726Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: providing crypt4gh file secret extraction, storage and envelope generation
+    digest: c0f1b9fa05f31ed96d6a2cbee3833fd14ad620fb0fb0b981d1ab2965cb684c4f
+    name: encryption-key-store
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/encryption-key-store-0.0.8/encryption-key-store-0.0.8.tgz
+    version: 0.0.8
+  - apiVersion: v2
     appVersion: 0.3.7
     created: "2023-10-17T11:23:03.941630839Z"
     dependencies:
@@ -659,6 +673,21 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/encryption-key-store-0.0.2/encryption-key-store-0.0.2.tgz
     version: 0.0.2
   file-ingest:
+  - apiVersion: v2
+    appVersion: 0.1.5
+    created: "2023-10-24T12:02:21.949288992Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.1.1
+    description: A lightweight service to propagate file upload metadata to the GHGA
+      file backend services
+    digest: 6c093d4183cc5158b0e4e547baba64ce8557def581b307fd6f4297874880402d
+    name: file-ingest
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/file-ingest-0.0.9/file-ingest-0.0.9.tgz
+    version: 0.0.9
   - apiVersion: v2
     appVersion: 0.1.4
     created: "2023-10-17T11:23:04.212959126Z"
@@ -1799,4 +1828,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2023-10-20T14:29:26.479828113Z"
+generated: "2023-10-24T12:02:21.949482603Z"
