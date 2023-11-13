@@ -7,8 +7,8 @@ image:
 cronSchedule: ""
 vault:
   token: ""
-  address: "https://hashicorp-vault.vault:8200"
-  namespace: "vault"
+  address: https://hashicorp-vault.vault:8200
+  namespace: vault
   kubeRole: auth-km-jobs-role
 serviceAccount:
   enabled: true
