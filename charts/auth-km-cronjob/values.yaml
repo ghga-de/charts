@@ -17,6 +17,6 @@ serviceAccount:
 service:
   keyType: ""
   runCommands:
-   internal: run refresh-int-keys
-   external: run refresh-ext-keys
-   wps: run refresh-wps-keys
+    internal: run refresh-int-keys
+    external: run refresh-ext-keys
+    wps: run refresh-wps-keys
