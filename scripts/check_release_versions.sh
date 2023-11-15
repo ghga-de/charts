@@ -1,6 +1,5 @@
 #!/bin/bash
-# This script checks for updates in GHGA GitHub repositories based on service configurations in the charts/ directory, 
-# reporting services with new releases and those skipped due to specific criteria or missing information.
+# This script checks for updates in GHGA GitHub repositories based on service configurations in the charts/ directory, reporting services with new releases and those skipped due to specific criteria or missing information.
 
 # Base directory for charts
 CHARTS_DIR="charts"
