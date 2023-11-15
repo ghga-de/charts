@@ -16,6 +16,8 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
+cd "$(dirname "$0")/.."
+
 has_values_yaml(){
  [[ -f "$1/values.yaml" ]]
 }
@@ -77,7 +79,7 @@ for service in "$CHARTS_DIR"/*; do
         fi
 
         if [ "$latest_version" != "$configured_version" ]; then
-            updated_services+=("$service_name: $configured_version > $latest_version")
+            updated_services+=("$service_name: $configured_version < $latest_version")
         fi
     else
         skipped_services+=("$service: values.yaml not found")
