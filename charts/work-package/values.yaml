@@ -24,6 +24,10 @@ mapping:
   hostname: ""
   prefix: /
 
+strimzi:
+  enabled: false
+  name: "kafka"
+
 parameters:
   default:
     api_root_path: /
@@ -41,8 +45,9 @@ parameters:
     cors_allowed_headers: []
     cors_allowed_methods: []
     cors_allowed_origins: []
-    dataset_overview_event_topic: metadata
-    dataset_overview_event_type: metadata_dataset_overview
+    dataset_change_event_topic: metadata_datasets
+    dataset_upsertion_event_type: dataset_created
+    dataset_deletion_event_type: dataset_deleted
     datasets_collection: datasets
     db_connection_str: "**********"
     db_name: wps

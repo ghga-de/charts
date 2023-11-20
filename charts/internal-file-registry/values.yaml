@@ -25,6 +25,10 @@ mapping:
   prefix: /
   rewrite: null
 
+strimzi:
+  enabled: false
+  name: "kafka"
+
 parameters:
   aws_config_ini: null
   db_connection_str: "**********"

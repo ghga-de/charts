@@ -25,6 +25,10 @@ mapping:
   prefix: /
   rewrite: null
 
+strimzi:
+  enabled: false
+  name: "kafka"
+
 parameters:
   api_root_path: /
   auto_reload: false

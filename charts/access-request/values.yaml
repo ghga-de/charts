@@ -25,6 +25,10 @@ mapping:
   prefix: /
   rewrite: null
 
+strimzi:
+  enabled: false
+  name: "kafka"
+
 parameters:
   api_root_path: ""
   auth_algs:
@@ -47,8 +51,9 @@ parameters:
   docs_url: /docs
   download_access_url: http://claims-repository-svc:8080/download-access
   host: "0.0.0.0"
-  kafka_servers:
-  - kafka-kafka-bootstrap:9092
+  kafka_servers: []
+  notification_event_topic: notifications
+  notification_event_type: notification
   log_level: info
   openapi_url: /openapi.json
   port: 8080

@@ -1,0 +1,19 @@
+{{ if .Values.strimzi.enabled }}
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaUser
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    strimzi.io/cluster: {{ .Values.strimzi.name }}
+spec:
+  authentication:
+    type: tls
+  authorization:
+    type: simple
+    acls:
+      - resource:
+          type: topic
+          name: {{ .Values.parameters.notification_event_topic }}
+          patternType: literal
+        operation: Write
+{{ end }}

@@ -1,0 +1,44 @@
+{{ if .Values.strimzi.enabled }}
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaUser
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    strimzi.io/cluster: {{ .Values.strimzi.name }}
+spec:
+  authentication:
+    type: tls
+  authorization:
+    type: simple
+    acls:
+      - resource:
+          type: topic
+          name: {{ .Values.parameters.default.download_served_event_topic }}
+          patternType: literal
+        operation: ReadWrite
+      - resource:
+          type: topic
+          name: {{ .Values.parameters.default.file_deleted_event_topic }}
+          patternType: literal
+        operation: ReadWrite
+      - resource:
+          type: topic
+          name: {{ .Values.parameters.default.file_registered_event_topic }}
+          patternType: literal
+        operation: ReadWrite
+      - resource:
+          type: topic
+          name: {{ .Values.parameters.default.unstaged_download_event_topic }}
+          patternType: literal
+        operation: ReadWrite
+      - resource:
+          type: topic
+          name: {{ .Values.parameters.default.files_to_delete_topic }}
+          patternType: literal
+        operation: ReadWrite
+      - resource:
+          type: topic
+          name: {{ .Values.parameters.default.files_to_register_topic }}
+          patternType: literal
+        operation: ReadWrite
+{{ end }}
