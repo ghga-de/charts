@@ -4,6 +4,7 @@ import requests
 from pathlib import Path
 from typing import Any
 import argparse
+import yaml
 
 CHARTS_DIR = "charts"
 
@@ -29,22 +30,15 @@ charts_directory = current_directory / CHARTS_DIR
 def has_values_yaml(service_path: Path) -> bool:
     return (service_path / "values.yaml").is_file()
 
-
-def extract_app_version(service_path: Path) -> str | None:
+def read_chart_yaml(service_path: Path) -> str | None:
     with open(service_path / "Chart.yaml") as chart_file:
-        for line in chart_file:
-            if line.startswith("appVersion:"):
-                return line.split('"')[1].strip()
-    return None
+       return yaml.safe_load(chart_file)
 
-
-def extract_github_repo_name(service_path: Path) -> str | None:
+def extract_github_repo_name(service_path: Path) -> str :
     with open(service_path / "values.yaml") as values_file:
-        for line in values_file:
-            if "image:" in line:
-                repo_name = next(values_file).split("/")[-1].strip().replace('"', "")
-                return repo_name
-    return None
+        values = yaml.safe_load(values_file)
+        repo_name = values["image"]["name"].split("/")[-1].strip().replace('"', "")
+        return repo_name
 
 
 def get_latest_github_release(repo_name: str) -> str | None:
@@ -99,6 +93,32 @@ def compare_parameters(dict_old: dict, dict_new: dict) -> dict[str, list]:
 
     return changes
 
+def update_chart_yaml(service_path: Path, latest_app_version: str, new_chart_version: str) -> None:
+    new_file_content = []
+    with open(service_path / "Chart.yaml") as chart_yaml:
+        for line in chart_yaml.readlines():
+            if line.startswith("appVersion:"):
+                line = f"appVersion: \"{latest_app_version}\"\n"
+            if line.startswith("version:"):
+                line = f"version: {new_chart_version}\n"
+            new_file_content.append(line)
+    
+    with open(service_path / "Chart.yaml", 'w') as chart_yaml:
+        for line in new_file_content:
+            chart_yaml.write(f"{line}")
+
+def get_new_chart_version(old_chart_version: str, latest_app_version: str, configured_version: str) -> str:
+    """Bump Chart version synchronous to AppVersion."""
+    new_chart_version = []
+    bumped = False
+    for x,y,z in zip(latest_app_version.split("."), configured_version.split("."), old_chart_version.split(".")):
+        if int(x) > int(y) and not bumped:
+            new_version = int(z) + 1
+            new_chart_version.append(str(new_version))
+            bumped = True
+        else:
+            new_chart_version.append("0")
+    return '.'.join(new_chart_version)
 
 skipped_services: list[str] = []
 updated_services: list[str] = []
@@ -109,7 +129,7 @@ for service in charts_directory.iterdir():
         service_name = service.name
         github_repo_name = extract_github_repo_name(service)
 
-        configured_version = extract_app_version(service)
+        configured_version = read_chart_yaml(service)["appVersion"]
         latest_version = get_latest_github_release(github_repo_name)
 
         # If API Rate limit exceeded, exit
@@ -129,6 +149,9 @@ for service in charts_directory.iterdir():
             updated_services.append(
                 f"{service_name}: {configured_version} < {latest_version}"
             )
+            old_chart_version = read_chart_yaml(service)["version"]
+            new_chart_version = get_new_chart_version(old_chart_version, latest_version, configured_version)
+            update_chart_yaml(service, latest_version, new_chart_version)
 
         # Detect changes in config.json
         old_config = download_config(github_repo_name, configured_version)
