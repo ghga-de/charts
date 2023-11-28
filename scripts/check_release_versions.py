@@ -2,22 +2,20 @@
 
 import requests
 from pathlib import Path
+from typing import Any
+import argparse
 
-# Base directory for charts
 CHARTS_DIR = "charts"
 
 # Optional GitHub token to increase API rate limit
 TOKEN = ""
 
-UPDATES = False
-
-# Parse command-line arguments
-import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--token", help="GitHub token")
+parser.add_argument("--updates", help="Show config updates", action="store_true")
 parser.add_argument(
-    "--updates", help="Should config updates been shown", action="store_true"
+    "--required", help="Show only required config parameters", action="store_true"
 )
 args = parser.parse_args()
 
@@ -28,11 +26,11 @@ current_directory = Path(".")  # Change to the script's directory
 charts_directory = current_directory / CHARTS_DIR
 
 
-def has_values_yaml(service_path):
+def has_values_yaml(service_path: Path) -> bool:
     return (service_path / "values.yaml").is_file()
 
 
-def extract_app_version(service_path):
+def extract_app_version(service_path: Path) -> str | None:
     with open(service_path / "Chart.yaml") as chart_file:
         for line in chart_file:
             if line.startswith("appVersion:"):
@@ -40,7 +38,7 @@ def extract_app_version(service_path):
     return None
 
 
-def extract_github_repo_name(service_path):
+def extract_github_repo_name(service_path: Path) -> str | None:
     with open(service_path / "values.yaml") as values_file:
         for line in values_file:
             if "image:" in line:
@@ -49,7 +47,7 @@ def extract_github_repo_name(service_path):
     return None
 
 
-def get_latest_github_release(repo_name):
+def get_latest_github_release(repo_name: str) -> str | None:
     headers = {}
     if TOKEN:
         headers["Authorization"] = f"Bearer {TOKEN}"
@@ -65,7 +63,7 @@ def get_latest_github_release(repo_name):
         return response.json().get("tag_name", None)
 
 
-def download_config(repo_name, version):
+def download_config(repo_name: str, version: str) -> None | Any:
     headers = {}
     if TOKEN:
         headers["Authorization"] = f"Bearer {TOKEN}"
@@ -78,13 +76,11 @@ def download_config(repo_name, version):
         return response.json()
 
 
-def compare_parameters(
-    dict_old: dict, dict_new: dict, only_required=True
-) -> dict[str, list]:
+def compare_parameters(dict_old: dict, dict_new: dict) -> dict[str, list]:
     changes: dict[str, list] = {"added": [], "removed": [], "updated": []}
     properties_old = dict_old["properties"]
     properties_new = dict_new["properties"]
-    required = dict_new.get("required", []) if only_required else []
+    required = dict_new.get("required", []) if args.required else []
     old_keys = properties_old.keys()
     new_keys = properties_new.keys()
 
@@ -104,9 +100,9 @@ def compare_parameters(
     return changes
 
 
-skipped_services = []
-updated_services = []
-updated_configs = []
+skipped_services: list[str] = []
+updated_services: list[str] = []
+updated_configs: list[str] = []
 
 for service in charts_directory.iterdir():
     if service.is_dir() and has_values_yaml(service):
@@ -143,7 +139,7 @@ for service in charts_directory.iterdir():
             out_str: str = f"{service_name}:\n"
             has_changes: bool = False
 
-            if UPDATES:
+            if args.updates:
                 events: list[str] = ["added", "removed", "updated"]
             else:
                 events: list[str] = ["added", "removed"]
