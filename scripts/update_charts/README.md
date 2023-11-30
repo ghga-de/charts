@@ -12,7 +12,7 @@ python scripts/update_charts/update_charts.py --token $GITHUB_TOKEN
 This script is intended to accelerate the process of comparing GHGA Charts and service releases. It performs the following tasks:
 
 1. Compares the Charts and service releases to identify if there is a new service release.
-2. If a new release is detected, it automatically creates a new version in the Chart.yaml file and dumps the Cart version minor.
+2. If a new release is detected, it automatically creates a new version in the Chart.yaml file and dumps the Chart version minor.
 3. Updates the service parameters in the values.yaml file with the default configuration `example_config.yaml` from the service repository.
 4. The script modifies Chart.yaml and values.yaml in place to facilitate easier tracking of changes using `git diff`.
 
