@@ -18,6 +18,14 @@ resources:
 
 config_prefix: ekss
 
+ingress:
+  enabled: false
+  hostname: ""
+  prefix: /
+  tls:
+    enabled: false
+    secretName: ""
+
 mapping:
   enabled: false
   hostname: ""

@@ -16,6 +16,14 @@ service:
 
 config_prefix: top
 
+ingress:
+  enabled: false
+  hostname: ""
+  prefix: /
+  tls:
+    enabled: false
+    secretName: ""
+
 mapping:
   enabled: false
   hostname: ""
