@@ -11,7 +11,7 @@ kind: Ingress
 metadata:
   name: {{ .Release.Name }}
   annotations:
-    nginx.ingress.kubernetes.io/auth-url: "http://auth-adapter-svc.{{ .Release.Namespace }}.svc.cluster.local:8080"
+{{ toYaml .Values.ingress.annotations | indent 4 }}
 spec:
   ingressClassName: nginx
   {{ if .Values.ingress.tls.enabled }}
