@@ -20,6 +20,7 @@ config_prefix: mass
 
 ingress:
   enabled: false
+  annotations: []
   hostname: ""
   prefix: /
   tls:
