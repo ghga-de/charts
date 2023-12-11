@@ -19,5 +19,5 @@ apiVersion: v2
 
 dependencies:
 - name: ghga-common
-  version: 0.2.0
+  version: 0.2.1
   repository: file://../ghga-common
