@@ -23,10 +23,6 @@ spec:
             - name: {{ .Chart.Name }}
               imagePullPolicy: {{ .Values.image.pullPolicy }} 
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-              ports:
-                - name: http
-                  containerPort: {{ .Values.service.port }}
-                  protocol: TCP
               envFrom:
                 - configMapRef:
                     name: {{ include "mongodb-s3-backup.fullname" . }}
