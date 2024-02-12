@@ -2313,6 +2313,16 @@ entries:
   mongodb-s3-backup:
   - apiVersion: v2
     appVersion: 0.0.0
+    created: "2024-02-12T14:12:22.968477151Z"
+    description: A Helm chart for mongodb-s3-backup CronJob
+    digest: bfa550a69b30b8f60788212d81285feedc7b2384899a881e34559cd2da200ff5
+    name: mongodb-s3-backup
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/mongodb-s3-backup-0.1.2/mongodb-s3-backup-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 0.0.0
     created: "2024-02-12T13:37:05.249237887Z"
     description: A Helm chart for mongodb-s3-backup CronJob
     digest: 6ce69df791406b6a163eb99d6ce7032c3620dee15cd3f6d7b18f0eeddef9d9be
@@ -3166,4 +3176,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-02-12T13:37:05.249795456Z"
+generated: "2024-02-12T14:12:22.968797408Z"
