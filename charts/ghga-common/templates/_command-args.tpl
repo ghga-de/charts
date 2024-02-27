@@ -12,16 +12,16 @@ prepends it with a failsafe routine that injects all existing secrets from vault
 {{/* Config file name is not always equal to config_prefix */}}
 {{- define "ghga-common.log-config-params" -}}
 echo "[$(date +"%T")] Config file service values";
-cat .*.yaml | grep -i -v -E "({{ .Values.logConfigBlacklist | join "|"}})";
+cat .*.yaml | awk -F":" '{if (!(tolower($1)~/({{ .Values.logConfigBlacklist | join "|"}})/)) print }';
 echo "[$(date +"%T")] Secret config file service values";
-cat .*.yaml | grep -i -E "({{ .Values.logConfigBlacklist | join "|"}})" | awk -F":" {{ include "ghga-common.black-secret-value" . }};
+cat .*.yaml | awk -F":" '{if (tolower($1)~/({{ .Values.logConfigBlacklist | join "|"}})/) print }' | awk -F":" {{ include "ghga-common.black-secret-value" . }};
 {{- end -}}
 
 {{- define "ghga-common.log-environment-params" -}}
 echo "[$(date +"%T")] Service environment values";
-env | grep -i {{ .Values.config_prefix }} | grep -i -v -E "({{ .Values.logConfigBlacklist | join "|"}})";
+env | grep -i {{ .Values.config_prefix }} | awk -F"=" '{if (!(tolower($1)~/({{ .Values.logConfigBlacklist | join "|"}})/)) print }';
 echo "[$(date +"%T")] Secret service environment values";
-env | grep -i {{ .Values.config_prefix }} | grep -i -E "({{ .Values.logConfigBlacklist | join "|"}})" | awk -F= {{ include "ghga-common.black-secret-value" . }};
+env | grep -i {{ .Values.config_prefix }} | awk -F"=" '{if (tolower($1)~/({{ .Values.logConfigBlacklist | join "|"}})/) print }' | awk -F= {{ include "ghga-common.black-secret-value" . }};
 {{- end -}}
 
 {{- define "ghga-common.export-vault-secrets" -}}
