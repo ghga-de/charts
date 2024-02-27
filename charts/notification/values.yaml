@@ -51,3 +51,4 @@ parameters:
     use_starttls: false
 
 shareProcessNamespace: false
+serviceCommand: ns

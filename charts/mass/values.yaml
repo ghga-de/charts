@@ -68,3 +68,4 @@ parameters:
     service_instance_id: 'mass_consumer_1'
 
 shareProcessNamespace: false
+serviceCommand: mass run-rest

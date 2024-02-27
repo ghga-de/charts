@@ -1,0 +1,9 @@
+exports:
+  data:
+    logConfigBlacklist:
+      - key
+      - token
+      - db_url
+      - cred
+      - db_connection_str
+      - pass

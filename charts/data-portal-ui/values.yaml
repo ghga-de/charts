@@ -40,3 +40,4 @@ parameters:
     metldata_url: "/api/metldata"
 
 shareProcessNamespace: false
+serviceCommand: python /service/configure_build_serve/run.py

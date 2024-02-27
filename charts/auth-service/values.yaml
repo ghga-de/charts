@@ -90,3 +90,4 @@ authService:
     name: authentication
 
 shareProcessNamespace: false
+serviceCommand: auth-service

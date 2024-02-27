@@ -44,3 +44,4 @@ parameters:
     service_name: internal_file_registry
 
 shareProcessNamespace: false
+serviceCommand: ifrs

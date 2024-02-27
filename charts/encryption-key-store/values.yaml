@@ -56,3 +56,4 @@ parameters:
     workers: 1
 
 shareProcessNamespace: false
+serviceCommand: ekss
