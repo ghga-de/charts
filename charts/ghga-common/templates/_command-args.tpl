@@ -40,7 +40,7 @@ args:
     echo "[$(date +"%T")] Export environment values from Vault secret files";
     {{- include "ghga-common.export-vault-secrets" . | nindent 4 }}
     {{- end }}    
-    {{- if .Values.logConfig | default false }}
+    {{- if .Values.logConfig }}
     {{- include "ghga-common.log-config-params" . | nindent 4 }}
     {{- include "ghga-common.log-environment-params" . | nindent 4 }}
     {{- end }}
