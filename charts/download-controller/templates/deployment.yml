@@ -27,7 +27,7 @@ spec:
       shareProcessNamespace: {{ .Values.shareProcessNamespace }}
       containers:
       - image: "{{ .Values.image.name }}:{{ default .Chart.AppVersion .Values.image.tag }}"
-        {{- include "ghga-common.command-args" (list "dcs run-rest")  | nindent 8 }}
+        {{- include "ghga-common.command-args" .  | nindent 8 }}
         name: {{ .Release.Name }}-rest
         securityContext:
           runAsUser: 1000
@@ -64,7 +64,7 @@ spec:
           subPath: .{{ .Values.config_prefix }}.yaml
           readOnly: true
       - image: "{{ .Values.image.name }}:{{ default .Chart.AppVersion .Values.image.tag }}"
-        {{- include "ghga-common.command-args" (list "dcs consume-events")  | nindent 8 }}
+        {{- include "ghga-common.command-args" .  | nindent 8 }}
         name: {{ .Release.Name }}-consumer
         securityContext:
           runAsUser: 1000

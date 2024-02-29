@@ -74,3 +74,4 @@ parameters:
     service_instance_id: 'wps_consumer_1'
 
 shareProcessNamespace: false
+serviceCommand: wps run-rest

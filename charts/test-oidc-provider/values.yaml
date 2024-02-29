@@ -53,3 +53,4 @@ parameters:
     workers: 1
 
 shareProcessNamespace: false
+serviceCommand: top

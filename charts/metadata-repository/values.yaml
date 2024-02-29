@@ -41,3 +41,4 @@ parameters:
     workers: 1
 
 shareProcessNamespace: false
+serviceCommand: metadata-repository-service

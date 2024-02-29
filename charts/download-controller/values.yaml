@@ -94,3 +94,4 @@ parameters:
     service_instance_id: 'dcs_consumer_1'
 
 shareProcessNamespace: false
+serviceCommand: dcs run-rest
