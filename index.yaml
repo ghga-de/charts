@@ -227,6 +227,20 @@ entries:
   auth-km-cronjob:
   - apiVersion: v2
     appVersion: 0.0.0
+    created: "2024-02-29T09:41:13.607332407Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.1
+    description: This job is to refresh the internal and external auth keys.
+    digest: 02ee64edd26f836bb197a091564b553495fe5d838196b60a9da91c9baaa9b450
+    name: auth-km-cronjob
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/auth-km-cronjob-0.0.7/auth-km-cronjob-0.0.7.tgz
+    version: 0.0.7
+  - apiVersion: v2
+    appVersion: 0.0.0
     created: "2023-12-11T15:23:44.957872159Z"
     dependencies:
     - name: ghga-common
@@ -3218,4 +3232,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-02-13T10:04:57.378288341Z"
+generated: "2024-02-29T09:41:13.607693546Z"
