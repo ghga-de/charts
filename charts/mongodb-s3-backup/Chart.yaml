@@ -25,5 +25,5 @@ appVersion: "0.0.0"
 
 dependencies:
 - name: ghga-common
-  version: 0.2.1
+  version: 0.2.2
   repository: file://../ghga-common
