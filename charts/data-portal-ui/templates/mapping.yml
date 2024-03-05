@@ -8,4 +8,6 @@ spec:
   service: "{{ .Release.Name }}-svc:{{ .Values.port }}"
   hostname: {{ .Values.mapping.hostname }}
   prefix: {{ .Values.mapping.prefix }}
+  rewrite: {{ .Values.mapping.rewrite }}
+  timeout_ms: {{ .Values.mapping.timeout_ms }}
 {{ end }}
