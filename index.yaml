@@ -2978,6 +2978,21 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/notification-0.0.1/notification-0.0.1.tgz
     version: 0.0.1
+  remotebackup:
+  - apiVersion: v2
+    appVersion: 0.0.0
+    created: "2024-04-09T13:10:07.791795874Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.2
+    description: A Helm chart for remotebackup CronJob
+    digest: 33b45cdd30405613beda716cf119e0b81e7d9dafac26c60dd31dfbdfd47fc762
+    name: remotebackup
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/remotebackup-0.0.0/remotebackup-0.0.0.tgz
+    version: 0.0.0
   test-oidc-provider:
   - apiVersion: v2
     appVersion: 1.1.1
@@ -3696,4 +3711,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-04-08T08:13:09.447256686Z"
+generated: "2024-04-09T13:10:07.792302637Z"
