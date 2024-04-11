@@ -2981,6 +2981,20 @@ entries:
   remotebackup:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2024-04-11T08:49:23.595424372Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.2
+    description: A Helm chart for remotebackup CronJob
+    digest: 5171ffe7a25f44fa9420af247408486af2ac1c3e568c2983ba79ed3c5c804e67
+    name: remotebackup
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/remotebackup-0.1.0/remotebackup-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2024-04-09T14:13:33.679501525Z"
     dependencies:
     - name: ghga-common
@@ -3753,4 +3767,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-04-09T14:13:33.680290617Z"
+generated: "2024-04-11T08:49:23.595856561Z"
