@@ -71,3 +71,4 @@ parameters:
     selected_storage_alias: staging
 
 shareProcessNamespace: false
+imagePullSecretName: my-registry-secret

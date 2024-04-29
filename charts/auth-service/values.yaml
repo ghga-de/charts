@@ -106,3 +106,4 @@ authService:
     name: authentication
 
 shareProcessNamespace: false
+imagePullSecretName: my-registry-secret

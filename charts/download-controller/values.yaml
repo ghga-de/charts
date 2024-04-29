@@ -107,3 +107,4 @@ parameters:
     service_instance_id: 'consumer.1'
 
 shareProcessNamespace: false
+imagePullSecretName: my-registry-secret

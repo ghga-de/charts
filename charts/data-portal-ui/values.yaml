@@ -43,3 +43,4 @@ parameters:
     metldata_url: "/api/metldata"
 
 shareProcessNamespace: false
+imagePullSecretName: my-registry-secret
