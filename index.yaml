@@ -923,6 +923,21 @@ entries:
   download-controller:
   - apiVersion: v2
     appVersion: 1.1.0
+    created: "2024-05-02T13:58:09.332413939Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.2
+    description: This service implements the GA4GH DRS, while providing the option
+      to serve files from localstack S3.
+    digest: 9d5110e9ab2e0ae469cf3ada42e2f8a0625924de886968d4dc4ba58e5b60ed5f
+    name: download-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/download-controller-1.0.1/download-controller-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 1.1.0
     created: "2024-04-26T12:45:42.023842049Z"
     dependencies:
     - name: ghga-common
@@ -1734,6 +1749,21 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/ghga-common-0.1.0/ghga-common-0.1.0.tgz
     version: 0.1.0
   internal-file-registry:
+  - apiVersion: v2
+    appVersion: 1.1.0
+    created: "2024-05-02T13:58:09.454349071Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.2
+    description: This service acts as a registry for the internal location and representation
+      of files.
+    digest: 3c4af00b3779fb7f2c6fe21aabe3e8d2ae53fc1fb213c24fdbacd3678d0e0c6e
+    name: internal-file-registry
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/internal-file-registry-1.0.1/internal-file-registry-1.0.1.tgz
+    version: 1.0.1
   - apiVersion: v2
     appVersion: 1.1.0
     created: "2024-04-26T12:45:42.357352718Z"
@@ -3983,4 +4013,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-04-30T13:49:34.044519068Z"
+generated: "2024-05-02T13:58:09.454927869Z"
