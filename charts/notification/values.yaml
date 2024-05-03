@@ -56,4 +56,4 @@ parameters:
     use_starttls: false
 
 shareProcessNamespace: false
-imagePullSecretName: my-registry-secret
+imagePullSecretName: []

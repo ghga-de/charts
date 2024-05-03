@@ -21,6 +21,7 @@ spec:
             {{- end }}
         spec:
           serviceAccountName: {{ .Values.serviceAccount.name }}
+          {{- include "ghga-common.image-pull-secrets" . | nindent 10 }}
           containers:
           - image: "{{ .Values.image.name }}:{{ default .Chart.AppVersion .Values.image.tag }}"
             {{- if eq .Values.service.keyType "internal" }}

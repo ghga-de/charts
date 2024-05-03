@@ -52,4 +52,4 @@ parameters:
           s3_session_token: null
 
 shareProcessNamespace: false
-imagePullSecretName: my-registry-secret
+imagePullSecretName: []

@@ -72,4 +72,4 @@ parameters:
     workers: 1
 
 shareProcessNamespace: false
-imagePullSecretName: my-registry-secret
+imagePullSecretName: []
