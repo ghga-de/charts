@@ -57,4 +57,8 @@ parameters:
     service_instance_id: rest.1
 
 shareProcessNamespace: false
+
 imagePullSecretName: []
+
+kafkaSecrets:
+  enabled: false

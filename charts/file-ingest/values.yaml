@@ -71,4 +71,8 @@ parameters:
     selected_storage_alias: staging
 
 shareProcessNamespace: false
+
 imagePullSecretName: []
+
+kafkaSecrets:
+  enabled: false

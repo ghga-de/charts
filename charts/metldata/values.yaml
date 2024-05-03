@@ -72,4 +72,8 @@ parameters:
     workers: 1
 
 shareProcessNamespace: false
+
 imagePullSecretName: []
+
+kafkaSecrets:
+  enabled: false

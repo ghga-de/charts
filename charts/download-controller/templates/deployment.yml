@@ -89,6 +89,7 @@ spec:
           mountPath: "/home/appuser/.{{ .Values.config_prefix }}.yaml"
           subPath: .{{ .Values.config_prefix }}.yaml
           readOnly: true
+        {{- include "ghga-common.volume-mounts" . | nindent 8 }}
       volumes:
       - name: config-rest
         configMap:
@@ -102,4 +103,5 @@ spec:
           items:
           - key: parameters-consumer
             path: .{{ .Values.config_prefix }}.yaml
+      {{- include "ghga-common.volumes" . | nindent 6 }}
       restartPolicy: Always

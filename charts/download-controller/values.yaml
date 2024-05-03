@@ -53,7 +53,6 @@ parameters:
     auth_key: '{}'
     auth_map_claims: {}
     auto_reload: false
-    aws_config_ini: null
     cache_timeout: 7
     cors_allow_credentials: false
     cors_allowed_headers: []
@@ -83,7 +82,6 @@ parameters:
     kafka_ssl_password: null
 
     openapi_url: /openapi.json
-    outbox_bucket: outbox
     port: 8080
     presigned_url_expires_after: 10
     retry_access_after: 120
@@ -107,4 +105,8 @@ parameters:
     service_instance_id: 'consumer.1'
 
 shareProcessNamespace: false
+
 imagePullSecretName: []
+
+kafkaSecrets:
+  enabled: false
