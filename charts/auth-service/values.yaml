@@ -108,3 +108,5 @@ authService:
 shareProcessNamespace: false
 kafkaSecrets:
   enabled: false
+
+imagePullSecretName: []

@@ -20,6 +20,7 @@ spec:
             {{- toYaml .Values.podAnnotations | nindent 12 }}
             {{- end }}
         spec:
+          {{- include "ghga-common.image-pull-secrets" . | nindent 10 }}
           serviceAccountName: {{ .Values.serviceAccount.name }}
           containers:
           - image: "{{ .Values.image.name }}:{{ default .Chart.AppVersion .Values.image.tag }}"
