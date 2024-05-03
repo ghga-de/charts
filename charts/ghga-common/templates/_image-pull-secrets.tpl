@@ -1,7 +1,6 @@
 {{- define "ghga-common.image-pull-secrets" -}}
-{{- $secretName := .Values.imagePullSecretName -}}
-{{- if $secretName -}}
+{{- if .Values.imagePullSecretName -}}
 imagePullSecrets:
-  - name: {{ $secretName }}
+  - name: {{ .Values.imagePullSecretName }}
 {{- end -}}
 {{- end -}}
