@@ -3,6 +3,20 @@ entries:
   access-request:
   - apiVersion: v2
     appVersion: 2.0.1
+    created: "2024-05-21T12:39:44.462041001Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.3
+    description: Access request service
+    digest: dc06145b6a90e792c77ffd66a4fc5da033f7766a1634b615e9d8aa243f505cb7
+    name: access-request
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/access-request-1.0.3/access-request-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
+    appVersion: 2.0.1
     created: "2024-05-03T09:33:29.466011345Z"
     dependencies:
     - name: ghga-common
@@ -424,6 +438,21 @@ entries:
     version: 0.0.0
   auth-service:
   - apiVersion: v2
+    appVersion: 2.4.0
+    created: "2024-05-21T12:39:44.614268719Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.3
+    description: The auth_adapter subpackage contains the authentication service used
+      by the API gateway via the ExtAuth protocol.
+    digest: 6aaca997498c54500cd738feff330209d3d64b248274933fd9f2bf7f9ba4ae83
+    name: auth-service
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/auth-service-1.0.2/auth-service-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
     appVersion: 2.3.0
     created: "2024-05-03T09:33:29.624030098Z"
     dependencies:
@@ -694,6 +723,21 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/auth-service-0.0.2/auth-service-0.0.2.tgz
     version: 0.0.2
   data-portal-ui:
+  - apiVersion: v2
+    appVersion: 1.1.0
+    created: "2024-05-21T12:39:44.718996097Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.3
+    description: The Metadata Search Service is a service for providing a unified
+      search interface over a metadata store.
+    digest: b61bbd7b09269e5c0c882f99ba6aa7d05f90d3d489fbf5dece67249f947b2d05
+    name: data-portal-ui
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/data-portal-ui-0.2.5/data-portal-ui-0.2.5.tgz
+    version: 0.2.5
   - apiVersion: v2
     appVersion: 1.0.5
     created: "2024-03-05T13:47:49.989454363Z"
@@ -3352,6 +3396,21 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/notification-0.0.1/notification-0.0.1.tgz
     version: 0.0.1
+  notification-orchestration:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-05-21T12:39:44.829529794Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.3
+    description: Notification orchestration service
+    digest: 13511518a43bb89319abea1e28d598e2ba6f829f3eacfc32363c8351e84f1b9f
+    name: notification-orchestration
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/notification-orchestration-1.0.0/notification-orchestration-1.0.0.tgz
+    version: 1.0.0
   remotebackup:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -4241,4 +4300,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-05-16T13:09:34.121156312Z"
+generated: "2024-05-21T12:39:44.830165131Z"
