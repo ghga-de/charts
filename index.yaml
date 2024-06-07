@@ -439,6 +439,21 @@ entries:
   auth-service:
   - apiVersion: v2
     appVersion: 2.4.2
+    created: "2024-06-07T09:19:39.661462062Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.4
+    description: The auth_adapter subpackage contains the authentication service used
+      by the API gateway via the ExtAuth protocol.
+    digest: e5a1f8edd110608d351eee916b076d4e163b289b4771b019ee2cd15312c5ddb6
+    name: auth-service
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/auth-service-1.0.5/auth-service-1.0.5.tgz
+    version: 1.0.5
+  - apiVersion: v2
+    appVersion: 2.4.2
     created: "2024-05-24T12:38:30.825434824Z"
     dependencies:
     - name: ghga-common
@@ -1889,6 +1904,16 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/file-ingest-0.0.2/file-ingest-0.0.2.tgz
     version: 0.0.2
   ghga-common:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-06-07T09:19:39.841637562Z"
+    description: A Helm chart for Kubernetes
+    digest: 35c5dd0dbfd00eeb35bdf5fb4de46fdd1a3e4ef3bc900bc584ac210d732a5a9c
+    name: ghga-common
+    type: library
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/ghga-common-0.2.4/ghga-common-0.2.4.tgz
+    version: 0.2.4
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-05-03T09:33:30.448644104Z"
@@ -4372,4 +4397,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-05-28T07:37:35.164480579Z"
+generated: "2024-06-07T09:19:39.842891211Z"
