@@ -53,3 +53,8 @@ parameters:
     oidc_use_discovery: false
 
 shareProcessNamespace: false
+
+# Used to add image pull secrets to deployment
+# imagePullSecretNames:
+#  - name: dockerhub
+imagePullSecretNames: []
