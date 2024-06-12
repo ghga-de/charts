@@ -480,6 +480,21 @@ entries:
     version: 0.0.0
   auth-service:
   - apiVersion: v2
+    appVersion: 2.4.3
+    created: "2024-06-12T13:57:42.988256678Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.6
+    description: The auth_adapter subpackage contains the authentication service used
+      by the API gateway via the ExtAuth protocol.
+    digest: 3538ea4d7aca8e86fc438b8384662c425ae8717a73e482a4d9d42eef22c3d0c4
+    name: auth-service
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/auth-service-1.0.9/auth-service-1.0.9.tgz
+    version: 1.0.9
+  - apiVersion: v2
     appVersion: 2.4.2
     created: "2024-06-12T07:18:41.669136229Z"
     dependencies:
@@ -4999,4 +5014,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-06-12T08:55:23.978112269Z"
+generated: "2024-06-12T13:57:42.988928122Z"
