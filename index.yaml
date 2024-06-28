@@ -508,6 +508,21 @@ entries:
     version: 0.0.0
   auth-service:
   - apiVersion: v2
+    appVersion: 2.4.6
+    created: "2024-06-28T09:09:55.326590819Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.6
+    description: The auth_adapter subpackage contains the authentication service used
+      by the API gateway via the ExtAuth protocol.
+    digest: ad31bfbfa805fdd986baa703154b6523a4950b1484a43d343bda67dc0b948152
+    name: auth-service
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/auth-service-1.0.11/auth-service-1.0.11.tgz
+    version: 1.0.11
+  - apiVersion: v2
     appVersion: 2.4.5
     created: "2024-06-25T15:43:17.441632636Z"
     dependencies:
@@ -4422,6 +4437,21 @@ entries:
     version: 0.0.0
   test-oidc-provider:
   - apiVersion: v2
+    appVersion: 1.2.1
+    created: "2024-06-28T09:09:55.457712355Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.6
+    description: A dummy OpenID Connect provider (OP) that can be user for testing
+      purposes.
+    digest: aae2ce32cfb7560133b6c786be125078d67e77cf5c8869bdc78820c1e5bcf37b
+    name: test-oidc-provider
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/test-oidc-provider-1.0.8/test-oidc-provider-1.0.8.tgz
+    version: 1.0.8
+  - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-06-27T08:24:23.795369176Z"
     dependencies:
@@ -5426,4 +5456,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-06-27T08:24:24.046420731Z"
+generated: "2024-06-28T09:09:55.459611251Z"
