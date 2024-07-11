@@ -12,5 +12,7 @@ args:
         [ -f "$f" ] && . "$f";
       done
     fi;
-    {{ first . }};
+  {{- range .command }}
+    - {{ . | quote }}
+  {{- end }}
 {{- end -}}
