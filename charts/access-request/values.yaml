@@ -6,8 +6,7 @@ horizontalPodAutoscaler:
   averageMemoryUtilization: 75
 image:
   name: "ghga/access-request-service"
-  command:
-    - run-rest
+  command: "cmd --arg1 --arg2"
 podAnnotations: {}
 port: "8080"
 resources:

@@ -12,7 +12,5 @@ args:
         [ -f "$f" ] && . "$f";
       done
     fi;
-  {{- range .command }}
-    - {{ . | quote }}
-  {{- end }}
+  - {{ .Values.image.command }}
 {{- end -}}
