@@ -6,6 +6,7 @@ horizontalPodAutoscaler:
   averageMemoryUtilization: 75
 image:
   name: "ghga/work-package-service"
+  command: "run-rest, consume-events"
 podAnnotations: {}
 port: "8080"
 resources:
