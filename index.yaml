@@ -1030,6 +1030,21 @@ entries:
     version: 0.0.2
   data-portal-ui:
   - apiVersion: v2
+    appVersion: 1.1.12
+    created: "2024-07-16T14:31:52.45522176Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.7
+    description: The Metadata Search Service is a service for providing a unified
+      search interface over a metadata store.
+    digest: 59ec40cfd1887fc2785fea134e8ae3934a18df06ceefe73204b0e5427c97caef
+    name: data-portal-ui
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/data-portal-ui-0.4.1/data-portal-ui-0.4.1.tgz
+    version: 0.4.1
+  - apiVersion: v2
     appVersion: 1.1.11
     created: "2024-07-09T13:03:55.760994342Z"
     dependencies:
@@ -2293,6 +2308,21 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/encryption-key-store-0.0.2/encryption-key-store-0.0.2.tgz
     version: 0.0.2
   file-ingest:
+  - apiVersion: v2
+    appVersion: 3.0.0-257f4702daa2bb0569d653b4f0f71983ff56baf1
+    created: "2024-07-16T14:31:52.580963365Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.7
+    description: A lightweight service to propagate file upload metadata to the GHGA
+      file backend services
+    digest: 6ad459b9725668e564b6903ab749cd9010e70d4eadd863b3fdb058b1a081f36d
+    name: file-ingest
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/file-ingest-1.0.11/file-ingest-1.0.11.tgz
+    version: 1.0.11
   - apiVersion: v2
     appVersion: 2.0.0-b085b74fb69087dad11efe09a8f10145392ade76
     created: "2024-07-10T14:43:51.485700838Z"
@@ -4425,6 +4455,20 @@ entries:
     version: 0.0.0
   notification:
   - apiVersion: v2
+    appVersion: 1.1.1
+    created: "2024-07-16T14:31:52.720826789Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.7
+    description: Notification service
+    digest: 1ef14f48435b53a5dbd1e049c1e5a353ea468b73837ffa388a616b9fccfa043d
+    name: notification
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/notification-1.0.7/notification-1.0.7.tgz
+    version: 1.0.7
+  - apiVersion: v2
     appVersion: 1.0.0
     created: "2024-07-03T13:22:02.119465613Z"
     dependencies:
@@ -5448,6 +5492,20 @@ entries:
     version: 0.0.1
   well-known-value:
   - apiVersion: v2
+    appVersion: 1.1.0
+    created: "2024-07-16T14:31:52.868577534Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.7
+    description: Well-known Value Service
+    digest: 8d9864480efe49c0fbb296c15345e87d6e926e6b99fa6bcc4dc3d66608d3abb3
+    name: well-known-value
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/well-known-value-1.0.7/well-known-value-1.0.7.tgz
+    version: 1.0.7
+  - apiVersion: v2
     appVersion: 1.0.1
     created: "2024-07-03T09:54:52.518773946Z"
     dependencies:
@@ -6064,4 +6122,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-07-11T09:23:32.247861352Z"
+generated: "2024-07-16T14:31:52.869614346Z"
