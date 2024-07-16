@@ -2310,6 +2310,21 @@ entries:
   file-ingest:
   - apiVersion: v2
     appVersion: 3.0.0-257f4702daa2bb0569d653b4f0f71983ff56baf1
+    created: "2024-07-16T21:15:11.67509103Z"
+    dependencies:
+    - name: ghga-common
+      repository: file://../ghga-common
+      version: 0.2.7
+    description: A lightweight service to propagate file upload metadata to the GHGA
+      file backend services
+    digest: 003d9c3604775ec76113f390de6e17e0077c80c47e305acde7e39b707af17ac5
+    name: file-ingest
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/file-ingest-1.0.12/file-ingest-1.0.12.tgz
+    version: 1.0.12
+  - apiVersion: v2
+    appVersion: 3.0.0-257f4702daa2bb0569d653b4f0f71983ff56baf1
     created: "2024-07-16T14:31:52.580963365Z"
     dependencies:
     - name: ghga-common
@@ -6122,4 +6137,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-07-16T14:31:52.869614346Z"
+generated: "2024-07-16T21:15:11.67648082Z"
