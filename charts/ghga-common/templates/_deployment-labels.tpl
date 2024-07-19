@@ -1,6 +1,6 @@
 {{- define "ghga-common.deployment-labels" -}}
 labels:
-    app: {{ .Release.Name }}
+  app: {{ .Release.Name }}
 {{- include "common.labels.standard" . | nindent 2 }}
 {{- if .Values.labels }}
 {{- include "common.tplvalues.render" ( dict "value" .Values.labels "context" $ ) | nindent 2 }}
