@@ -3470,6 +3470,20 @@ entries:
     version: 0.0.2
   mass:
   - apiVersion: v2
+    appVersion: 2.0.1
+    created: "2024-07-22T09:41:57.900536323Z"
+    dependencies:
+    - name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 0.2.8
+    description: Metadata Artifact Search Service
+    digest: 52557266dbb695c2607479d494e726e0ae16e9ec1a1c6b862daef7b410081082
+    name: mass
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/mass-1.1.0/mass-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
     appVersion: 1.0.1
     created: "2024-07-22T09:14:16.462899263Z"
     dependencies:
@@ -6690,4 +6704,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-07-22T09:14:18.028239356Z"
+generated: "2024-07-22T09:41:57.901467368Z"
