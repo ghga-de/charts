@@ -31,6 +31,7 @@ jobs:
       - name: Add charts' dependency repositories
         run: |
           helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo add ghga https://ghga-de.github.io/charts
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
