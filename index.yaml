@@ -606,6 +606,21 @@ entries:
     version: 0.0.0
   auth-service:
   - apiVersion: v2
+    appVersion: 2.5.1
+    created: "2024-07-25T15:46:45.958690928Z"
+    dependencies:
+    - name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 0.2.8
+    description: The auth_adapter subpackage contains the authentication service used
+      by the API gateway via the ExtAuth protocol.
+    digest: 322cc29dff544a0f1e7d4da89d4a20363bbfd8f7f72da83b596c56ca265e906e
+    name: auth-service
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/auth-service-1.1.3/auth-service-1.1.3.tgz
+    version: 1.1.3
+  - apiVersion: v2
     appVersion: 2.5.0
     created: "2024-07-22T09:14:15.448606189Z"
     dependencies:
@@ -1116,6 +1131,21 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/auth-service-0.0.2/auth-service-0.0.2.tgz
     version: 0.0.2
   data-portal-ui:
+  - apiVersion: v2
+    appVersion: 1.2.1
+    created: "2024-07-25T15:46:46.071204493Z"
+    dependencies:
+    - name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 0.2.8
+    description: The Metadata Search Service is a service for providing a unified
+      search interface over a metadata store.
+    digest: b9f86d25ae803c32c83a6d3fc6a9f57f7774dbdacf710f1414a044673ddf720a
+    name: data-portal-ui
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/data-portal-ui-0.5.1/data-portal-ui-0.5.1.tgz
+    version: 0.5.1
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-07-25T11:07:18.067368701Z"
@@ -6370,6 +6400,20 @@ entries:
     version: 0.0.1
   work-package:
   - apiVersion: v2
+    appVersion: 2.0.4
+    created: "2024-07-25T15:46:46.199857969Z"
+    dependencies:
+    - name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 0.2.8
+    description: Work package service
+    digest: 817d46f7ff348ac2c92940ed20050904e019a1b15d0c4ae83697ff742c93e05f
+    name: work-package
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/work-package-1.0.11/work-package-1.0.11.tgz
+    version: 1.0.11
+  - apiVersion: v2
     appVersion: 2.0.3
     created: "2024-07-22T09:14:18.025853354Z"
     dependencies:
@@ -6733,4 +6777,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-07-25T11:07:18.06816372Z"
+generated: "2024-07-25T15:46:46.201412517Z"
