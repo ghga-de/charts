@@ -27,6 +27,9 @@ ingress:
     enabled: false
     secretName: ""
 
+serviceaccount:
+  create: false
+
 mapping:
   enabled: false
   hostname: ""
