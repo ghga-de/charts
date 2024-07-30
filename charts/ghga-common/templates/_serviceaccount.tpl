@@ -5,7 +5,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: {{ .Release.Name }}
-  labels:
+  labels: {{- include "common.labels.standard" . | nindent 4 }}
     app: {{ .Release.Name }}
 {{- end }}
 {{- end -}}
