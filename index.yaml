@@ -3574,6 +3574,20 @@ entries:
     version: 0.0.2
   mass:
   - apiVersion: v2
+    appVersion: 2.1.0
+    created: "2024-07-31T14:18:34.421442314Z"
+    dependencies:
+    - name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 0.2.8
+    description: Metadata Artifact Search Service
+    digest: 219478322d7b9cc5ef301cf8932db0596a007115666dd816e35ca99974535ce9
+    name: mass
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/mass-1.2.0/mass-1.2.0.tgz
+    version: 1.2.0
+  - apiVersion: v2
     appVersion: 2.0.1
     created: "2024-07-22T09:41:57.900536323Z"
     dependencies:
@@ -4441,6 +4455,21 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/metadata-search-service-0.0.1/metadata-search-service-0.0.1.tgz
     version: 0.0.1
   metldata:
+  - apiVersion: v2
+    appVersion: 2.1.0
+    created: "2024-07-31T14:18:34.523502619Z"
+    dependencies:
+    - name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 0.2.8
+    description: metldata - A framework for handling metadata based on ETL, CQRS,
+      and event sourcing.
+    digest: aeb44a9bcc0140a1566e42dc4e9e9fedca49fa1ed04c66e0bd1348da92827183
+    name: metldata
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/metldata-1.2.0/metldata-1.2.0.tgz
+    version: 1.2.0
   - apiVersion: v2
     appVersion: 2.0.1
     created: "2024-07-26T10:44:40.042609063Z"
@@ -6894,4 +6923,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-07-30T12:26:40.847084663Z"
+generated: "2024-07-31T14:18:34.524315835Z"
