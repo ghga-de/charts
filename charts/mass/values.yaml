@@ -57,9 +57,9 @@ parameters:
         description: Dataset grouping files under controlled access.
         facetable_fields:
         - key: alias
-          name: Alias
+          name: Dataset alias
         - key: title
-          name: Title
+          name: Dataset title
         selected_fields:
         - key: alias
           name: Dataset alias
