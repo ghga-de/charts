@@ -5776,6 +5776,23 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/remotebackup-0.0.0/remotebackup-0.0.0.tgz
     version: 0.0.0
+  state-management:
+  - apiVersion: v2
+    appVersion: 1.1.0
+    created: "2024-08-07T14:23:18.150419721Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 0.2.10
+    description: State Management Service
+    digest: 429aece6cd1d5728a76ae378f6f0d00c4dd48aa85009d6e79d6305e38c0032dc
+    name: state-management
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/state-management-0.0.1/state-management-0.0.1.tgz
+    version: 0.0.1
   test-oidc-provider:
   - apiVersion: v2
     appVersion: 1.2.1
@@ -6982,4 +6999,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-08-07T08:22:05.058236718Z"
+generated: "2024-08-07T14:23:18.151177169Z"
