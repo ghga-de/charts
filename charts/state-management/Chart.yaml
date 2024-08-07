@@ -21,3 +21,5 @@ dependencies:
 - name: ghga-common
   version: 0.2.10
   repository: https://ghga-de.github.io/charts
+  import-values:
+  - defaults
