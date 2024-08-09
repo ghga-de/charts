@@ -6,6 +6,10 @@ image:
   tag: "0.0.0-31c85112c3f666abf8ff8633adff437bf04b716d"
 cronSchedule: ""
 
+serviceAccount:
+  enabled: true
+  name: remotebackup
+  
 service:
   keyType: "internal"
   runCommands:
