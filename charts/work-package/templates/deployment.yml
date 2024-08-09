@@ -26,7 +26,7 @@ spec:
       {{- end }}
       containers:
       - image: "{{ .Values.image.name }}:{{ default .Chart.AppVersion .Values.image.tag }}"
-        {{- include "ghga-common.command-args" (list "wps run-rest")  | nindent 8 }}
+        {{- include "ghga-common.command-args" .Values.image.command_rest  | nindent 8 }}
         name: {{ .Release.Name }}-rest
         securityContext:
           runAsUser: 1000
@@ -64,7 +64,7 @@ spec:
           readOnly: true
         {{- include "ghga-common.volume-mounts" . | nindent 8 }}
       - image: "{{ .Values.image.name }}:{{ default .Chart.AppVersion .Values.image.tag }}"
-        {{- include "ghga-common.command-args" (list "wps consume-events")  | nindent 8 }}
+        {{- include "ghga-common.command-args" .Values.image.command_events  | nindent 8 }}
         name: {{ .Release.Name }}-consumer
         securityContext:
           runAsUser: 1000
