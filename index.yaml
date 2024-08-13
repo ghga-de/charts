@@ -2,6 +2,22 @@ apiVersion: v1
 entries:
   access-request:
   - apiVersion: v2
+    appVersion: 2.0.4
+    created: "2024-08-13T07:57:01.297158278Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 0.2.12
+    description: Access request service
+    digest: d29bbefe5f27ab8adbeb529d0e5ea4f623afb427b068dcef62448caa22c054a3
+    name: access-request
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/access-request-1.1.2/access-request-1.1.2.tgz
+    version: 1.1.2
+  - apiVersion: v2
     appVersion: 2.0.3
     created: "2024-08-09T12:25:33.658033584Z"
     dependencies:
@@ -637,6 +653,23 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/auth-km-jobs-0.0.0/auth-km-jobs-0.0.0.tgz
     version: 0.0.0
   auth-service:
+  - apiVersion: v2
+    appVersion: 2.5.2
+    created: "2024-08-13T07:57:01.415679472Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 0.2.12
+    description: The auth_adapter subpackage contains the authentication service used
+      by the API gateway via the ExtAuth protocol.
+    digest: 90a34dc6f2271987ac3ca9d0479903aa4bd2e797ae356e10949427f45d96906a
+    name: auth-service
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/auth-service-1.2.2/auth-service-1.2.2.tgz
+    version: 1.2.2
   - apiVersion: v2
     appVersion: 2.5.1
     created: "2024-08-09T12:25:33.7868488Z"
@@ -7159,6 +7192,22 @@ entries:
     version: 0.0.1
   work-package:
   - apiVersion: v2
+    appVersion: 2.0.5
+    created: "2024-08-13T07:57:01.517946096Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 0.2.12
+    description: Work package service
+    digest: 59957b922ff60d845c4a6d088a1ea1f735780ca961e7f2b2fced8994f02291bb
+    name: work-package
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/work-package-1.1.2/work-package-1.1.2.tgz
+    version: 1.1.2
+  - apiVersion: v2
     appVersion: 2.0.4
     created: "2024-08-09T12:25:35.515010401Z"
     dependencies:
@@ -7568,4 +7617,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-08-13T07:18:05.288897104Z"
+generated: "2024-08-13T07:57:01.519087916Z"
