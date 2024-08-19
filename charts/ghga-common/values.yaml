@@ -1,31 +1,145 @@
 exports:
   defaults:
-    serviceaccount:
-      create: true
+    global:
+      imageRegistry: ""
+      imagePullSecrets: []
+      storageClass: ""
+    kubeVersion: ""
+    nameOverride: ""
+    fullnameOverride: ""
+    namespaceOverride: ""
+    clusterDomain: cluster.local
+    annotations: {}
+    labels: {}
+    commonLabels: {}
+    commonAnnotations: {}
+    image:
+      registry: docker.io
+      repository: ""
+      tag: latest
+      digest: ""
+      pullPolicy: null
+      pullSecrets: []
+    replicaCount: 1
+    revisionHistoryLimit: 1
+    shareProcessNamespace: false
     
-    # Ports which should be exposed in pod
+    containers:
+    - config: {}
+      name: default
+      cmd: /bin/sh
+      type: "rest"
+
     ports:
       - name: http
         containerPort: 8080
         protocol: TCP
+    livenessProbe:
+      enabled: true
+      tcpSocket:
+        port: 8080
+      initialDelaySeconds: 30
+      periodSeconds: 15
+    readinessProbe:
+      enabled: true
+      tcpSocket:
+        port: 8080
+      initialDelaySeconds: 30
+      periodSeconds: 15
+    startupProbe:
+      enabled: false
+    podRestartPolicy: Always
+    podSecurityContext:
+      enabled: false
+      fsGroup: 0
+    containerSecurityContext:
+      enabled: true
+      runAsUser: 1000
+      capabilities:
+        drop:
+        - ALL
+      seccompProfile:
+        type: "RuntimeDefault"
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      allowPrivilegeEscalation: false
+    lifecycleHooks: {}
+    resources:
+      limits:
+        cpu: "1500m"
+        memory: "2048M"
+      requests:
+        cpu: "1000m"
+        memory: "1024M"
+    hostAliases: []
+    podLabels: {}
+    podAnnotations: {}
+    # podAffinityPreset: ""
+    # podAntiAffinityPreset: soft
+    nodeAffinityPreset:
+      type: ""
+      key: ""
+      values: []
+    # affinity: {}
+    nodeSelector: {}
+    tolerations: []
+    topologySpreadConstraints: []
+    priorityClassName: ""
+    schedulerName: ""
+    terminationGracePeriodSeconds: ""
+    # updateStrategy:
+    #   type: RollingUpdate
+    extraVolumes: []
+    extraVolumeMounts: []
+    sidecars: []
+
+    initContainers: []
+
+    command: []
+    args: []
+    envVars: null
+    envVarsConfigMap: ""
+    envVarsSecret: ""
+    autoscaling:
+      enabled: false
+      minReplicas: 3
+      maxReplicas: 5
+      targetCPU: 80
+      targetMemory: 80
+      metrics: []
+
+    configMap:
+      mounted: false
+      mountPath: "/app/config"
+      subPath: ""
+      data: {}
+      annotations: {}
+      labels: {}
+
+    secret:
+      type: "Opaque"
+      data: {}
+      stringData: {}
+      annotations: {}
+      labels: {}
 
     service:
       type: ClusterIP
-
       ports:
         - name: http
           protocol: TCP
           port: 8080
           targetPort: http
-
       sessionAffinity: None
-
       clusterIP: ""
-
       loadBalancerIP: ""
-
       loadBalancerSourceRanges: []
-
       externalTrafficPolicy: Cluster
-
       annotations: {}
+
+    serviceAccount:
+      create: true
+      name: ""
+      automountServiceAccountToken: true
+      annotations: {}
+      labels: {}
