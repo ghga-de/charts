@@ -1919,6 +1919,23 @@ entries:
   download-controller:
   - apiVersion: v2
     appVersion: 2.0.1
+    created: "2024-08-20T11:40:17.158500081Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.0
+    description: This service implements the GA4GH DRS, while providing the option
+      to serve files from localstack S3.
+    digest: 969defd8d8632d2ee6e4e4075b7c3508931022d7602db7fd941462acdf0ab05c
+    name: download-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/download-controller-2.0.0/download-controller-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
+    appVersion: 2.0.1
     created: "2024-08-15T12:26:30.393734037Z"
     dependencies:
     - import-values:
@@ -7892,4 +7909,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-08-20T11:34:15.327738397Z"
+generated: "2024-08-20T11:40:17.159380203Z"
