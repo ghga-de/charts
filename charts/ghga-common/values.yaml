@@ -5,21 +5,21 @@ exports:
       imageRegistry: ""
       imagePullSecrets: []
       storageClass: ""
-       
+
     nameOverride: ""
-    
+
     fullnameOverride: ""
-    
+
     namespaceOverride: ""
-    
+
     clusterDomain: cluster.local
-    
+
     annotations: {}
-    
+
     labels: {}
-    
+
     commonLabels: {}
-    
+
     commonAnnotations: {}
 
     image:
@@ -29,13 +29,13 @@ exports:
       digest: ""
       pullPolicy: null
       pullSecrets: []
-    
+
     replicaCount: 1
-    
+
     revisionHistoryLimit: 1
-    
+
     shareProcessNamespace: false
-    
+
     podSecurityContext:
       enabled: false
       fsGroup: 0
@@ -43,9 +43,9 @@ exports:
     initContainers: []
 
     hostAliases: []
-    
+
     podLabels: {}
-    
+
     podAnnotations: {}
 
     podAffinityPreset: ""
@@ -72,7 +72,7 @@ exports:
     terminationGracePeriodSeconds: ""
 
     updateStrategy:
-      type: RollingUpdate    
+      type: RollingUpdate
 
     podRestartPolicy: Always
 
@@ -86,24 +86,24 @@ exports:
       - name: http
         containerPort: 8080
         protocol: TCP
-    
+
     livenessProbe:
       enabled: true
       tcpSocket:
         port: 8080
       initialDelaySeconds: 30
       periodSeconds: 15
-    
+
     readinessProbe:
       enabled: true
       tcpSocket:
         port: 8080
       initialDelaySeconds: 30
       periodSeconds: 15
-    
+
     startupProbe:
       enabled: false
-   
+
     containerSecurityContext:
       enabled: true
       runAsUser: 1000
@@ -115,9 +115,9 @@ exports:
       readOnlyRootFilesystem: true
       runAsNonRoot: true
       allowPrivilegeEscalation: false
-    
+
     lifecycleHooks: {}
-    
+
     resources:
       limits:
         cpu: "1500m"
@@ -125,19 +125,19 @@ exports:
       requests:
         cpu: "1000m"
         memory: "1024M"
-    
+
     extraVolumes: []
-    
+
     extraVolumeMounts: []
-    
+
     sidecars: []
 
     envVars: null
-    
+
     envVarsConfigMap: ""
-    
+
     envVarsSecret: ""
-    
+
     autoscaling:
       enabled: false
 
