@@ -4270,6 +4270,22 @@ entries:
   mass:
   - apiVersion: v2
     appVersion: 3.0.3
+    created: "2024-08-26T13:01:53.612720823Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.3
+    description: Metadata Artifact Search Service
+    digest: 3791bbbc5772a3628e1cad2c1f36d1c5af35b686321e3896b2a1d40c8fe2a84a
+    name: mass
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/mass-2.0.0/mass-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
+    appVersion: 3.0.3
     created: "2024-08-15T12:26:30.881503885Z"
     dependencies:
     - import-values:
@@ -5214,6 +5230,23 @@ entries:
   metldata:
   - apiVersion: v2
     appVersion: 2.1.1
+    created: "2024-08-26T13:01:53.798018211Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.3
+    description: metldata - A framework for handling metadata based on ETL, CQRS,
+      and event sourcing.
+    digest: c4b00b0a551a16949f4bc1b1ef3c96544874f91063742774b883fa9c10b969a3
+    name: metldata
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/metldata-2.0.0/metldata-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
+    appVersion: 2.1.1
     created: "2024-08-15T12:26:31.025789271Z"
     dependencies:
     - import-values:
@@ -5883,6 +5916,22 @@ entries:
   notification:
   - apiVersion: v2
     appVersion: 1.1.3
+    created: "2024-08-26T13:01:53.977332776Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.3
+    description: Notification service
+    digest: e26a0b48af3f70d6a3a3060501bc1843c07435c6192c68a19980e06c9aa62b77
+    name: notification
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/notification-2.0.0/notification-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
+    appVersion: 1.1.3
     created: "2024-08-15T12:26:31.147093684Z"
     dependencies:
     - import-values:
@@ -6296,6 +6345,22 @@ entries:
   notification-orchestration:
   - apiVersion: v2
     appVersion: 1.0.2
+    created: "2024-08-26T13:01:54.15540503Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.3
+    description: Notification orchestration service
+    digest: bc9a76cdb6d19b8b0f63fc042211219936e28e0c5a34c86ac2c36c61f0ec5210
+    name: notification-orchestration
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/notification-orchestration-2.0.0/notification-orchestration-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
+    appVersion: 1.0.2
     created: "2024-08-15T12:26:31.262949241Z"
     dependencies:
     - import-values:
@@ -6654,6 +6719,22 @@ entries:
   state-management:
   - apiVersion: v2
     appVersion: 1.1.0
+    created: "2024-08-26T13:01:54.376776259Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.3
+    description: State Management Service
+    digest: 23d1b367444885af46b3326c870f5cab565315396fbd7706e7aaa0a1fa11cf01
+    name: state-management
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/state-management-2.0.0/state-management-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
+    appVersion: 1.1.0
     created: "2024-08-15T12:26:31.369028512Z"
     dependencies:
     - import-values:
@@ -6733,6 +6814,23 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/state-management-0.0.1/state-management-0.0.1.tgz
     version: 0.0.1
   test-oidc-provider:
+  - apiVersion: v2
+    appVersion: 1.2.1
+    created: "2024-08-26T13:01:54.573341372Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.3
+    description: A dummy OpenID Connect provider (OP) that can be user for testing
+      purposes.
+    digest: f2359c408ee5a91da296632edbe1c5886d02648ff962ce760a774d2401168a32
+    name: test-oidc-provider
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/test-oidc-provider-2.0.0/test-oidc-provider-2.0.0.tgz
+    version: 2.0.0
   - apiVersion: v2
     appVersion: 1.2.1
     created: "2024-08-15T12:26:31.508369287Z"
@@ -7290,6 +7388,22 @@ entries:
   well-known-value:
   - apiVersion: v2
     appVersion: 1.1.0
+    created: "2024-08-26T13:01:54.737720152Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.3
+    description: Well-known Value Service
+    digest: 5032eeb98d72e904b3e63fe2408908be79a10a4f056eed368e863245abde51c5
+    name: well-known-value
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/well-known-value-2.0.0/well-known-value-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
+    appVersion: 1.1.0
     created: "2024-08-15T12:26:31.631669027Z"
     dependencies:
     - import-values:
@@ -7659,6 +7773,22 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/well-known-value-0.0.1/well-known-value-0.0.1.tgz
     version: 0.0.1
   work-package:
+  - apiVersion: v2
+    appVersion: 2.0.5
+    created: "2024-08-26T13:01:54.90744791Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.3
+    description: Work package service
+    digest: f2a8613f54f2a4b5b031a1d9a18b99c12fe94ab06abecb26b8c1fb8e4dd82b29
+    name: work-package
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/work-package-2.0.0/work-package-2.0.0.tgz
+    version: 2.0.0
   - apiVersion: v2
     appVersion: 2.0.5
     created: "2024-08-15T12:26:31.770749484Z"
@@ -8101,4 +8231,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-08-26T12:35:29.37413597Z"
+generated: "2024-08-26T13:01:54.909085922Z"
