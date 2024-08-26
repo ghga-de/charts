@@ -3826,6 +3826,23 @@ entries:
   internal-file-registry:
   - apiVersion: v2
     appVersion: 2.0.1
+    created: "2024-08-26T13:09:31.454746115Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.3
+    description: This service acts as a registry for the internal location and representation
+      of files.
+    digest: 5161dd39b7981e4f1b12d259fc810daf9870397ca29974667c316a2e7945047e
+    name: internal-file-registry
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/internal-file-registry-2.0.1/internal-file-registry-2.0.1.tgz
+    version: 2.0.1
+  - apiVersion: v2
+    appVersion: 2.0.1
     created: "2024-08-26T12:35:29.373237667Z"
     dependencies:
     - import-values:
@@ -8231,4 +8248,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-08-26T13:01:54.909085922Z"
+generated: "2024-08-26T13:09:31.456004566Z"
