@@ -1397,6 +1397,23 @@ entries:
   data-portal-ui:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-08-27T09:37:31.003478918Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.5
+    description: The Metadata Search Service is a service for providing a unified
+      search interface over a metadata store.
+    digest: e8745de4d7c49cb97e4ecbce1d9f75b071988bbab73a4ba82dc0f81c745ec4a9
+    name: data-portal-ui
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/data-portal-ui-1.0.1/data-portal-ui-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-08-27T09:18:11.412475343Z"
     dependencies:
     - import-values:
@@ -8588,4 +8605,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-08-27T09:35:47.692629554Z"
+generated: "2024-08-27T09:37:31.004448327Z"
