@@ -8039,6 +8039,22 @@ entries:
     version: 0.0.1
   well-known-value:
   - apiVersion: v2
+    appVersion: 1.1.1
+    created: "2024-09-18T15:50:36.094118066Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.5
+    description: Well-known Value Service
+    digest: b6b5de060085191fb10c6bf7b365bc97b357650ee46c7db17019dfe1bed8dca3
+    name: well-known-value
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/well-known-value-2.0.3/well-known-value-2.0.3.tgz
+    version: 2.0.3
+  - apiVersion: v2
     appVersion: 1.1.0
     created: "2024-08-29T10:23:42.857136645Z"
     dependencies:
@@ -8947,4 +8963,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-09-11T07:50:26.305746913Z"
+generated: "2024-09-18T15:50:36.09506778Z"
