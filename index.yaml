@@ -2152,6 +2152,23 @@ entries:
     version: 0.0.1
   download-controller:
   - apiVersion: v2
+    appVersion: 2.0.3
+    created: "2024-10-09T10:33:01.981210808Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.5
+    description: This service implements the GA4GH DRS, while providing the option
+      to serve files from localstack S3.
+    digest: 05789e7eeb675b26fdbeaadf77586c7b5ea6aba067b8ca9928363e728dee809a
+    name: download-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/download-controller-2.0.4/download-controller-2.0.4.tgz
+    version: 2.0.4
+  - apiVersion: v2
     appVersion: 2.0.1
     created: "2024-08-29T10:23:41.07383987Z"
     dependencies:
@@ -2748,6 +2765,22 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/download-controller-service-0.0.1/download-controller-service-0.0.1.tgz
     version: 0.0.1
   encryption-key-store:
+  - apiVersion: v2
+    appVersion: 1.4.1
+    created: "2024-10-09T10:33:02.107095745Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.5
+    description: providing crypt4gh file secret extraction, storage and envelope generation
+    digest: 8fca09c21726ef98abfe34d2d6b0c45693ca94171f0834af5f4053ef41e256e8
+    name: encryption-key-store
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/encryption-key-store-2.0.3/encryption-key-store-2.0.3.tgz
+    version: 2.0.3
   - apiVersion: v2
     appVersion: 1.4.0
     created: "2024-08-29T10:23:41.272685083Z"
@@ -4134,6 +4167,23 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/ghga-common-0.1.0/ghga-common-0.1.0.tgz
     version: 0.1.0
   internal-file-registry:
+  - apiVersion: v2
+    appVersion: 2.0.3
+    created: "2024-10-09T10:33:02.222462174Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.5
+    description: This service acts as a registry for the internal location and representation
+      of files.
+    digest: f27a758faca35f9dde31384726f2843a523f82a3e8fb317c8d60ef04a7e44fe0
+    name: internal-file-registry
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/internal-file-registry-2.0.5/internal-file-registry-2.0.5.tgz
+    version: 2.0.5
   - apiVersion: v2
     appVersion: 2.0.1
     created: "2024-08-29T10:23:41.682988412Z"
@@ -5639,6 +5689,23 @@ entries:
     version: 0.0.1
   metldata:
   - apiVersion: v2
+    appVersion: 2.1.2
+    created: "2024-10-09T10:33:02.379022906Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.5
+    description: metldata - A framework for handling metadata based on ETL, CQRS,
+      and event sourcing.
+    digest: 59729dc69920315798fd89d12aa1908703bfaab1eefa28494e42d752ed5e6372
+    name: metldata
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/metldata-2.0.4/metldata-2.0.4.tgz
+    version: 2.0.4
+  - apiVersion: v2
     appVersion: 2.1.1
     created: "2024-08-29T10:23:42.094983135Z"
     dependencies:
@@ -6884,6 +6951,22 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/notification-0.0.1/notification-0.0.1.tgz
     version: 0.0.1
   notification-orchestration:
+  - apiVersion: v2
+    appVersion: 2.1.0
+    created: "2024-10-09T10:33:02.523898506Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.5
+    description: Notification orchestration service
+    digest: db9535a0be88442c54220e5c9aebe60f93b0232005ddb6869c16881d2d5c6bb4
+    name: notification-orchestration
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/notification-orchestration-2.1.1/notification-orchestration-2.1.1.tgz
+    version: 2.1.1
   - apiVersion: v2
     appVersion: 2.0.0
     created: "2024-09-03T13:53:15.305339621Z"
@@ -8980,4 +9063,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-10-08T15:07:39.849328645Z"
+generated: "2024-10-09T10:33:02.525528002Z"
