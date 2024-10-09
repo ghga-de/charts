@@ -22,7 +22,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: {{ include "common.names.fullname" . }}-svc
+                name: {{ include "common.names.fullname" . }}
                 port:
                   number: {{ .Values.port }}
 {{ end }}

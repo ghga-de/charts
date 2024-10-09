@@ -6,7 +6,7 @@ metadata:
   name: {{ include "common.names.fullname" . }}
 spec:
   ambassador_id: {{ .Values.mapping.ambassador_id }}
-  service: "{{ include "common.names.fullname" . }}-svc:{{ .Values.mapping.port }}"
+  service: "{{ include "common.names.fullname" . }}:{{ .Values.mapping.port }}"
   hostname: {{ .Values.mapping.hostname }}
   prefix: {{ .Values.mapping.prefix }}
   rewrite: {{ .Values.mapping.rewrite }}
