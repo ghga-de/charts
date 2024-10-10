@@ -4216,6 +4216,30 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/file-ingest-0.0.2/file-ingest-0.0.2.tgz
     version: 0.0.2
+  file-services-backend:
+  - apiVersion: v2
+    appVersion: 0.0.0
+    created: "2024-10-10T08:37:34.047687628Z"
+    dependencies:
+    - name: download-controller
+      repository: https://ghga-de.github.io/charts
+      version: 2.0.9
+    - name: encryption-key-store
+      repository: https://ghga-de.github.io/charts
+      version: 2.0.6
+    - name: file-ingest
+      repository: https://ghga-de.github.io/charts
+      version: 3.0.3
+    - name: internal-file-registry
+      repository: https://ghga-de.github.io/charts
+      version: 2.0.8
+    description: Microservices for file-service backend
+    digest: 0cf815af57670769ce79b55d9d5c070ca66d5d5d0c7d2812028cd17ed18ea53d
+    name: file-services-backend
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/file-services-backend-0.0.0/file-services-backend-0.0.0.tgz
+    version: 0.0.0
   ghga-common:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -9864,4 +9888,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-10-09T12:43:28.50475585Z"
+generated: "2024-10-10T08:37:34.048480285Z"
