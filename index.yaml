@@ -8343,6 +8343,23 @@ entries:
   test-oidc-provider:
   - apiVersion: v2
     appVersion: 1.2.1
+    created: "2024-10-23T12:45:19.426545073Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.2.0
+    description: A dummy OpenID Connect provider (OP) that can be user for testing
+      purposes.
+    digest: 48cc024b6faeb38d76650701e4f8a3b77cc5a666dff500140e60cb9574519ef1
+    name: test-oidc-provider
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/test-oidc-provider-2.1.0/test-oidc-provider-2.1.0.tgz
+    version: 2.1.0
+  - apiVersion: v2
+    appVersion: 1.2.1
     created: "2024-10-09T12:43:28.503724542Z"
     dependencies:
     - import-values:
@@ -9967,4 +9984,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-10-23T08:09:46.371931109Z"
+generated: "2024-10-23T12:45:19.427536056Z"
