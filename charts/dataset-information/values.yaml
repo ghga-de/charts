@@ -54,7 +54,7 @@ topics:
       name: dataset_upsertion_event_type
       value: dataset_created
   
-  DatasetDeletionEvent:
+  datasetDeletionEvent:
     topic:
       name: dataset_event_topic
       value: metadata_datasets
