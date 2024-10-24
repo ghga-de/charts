@@ -30,6 +30,3 @@ dependencies:
 - name: internal-file-registry
   version: 2.0.8
   repository: https://ghga-de.github.io/charts
-- name: purge-controller-service
-  version: 1.0.0
-  repository: https://ghga-de.github.io/charts
