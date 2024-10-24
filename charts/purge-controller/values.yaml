@@ -26,4 +26,3 @@ topics:
     topic:
       name: files_to_delete_topic
       value: purges
-
