@@ -2333,6 +2333,23 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/data-portal-ui-0.0.1/data-portal-ui-0.0.1.tgz
     version: 0.0.1
+  dataset-information:
+  - apiVersion: v2
+    appVersion: 1.1.0
+    created: "2024-10-24T09:11:38.069088333Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.2.0
+    description: Dataset Information Service
+    digest: fa29a0f714b48945cb028f788832880f9217188ab7102712e479f7a1deeafa98
+    name: dataset-information
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/dataset-information-1.0.0/dataset-information-1.0.0.tgz
+    version: 1.0.0
   download-controller:
   - apiVersion: v2
     appVersion: 2.0.3
@@ -8004,6 +8021,23 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/notification-orchestration-1.0.0/notification-orchestration-1.0.0.tgz
     version: 1.0.0
+  purge-controller:
+  - apiVersion: v2
+    appVersion: 2.0.2
+    created: "2024-10-24T09:11:38.340726322Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.2.0
+    description: Purge Controller Service
+    digest: 2d17f2e39a0fd6f7438f8156930dca86088b973145f1687f09ab8919f58e4651
+    name: purge-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/purge-controller-1.0.0/purge-controller-1.0.0.tgz
+    version: 1.0.0
   remotebackup:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -9984,4 +10018,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-10-23T12:45:19.427536056Z"
+generated: "2024-10-24T09:11:38.341618495Z"
