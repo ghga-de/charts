@@ -19,7 +19,7 @@ apiVersion: v2
 
 dependencies:
 - name: ghga-common
-  version: 1.0.8
+  version: 1.2.0
   repository: https://ghga-de.github.io/charts
   import-values:
   - defaults
