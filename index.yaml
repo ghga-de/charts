@@ -2352,6 +2352,22 @@ entries:
   dataset-information:
   - apiVersion: v2
     appVersion: 1.1.0
+    created: "2024-10-24T14:26:18.7451627Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.2.0
+    description: Dataset Information Service
+    digest: 4b4608d2e6d34f584af0436609c277813b791527c2732677671eccca876637dd
+    name: dataset-information
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/dataset-information-1.0.1/dataset-information-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 1.1.0
     created: "2024-10-24T09:11:38.069088333Z"
     dependencies:
     - import-values:
@@ -10048,4 +10064,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-10-24T12:49:08.690444064Z"
+generated: "2024-10-24T14:26:18.746049472Z"
