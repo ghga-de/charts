@@ -46,7 +46,7 @@ topics:
       name: files_to_delete_topic
       value: purges
 
-  DatasetUpsertionEvent:
+  datasetUpsertionEvent:
     topic:
       name: dataset_event_topic
       value: metadata_datasets
