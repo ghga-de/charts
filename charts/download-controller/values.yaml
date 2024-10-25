@@ -1,7 +1,5 @@
 image:
   repository: "ghga/download-controller-service"
-  registry: ""
-  tag: 2.0.1
 
 config_prefix: dcs
 
