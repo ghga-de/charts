@@ -6332,6 +6332,23 @@ entries:
   metldata:
   - apiVersion: v2
     appVersion: 2.1.2
+    created: "2024-10-25T07:17:23.402871013Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.2.1
+    description: metldata - A framework for handling metadata based on ETL, CQRS,
+      and event sourcing.
+    digest: 42d133bf1b545e1a5a9d90550fc9c9b7d64f4b0244c13a4d7731c3b83bd84d14
+    name: metldata
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/metldata-2.1.1/metldata-2.1.1.tgz
+    version: 2.1.1
+  - apiVersion: v2
+    appVersion: 2.1.2
     created: "2024-10-25T07:03:08.761253163Z"
     dependencies:
     - import-values:
@@ -10097,4 +10114,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-10-25T07:03:08.762347042Z"
+generated: "2024-10-25T07:17:23.404064412Z"
