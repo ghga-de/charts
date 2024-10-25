@@ -49,7 +49,7 @@ topics:
       name: file_registered_event_type
       value: drs_object_registered
 
-  fileDeletedEvent: 
+  fileDeletedEvent:
     topic:
       name: file_deleted_event_topic
       value: downloads
