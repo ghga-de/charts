@@ -12,7 +12,7 @@ parameters:
     cors_allowed_headers: []
     cors_allowed_methods: []
     cors_allowed_origins: []
-    dataset_change_event_topic: metadata_datasets
+    dataset_change_event_topic: metadata-datasets
     dataset_deletion_type: dataset_deleted
     dataset_upsertion_type: dataset_created
     db_connection_str: null
@@ -24,7 +24,7 @@ parameters:
     port: 8080
     primary_artifact_name: embedded_public
     primary_dataset_name: EmbeddedDataset
-    resource_change_event_topic: searchable_resources
+    resource_change_event_topic: searchable-resources
     resource_deletion_event_type: searchable_resource_deleted
     resource_upsertion_type: searchable_resource_upserted
     service_instance_id: 'rest.1'

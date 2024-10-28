@@ -17,7 +17,7 @@ parameters:
     host: "0.0.0.0"
     openapi_url: /openapi.json
     port: 8080
-    resource_change_event_topic: searchable_resources
+    resource_change_event_topic: searchable-resources
     resource_deletion_event_type: searchable_resource_deleted
     resource_upsertion_event_type: searchable_resource_upserted
     searchable_classes:
