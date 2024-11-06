@@ -3150,6 +3150,22 @@ entries:
   encryption-key-store:
   - apiVersion: v2
     appVersion: 1.4.1
+    created: "2024-11-06T08:21:57.211832423Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.0.8
+    description: providing crypt4gh file secret extraction, storage and envelope generation
+    digest: 7bf925f4e520074a1b9138d14f39c253339928295739c8bf28b295dd9f53ab7e
+    name: encryption-key-store
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/encryption-key-store-2.0.7/encryption-key-store-2.0.7.tgz
+    version: 2.0.7
+  - apiVersion: v2
+    appVersion: 1.4.1
     created: "2024-10-09T12:27:13.884379865Z"
     dependencies:
     - import-values:
@@ -10245,4 +10261,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-10-28T15:22:49.921340561Z"
+generated: "2024-11-06T08:21:57.212899861Z"
