@@ -7893,6 +7893,22 @@ entries:
   notification-orchestration:
   - apiVersion: v2
     appVersion: 2.1.0
+    created: "2024-11-06T09:49:11.750041962Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.2.1
+    description: Notification orchestration service
+    digest: 4fc35816c67c79d4681da5b7db7e9091885495fe547486dd12e13639e98cd462
+    name: notification-orchestration
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/notification-orchestration-2.1.6/notification-orchestration-2.1.6.tgz
+    version: 2.1.6
+  - apiVersion: v2
+    appVersion: 2.1.0
     created: "2024-10-28T15:22:49.801036063Z"
     dependencies:
     - import-values:
@@ -10294,4 +10310,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-11-06T08:59:41.117264094Z"
+generated: "2024-11-06T09:49:11.750983775Z"
