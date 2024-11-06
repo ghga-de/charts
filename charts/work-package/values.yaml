@@ -6,15 +6,13 @@ config_prefix: wps
 parameters:
   default:
     auth_key: '{}'
-    db_connection_str: test
+    db_connection_str: null
     db_name: wps
     download_access_url: http://claims-repository:8080/download-access
     host: "0.0.0.0"
     service_instance_id: 'wps_1'
     service_name: wps
     work_package_signing_key: '{}'
-    kafka_servers:
-    - kafka.strimzi:9092
   rest:
     service_instance_id: 'rest.1'
   consumer:
