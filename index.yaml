@@ -8414,6 +8414,22 @@ entries:
   purge-controller:
   - apiVersion: v2
     appVersion: 2.0.2
+    created: "2024-11-07T08:59:16.692285271Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.3.0
+    description: Purge Controller Service
+    digest: 75baddcc095088457abb7463f89119e43810e4c95ddd76d0ec49899747e2b43a
+    name: purge-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/purge-controller-1.1.1/purge-controller-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
+    appVersion: 2.0.2
     created: "2024-11-06T14:55:47.853237776Z"
     dependencies:
     - import-values:
@@ -9904,6 +9920,22 @@ entries:
   work-package:
   - apiVersion: v2
     appVersion: 2.0.5
+    created: "2024-11-07T08:59:16.82458346Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.3.0
+    description: Work package service
+    digest: caa13ebc9033a84e575da8a2ea0267c6352ba8d42dcf7f9e12a36ddc2409e604
+    name: work-package
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/work-package-2.2.1/work-package-2.2.1.tgz
+    version: 2.2.1
+  - apiVersion: v2
+    appVersion: 2.0.5
     created: "2024-11-06T10:10:15.447087386Z"
     dependencies:
     - import-values:
@@ -10488,4 +10520,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-11-06T20:56:55.678286024Z"
+generated: "2024-11-07T08:59:16.825621324Z"
