@@ -4708,6 +4708,20 @@ entries:
   ghga-common:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-11-08T15:19:47.492486271Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      version: 2.22.0
+    description: A Helm chart for Kubernetes
+    digest: cb4cfc1934118794771e73016952952bea64e4c8e8237f1806e8013c56232084
+    name: ghga-common
+    type: library
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/ghga-common-1.4.0/ghga-common-1.4.0.tgz
+    version: 1.4.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-11-07T09:47:59.102433802Z"
     dependencies:
     - name: common
@@ -10977,4 +10991,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-11-07T13:34:30.40466058Z"
+generated: "2024-11-08T15:19:47.493533742Z"
