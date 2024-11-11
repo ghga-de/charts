@@ -9129,6 +9129,22 @@ entries:
   state-management:
   - apiVersion: v2
     appVersion: 1.3.1
+    created: "2024-11-11T09:09:19.621623254Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.7.3
+    description: State Management Service
+    digest: 92105506b3c8e1731e9c067042eecba4b7cd5a79db0a208e0f9cca10be4c4d58
+    name: state-management
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/state-management-2.4.2/state-management-2.4.2.tgz
+    version: 2.4.2
+  - apiVersion: v2
+    appVersion: 1.3.1
     created: "2024-11-11T08:59:09.836922619Z"
     dependencies:
     - import-values:
@@ -11155,4 +11171,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-11-11T09:04:30.800497099Z"
+generated: "2024-11-11T09:09:19.622697688Z"
