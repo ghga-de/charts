@@ -10753,6 +10753,22 @@ entries:
   work-package:
   - apiVersion: v2
     appVersion: 2.0.5
+    created: "2024-11-11T14:36:05.714781039Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.8.1
+    description: Work package service
+    digest: e1625f5653d339c443732eb442ea33754c798ec3be8abe760212d9ce98a10c4d
+    name: work-package
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/work-package-2.4.0/work-package-2.4.0.tgz
+    version: 2.4.0
+  - apiVersion: v2
+    appVersion: 2.0.5
     created: "2024-11-07T10:39:35.459231959Z"
     dependencies:
     - import-values:
@@ -11385,4 +11401,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-11-11T14:30:35.896951254Z"
+generated: "2024-11-11T14:36:05.715945376Z"
