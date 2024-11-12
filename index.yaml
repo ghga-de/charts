@@ -3,6 +3,22 @@ entries:
   access-request:
   - apiVersion: v2
     appVersion: 2.0.4
+    created: "2024-11-12T13:35:31.586851228Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.0
+    description: Access request service
+    digest: 588bbb96f235aa48bf14884335b3ce60a181e296d3213e362150ac60005e7f5d
+    name: access-request
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/access-request-2.6.0/access-request-2.6.0.tgz
+    version: 2.6.0
+  - apiVersion: v2
+    appVersion: 2.0.4
     created: "2024-11-11T15:55:50.969379095Z"
     dependencies:
     - import-values:
@@ -11838,4 +11854,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-11-12T13:33:22.608140477Z"
+generated: "2024-11-12T13:35:31.588137354Z"
