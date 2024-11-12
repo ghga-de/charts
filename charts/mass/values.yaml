@@ -5,7 +5,7 @@ configPrefix: mass
 
 # Service parameters
 
-# Service base path 
+# Service base path
 apiBasePath: /mass/
 # Name of the database
 dbName: mass

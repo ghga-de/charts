@@ -5,7 +5,7 @@ configPrefix: pcs
 
 # Service parameters
 
-# Service base path 
+# Service base path
 apiBasePath: /pcs/
 # Name of the database
 dbName: purge-controller

@@ -5,7 +5,7 @@ configPrefix: dcs
 
 # Service parameters
 
-# Service base path 
+# Service base path
 apiBasePath: /ga4gh/drs/v1/
 # Name of the database
 dbName: download-controller

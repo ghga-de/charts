@@ -5,7 +5,7 @@ configPrefix: wkvs
 
 # Service parameters
 
-# Service base path 
+# Service base path
 apiBasePath: /.well-known/
 # This parameter is used as Kafka's group id
 serviceName: wkvs

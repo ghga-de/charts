@@ -5,7 +5,7 @@ configPrefix: fis
 
 # Service parameters
 
-# Service base path 
+# Service base path
 apiBasePath: /fis/
 # Name of the database
 dbName: file-ingest
