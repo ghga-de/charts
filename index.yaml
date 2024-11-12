@@ -3614,6 +3614,22 @@ entries:
   encryption-key-store:
   - apiVersion: v2
     appVersion: 1.4.2
+    created: "2024-11-12T09:59:36.860881985Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.8.4
+    description: providing crypt4gh file secret extraction, storage and envelope generation
+    digest: 8372bdf0841bec76663cf1123b08a57d6ee440e0226c97cb6702635ff6aae9ec
+    name: encryption-key-store
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/encryption-key-store-2.1.0/encryption-key-store-2.1.0.tgz
+    version: 2.1.0
+  - apiVersion: v2
+    appVersion: 1.4.2
     created: "2024-11-06T20:56:55.677145649Z"
     dependencies:
     - import-values:
@@ -5576,6 +5592,23 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/ghga-common-0.1.0/ghga-common-0.1.0.tgz
     version: 0.1.0
   internal-file-registry:
+  - apiVersion: v2
+    appVersion: 2.0.3
+    created: "2024-11-12T09:59:37.00881528Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.8.4
+    description: This service acts as a registry for the internal location and representation
+      of files.
+    digest: 6d23b53f10483256b773af705ef2c521793018f5599c7d8ec812551b6201cbb3
+    name: internal-file-registry
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/internal-file-registry-2.4.0/internal-file-registry-2.4.0.tgz
+    version: 2.4.0
   - apiVersion: v2
     appVersion: 2.0.3
     created: "2024-11-07T10:39:34.644446157Z"
@@ -8287,6 +8320,22 @@ entries:
   notification:
   - apiVersion: v2
     appVersion: 2.1.0
+    created: "2024-11-12T09:59:37.170426311Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.8.4
+    description: Notification service
+    digest: 0eb066114ff21e3dd3232ed52ae9c2de03d6363e298da762863df7d9eb5f499a
+    name: notification
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/notification-2.5.1/notification-2.5.1.tgz
+    version: 2.5.1
+  - apiVersion: v2
+    appVersion: 2.1.0
     created: "2024-11-12T09:30:59.412393907Z"
     dependencies:
     - import-values:
@@ -8906,6 +8955,22 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/notification-0.0.1/notification-0.0.1.tgz
     version: 0.0.1
   notification-orchestration:
+  - apiVersion: v2
+    appVersion: 2.1.0
+    created: "2024-11-12T09:59:37.346385895Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.8.4
+    description: Notification orchestration service
+    digest: b7b9d2684f207b31a503307161210935e18f512ca13f70a100ca27ef4a5e96c5
+    name: notification-orchestration
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/notification-orchestration-2.4.1/notification-orchestration-2.4.1.tgz
+    version: 2.4.1
   - apiVersion: v2
     appVersion: 2.1.0
     created: "2024-11-12T09:30:59.530149569Z"
@@ -11742,4 +11807,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-11-12T09:32:58.43301089Z"
+generated: "2024-11-12T09:59:37.348185478Z"
