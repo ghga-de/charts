@@ -1,7 +1,7 @@
 image:
   repository: "ghga/mass"
 
-config_prefix: mass
+configPrefix: mass
 
 # Service parameters
 

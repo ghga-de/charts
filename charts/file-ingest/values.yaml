@@ -1,7 +1,7 @@
 image:
   repository: "ghga/file-ingest-service"
 
-config_prefix: fis
+configPrefix: fis
 
 # Service parameters
 

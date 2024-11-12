@@ -1,7 +1,7 @@
 image:
   repository: "ghga/well-known-value-service"
 
-config_prefix: wkvs
+configPrefix: wkvs
 
 # Service parameters
 

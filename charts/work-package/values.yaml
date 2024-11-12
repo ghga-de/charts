@@ -1,7 +1,7 @@
 image:
   repository: "ghga/work-package-service"
 
-config_prefix: wps
+configPrefix: wps
 
 # Service parameters
 

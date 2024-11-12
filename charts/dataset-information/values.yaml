@@ -1,7 +1,7 @@
 image:
   repository: "ghga/dataset-information-service"
 
-config_prefix: dins
+configPrefix: dins
 
 # Service parameters
 

@@ -1,7 +1,7 @@
 image:
   repository: "ghga/metldata"
 
-config_prefix: metldata
+configPrefix: metldata
 
 # Service parameters
 

@@ -1,7 +1,7 @@
 image:
   repository: "ghga/state-management-service"
 
-config_prefix: sms
+configPrefix: sms
 
 # Service base path 
 apiBasePath: /sms/

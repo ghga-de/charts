@@ -1,7 +1,7 @@
 image:
   repository: "ghga/test-oidc-provider"
 
-config_prefix: top
+configPrefix: top
 
 # Service parameters
 

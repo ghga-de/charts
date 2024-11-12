@@ -1,7 +1,7 @@
 image:
   repository: "ghga/download-controller-service"
 
-config_prefix: dcs
+configPrefix: dcs
 
 # Service parameters
 

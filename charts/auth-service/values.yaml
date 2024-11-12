@@ -1,7 +1,7 @@
 image:
   repository: "ghga/auth-service"
 
-config_prefix: auth_service
+configPrefix: auth_service
 
 # Service parameters
 
