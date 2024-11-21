@@ -3059,6 +3059,23 @@ entries:
     version: 1.0.0
   download-controller:
   - apiVersion: v2
+    appVersion: 2.0.6
+    created: "2024-11-21T15:40:03.700802934Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: This service implements the GA4GH DRS, while providing the option
+      to serve files from localstack S3.
+    digest: b9d0ac6545ffdb4c72178088671acc85b2cb7e910d582b813e1ba9675f304145
+    name: download-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/download-controller-2.5.5/download-controller-2.5.5.tgz
+    version: 2.5.5
+  - apiVersion: v2
     appVersion: 2.0.5
     created: "2024-11-19T14:43:54.597148052Z"
     dependencies:
@@ -3962,6 +3979,22 @@ entries:
     version: 0.0.1
   encryption-key-store:
   - apiVersion: v2
+    appVersion: 1.4.4
+    created: "2024-11-21T15:40:03.841060596Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: providing crypt4gh file secret extraction, storage and envelope generation
+    digest: 156eb5f77091a8a381caa5a03c0aee29fa82df051759e76b23d8a1ee0dbe6b2c
+    name: encryption-key-store
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/encryption-key-store-2.2.4/encryption-key-store-2.2.4.tgz
+    version: 2.2.4
+  - apiVersion: v2
     appVersion: 1.4.3
     created: "2024-11-19T14:43:54.717343982Z"
     dependencies:
@@ -4640,6 +4673,23 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/encryption-key-store-0.0.2/encryption-key-store-0.0.2.tgz
     version: 0.0.2
   file-ingest:
+  - apiVersion: v2
+    appVersion: 5.0.1
+    created: "2024-11-21T15:40:03.970443691Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: A lightweight service to propagate file upload metadata to the GHGA
+      file backend services
+    digest: 1ee0bceae415a6f4d9ddaa5b0665a947c511b836c25b71998a9fbcb9a57ff529
+    name: file-ingest
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/file-ingest-4.0.0/file-ingest-4.0.0.tgz
+    version: 4.0.0
   - apiVersion: v2
     appVersion: 4.0.1
     created: "2024-11-19T14:43:54.841031865Z"
@@ -6129,6 +6179,23 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/ghga-common-0.1.0/ghga-common-0.1.0.tgz
     version: 0.1.0
   internal-file-registry:
+  - apiVersion: v2
+    appVersion: 2.1.1
+    created: "2024-11-21T15:40:04.116326953Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: This service acts as a registry for the internal location and representation
+      of files.
+    digest: 1bb339ed01583a017d218a177290e4d29274aeb0ee1055e643e32cf8be956903
+    name: internal-file-registry
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/internal-file-registry-2.6.0/internal-file-registry-2.6.0.tgz
+    version: 2.6.0
   - apiVersion: v2
     appVersion: 2.0.4
     created: "2024-11-19T14:43:54.959668259Z"
@@ -9725,6 +9792,22 @@ entries:
     version: 0.0.1
   notification-orchestration:
   - apiVersion: v2
+    appVersion: 3.0.0
+    created: "2024-11-21T15:40:04.237022642Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: Notification orchestration service
+    digest: d3efb98355f2f6448e416a2e728a6e44870485659e6459ad5d4d7e9a9f656b57
+    name: notification-orchestration
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/notification-orchestration-3.0.0/notification-orchestration-3.0.0.tgz
+    version: 3.0.0
+  - apiVersion: v2
     appVersion: 2.1.0
     created: "2024-11-18T09:48:34.965524245Z"
     dependencies:
@@ -10531,6 +10614,22 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/remotebackup-0.0.0/remotebackup-0.0.0.tgz
     version: 0.0.0
   state-management:
+  - apiVersion: v2
+    appVersion: 2.0.0
+    created: "2024-11-21T15:40:04.348116773Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: State Management Service
+    digest: 47d461a59e60d65fe2a4c328527f8e5f1615c7053aa0d86b58aab06a8d000ed9
+    name: state-management
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/state-management-3.0.0/state-management-3.0.0.tgz
+    version: 3.0.0
   - apiVersion: v2
     appVersion: 1.4.1
     created: "2024-11-18T09:48:35.277311978Z"
@@ -12915,4 +13014,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-11-19T14:43:55.078023717Z"
+generated: "2024-11-21T15:40:04.351259433Z"
