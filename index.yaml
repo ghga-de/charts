@@ -974,6 +974,23 @@ entries:
     version: 0.0.0
   auth-service:
   - apiVersion: v2
+    appVersion: 2.6.1
+    created: "2024-12-05T13:49:43.501284428Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: The auth_adapter subpackage contains the authentication service used
+      by the API gateway via the ExtAuth protocol.
+    digest: c25d08648f2d25ec6bebb9905f7f6f9c590e2461ea5a65b66f871e80d1fd045a
+    name: auth-service
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/auth-service-2.6.3/auth-service-2.6.3.tgz
+    version: 2.6.3
+  - apiVersion: v2
     appVersion: 2.6.0
     created: "2024-11-18T09:48:33.739251252Z"
     dependencies:
@@ -6180,6 +6197,23 @@ entries:
     version: 0.1.0
   internal-file-registry:
   - apiVersion: v2
+    appVersion: 2.1.2
+    created: "2024-12-05T13:49:43.680731549Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: This service acts as a registry for the internal location and representation
+      of files.
+    digest: 58d5faf11bf0049a5c0045fa1db04a50dce5c04c619e8e4ca914fd4f9dd6b604
+    name: internal-file-registry
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/internal-file-registry-2.6.1/internal-file-registry-2.6.1.tgz
+    version: 2.6.1
+  - apiVersion: v2
     appVersion: 2.1.1
     created: "2024-11-21T15:40:04.116326953Z"
     dependencies:
@@ -10327,6 +10361,22 @@ entries:
     version: 1.0.0
   purge-controller:
   - apiVersion: v2
+    appVersion: 2.0.4
+    created: "2024-12-05T13:49:43.866702283Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: Purge Controller Service
+    digest: b668488b3cd83280dfa957bd407c2478a18f742a760014a96a4024a1f39eb991
+    name: purge-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/purge-controller-1.4.4/purge-controller-1.4.4.tgz
+    version: 1.4.4
+  - apiVersion: v2
     appVersion: 2.0.3
     created: "2024-11-19T14:43:55.076359455Z"
     dependencies:
@@ -13046,4 +13096,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-11-26T12:49:54.498345256Z"
+generated: "2024-12-05T13:49:43.869005966Z"
