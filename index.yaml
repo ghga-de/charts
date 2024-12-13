@@ -903,6 +903,22 @@ entries:
     version: 0.0.1
   auth-km-jobs:
   - apiVersion: v2
+    appVersion: 0.0.0-31c85112c3f666abf8ff8633adff437bf04b716d
+    created: "2024-12-13T12:33:10.570785248Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.10.0
+    description: This job is to refresh the internal and external auth keys.
+    digest: f6037bb9f47e64652fb74d62882c3530370292b69264059e5b07ce248c6b68ac
+    name: auth-km-jobs
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/auth-km-jobs-1.0.0/auth-km-jobs-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
     appVersion: 0.0.0
     created: "2024-07-22T09:14:15.287822291Z"
     dependencies:
@@ -13110,4 +13126,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-12-13T12:29:13.400758481Z"
+generated: "2024-12-13T12:33:10.571967575Z"
