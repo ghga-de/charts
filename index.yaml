@@ -3173,6 +3173,23 @@ entries:
     version: 1.0.0
   download-controller:
   - apiVersion: v2
+    appVersion: 3.0.0
+    created: "2025-01-09T12:52:36.254490349Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: This service implements the GA4GH DRS, while providing the option
+      to serve files from localstack S3.
+    digest: 0d7e7cad287f11d3e90339fc81beeab39d7fe446f9bfec73af10efd4c8662c4d
+    name: download-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/download-controller-3.0.0/download-controller-3.0.0.tgz
+    version: 3.0.0
+  - apiVersion: v2
     appVersion: 2.0.6
     created: "2024-11-21T15:40:03.700802934Z"
     dependencies:
@@ -12524,6 +12541,22 @@ entries:
     version: 0.0.1
   work-package:
   - apiVersion: v2
+    appVersion: 2.0.6
+    created: "2025-01-09T12:52:36.357153746Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: Work package service
+    digest: b5a33398ccc9ee046fa9c9dffb98f2bf7b9171b5d05001dab219f981740601df
+    name: work-package
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/work-package-2.5.3/work-package-2.5.3.tgz
+    version: 2.5.3
+  - apiVersion: v2
     appVersion: 2.0.5
     created: "2024-11-18T09:48:35.709328883Z"
     dependencies:
@@ -13221,4 +13254,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2024-12-16T13:43:57.470419344Z"
+generated: "2025-01-09T12:52:36.358649016Z"
