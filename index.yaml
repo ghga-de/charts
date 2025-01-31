@@ -2005,6 +2005,23 @@ entries:
     version: 0.0.2
   data-portal-ui:
   - apiVersion: v2
+    appVersion: 1.4.2
+    created: "2025-01-31T13:15:32.487761091Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: The Metadata Search Service is a service for providing a unified
+      search interface over a metadata store.
+    digest: df0d6aefa4c88117d04b9764e28c459d52c0e7760df0558209fe050a60710c23
+    name: data-portal-ui
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/data-portal-ui-1.3.4/data-portal-ui-1.3.4.tgz
+    version: 1.3.4
+  - apiVersion: v2
     appVersion: 1.4.1
     created: "2024-11-19T14:19:43.817268141Z"
     dependencies:
@@ -3173,6 +3190,23 @@ entries:
     version: 1.0.0
   download-controller:
   - apiVersion: v2
+    appVersion: 4.0.1
+    created: "2025-01-31T13:15:32.626344711Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: This service implements the GA4GH DRS, while providing the option
+      to serve files from localstack S3.
+    digest: 66d1615fbf8f0b750d04e8c0a32af1391190617a29f1ccd849d2ff3ad30a5f86
+    name: download-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/download-controller-4.0.0/download-controller-4.0.0.tgz
+    version: 4.0.0
+  - apiVersion: v2
     appVersion: 3.0.0
     created: "2025-01-09T12:52:36.254490349Z"
     dependencies:
@@ -4110,6 +4144,22 @@ entries:
     version: 0.0.1
   encryption-key-store:
   - apiVersion: v2
+    appVersion: 2.0.0
+    created: "2025-01-31T13:15:32.749499296Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: providing crypt4gh file secret extraction, storage and envelope generation
+    digest: 46685557d2c5f67523db7484e2fab240f2024c856ea2ce59c4505fb9afd74a37
+    name: encryption-key-store
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/encryption-key-store-3.0.0/encryption-key-store-3.0.0.tgz
+    version: 3.0.0
+  - apiVersion: v2
     appVersion: 1.4.4
     created: "2024-11-21T15:40:03.841060596Z"
     dependencies:
@@ -4804,6 +4854,23 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/encryption-key-store-0.0.2/encryption-key-store-0.0.2.tgz
     version: 0.0.2
   file-ingest:
+  - apiVersion: v2
+    appVersion: 6.0.0
+    created: "2025-01-31T13:15:32.873214871Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: A lightweight service to propagate file upload metadata to the GHGA
+      file backend services
+    digest: 737a9182517202d59189196cce6cad53386cbd8a5e432c169e84bc9917e3e262
+    name: file-ingest
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/file-ingest-5.0.0/file-ingest-5.0.0.tgz
+    version: 5.0.0
   - apiVersion: v2
     appVersion: 5.0.1
     created: "2024-11-21T15:40:03.970443691Z"
@@ -6338,6 +6405,23 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/ghga-common-0.1.0/ghga-common-0.1.0.tgz
     version: 0.1.0
   internal-file-registry:
+  - apiVersion: v2
+    appVersion: 3.0.1
+    created: "2025-01-31T13:15:32.988109582Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 1.9.3
+    description: This service acts as a registry for the internal location and representation
+      of files.
+    digest: 99ac02ea65b30d9852cd7a23981f2040fe5dc6ed4cbddc06b3429f69efc6e657
+    name: internal-file-registry
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/internal-file-registry-3.0.0/internal-file-registry-3.0.0.tgz
+    version: 3.0.0
   - apiVersion: v2
     appVersion: 2.1.2
     created: "2024-12-05T13:49:43.680731549Z"
@@ -13288,4 +13372,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2025-01-21T15:07:38.100068091Z"
+generated: "2025-01-31T13:15:32.990601515Z"
