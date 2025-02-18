@@ -42,3 +42,6 @@ topics:
       value: access_request_allowed
     - name: access_request_denied_event_type
       value: access_request_denied
+
+vaultAgent:
+  enabled: false
