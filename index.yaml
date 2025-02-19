@@ -11614,6 +11614,16 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/purge-controller-1.0.0/purge-controller-1.0.0.tgz
     version: 1.0.0
   remotebackup:
+  - apiVersion: v1
+    appVersion: 1.1.0
+    created: "2025-02-19T13:20:27.715972761Z"
+    description: remotebackup
+    digest: 3ceb635850dcbb01d900b629866a115482055aa10bd8588aaee0cf3034876376
+    name: remotebackup
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/remotebackup-2.0.0/remotebackup-2.0.0.tgz
+    version: 2.0.0
   - apiVersion: v2
     appVersion: 1.1.0
     created: "2025-02-12T09:38:57.20770624Z"
@@ -14375,4 +14385,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2025-02-19T12:27:44.715461355Z"
+generated: "2025-02-19T13:20:27.717311486Z"
