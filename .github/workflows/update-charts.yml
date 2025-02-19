@@ -17,6 +17,17 @@ jobs:
         id: updateChartVersions
         shell: bash
         run: python ./scripts/update_dependent_charts.py
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: latest
+      - name: Update Helm Dependencies for all Charts
+        shell: bash
+        run: |
+          for chart in charts/*; do
+            echo "Updating dependencies for $chart"
+            helm dependency update "$chart"
+          done
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
         with:
