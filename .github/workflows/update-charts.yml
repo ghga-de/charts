@@ -1,0 +1,29 @@
+name: Chart Updates
+
+on:
+  workflow_dispatch:
+
+jobs:
+  chart-updates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+      - run: pip install semver pyyaml
+        shell: bash
+      - name: Update charts to latest library chart
+        id: updateChartVersions
+        shell: bash
+        run: python ./scripts/update_dependent_charts.py
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          add-paths: charts/*
+          labels: chart updates
+          title: Update charts to latest library chart
+          commit-message: Update charts to latest library chart
+          branch: patch/chart-updates
+          delete-branch: true
+          base: main
