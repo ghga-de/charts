@@ -5,12 +5,15 @@ on: pull_request
 jobs:
   lint-test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        chart-dirs: [charts, charts/file-services-backend]
     steps:
       - name: Set variables
         id: vars
         shell: bash
         run: |
-          echo "CHART_DIRS=charts,charts/file-services-backend" >> $GITHUB_ENV
+          echo "CHART_DIRS=${{ matrix.chart-dirs }}" >> $GITHUB_ENV
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,15 +43,20 @@ jobs:
         run: |
           helm dependency build ./charts/ghga-common
 
-      - name: Bump Chart version and update dependencies
+      - name: Bump Chart version and update dependencies for ${{ matrix.chart-dirs }}
+        if: |
+            github.event_name == 'pull_request' && 
+            contains(github.event.pull_request.labels.*.name, 'updated charts')
         run: |
-          python ./scripts/bump_charts.py
+          python ./scripts/bump_charts.py --chart-dir ${{ matrix.chart-dirs }}
     
       - name: Bump Chart version and update dependencies
+        if: |
+          github.event_name == 'pull_request' && 
+          contains(github.event.pull_request.labels.*.name, 'updated charts')
         run: |
-          for chart in charts/file-services-backend/*; do
-            helm dependency up $chart --skip-refresh
-          done
+          for chart in ${{ matrix.chart-dirs }}/*; do
+            helm dependency up $chart --skip-refresh || true
        
       - name: Run chart-testing (list-changed)
         id: list-changed
@@ -64,5 +72,8 @@ jobs:
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
+        if: |
+          github.event_name == 'pull_request' && 
+          contains(github.event.pull_request.labels.*.name, 'updated charts')
         with:
           commit_message: "Apply automatic changes"
