@@ -42,12 +42,14 @@ jobs:
 
       - name: Bump Chart version and update dependencies
         run: |
+          IFS=','
           for chart_dir in $CHART_DIRS; do
             python ./scripts/bump_charts.py
           done
       
       - name: Bump Chart version and update dependencies
         run: |
+          IFS=','
           for chart_dir in $CHART_DIRS; do
             helm dependency up $chart_dir --skip-refresh
           done
