@@ -1,4 +1,4 @@
-name: Lint and Test Charts
+name: Update, Lint and Test Charts
 on: pull_request
 
 
@@ -34,6 +34,18 @@ jobs:
         run: |
           helm dependency build ./charts/ghga-common
 
+      - name: Bump Chart version and update dependencies
+        run: |
+          for chart_dir in $CHART_DIRS; do
+            python ./scripts/bump_charts.py
+          done
+      
+      - name: Bump Chart version and update dependencies
+        run: |
+          for chart_dir in $CHART_DIRS; do
+            helm dependency up $chart_dir --skip-refresh
+          done
+       
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
@@ -45,3 +57,8 @@ jobs:
       - name: Run chart-testing (lint)
         if: steps.list-changed.outputs.changed == 'true'
         run: ct lint --chart-dirs $CHART_DIRS --target-branch ${{ github.event.repository.default_branch }} --validate-maintainers=false
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Apply automatic changes"
