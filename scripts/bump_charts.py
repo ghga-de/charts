@@ -6,6 +6,8 @@ import argparse
 
 """Bump all Helm charts in a directory according to the largest service version difference or library chart update."""
 
+DRY_MODE = False
+
 yaml = YAML()
 yaml.preserve_quotes = True  # Preserve formatting
 
@@ -78,7 +80,7 @@ if __name__ == "__main__":
         "--current-version",
         type=str,
         help="Current version which should be bumped",
-        default="0.0.1",
+        default="7.0.0",
     )  # Optional argument
 
     # Parse arguments
@@ -107,11 +109,24 @@ if __name__ == "__main__":
             print(
                 f"AppVersion {current} is newer than latest published {latest} for {chart['name']}"
             )
-            diff = semver.VersionInfo(
-                current.major - latest.major,
-                current.minor - latest.minor,
-                current.patch - latest.patch,
-            )
+            if current.major > latest.major:
+                diff = semver.VersionInfo(
+                    current.major - latest.major,
+                    0,
+                    0,
+                )
+            elif current.minor > latest.minor:
+                diff = semver.VersionInfo(
+                    0,
+                    current.minor - latest.minor,
+                    0,
+                )
+            elif current.patch > latest.patch:
+                diff = semver.VersionInfo(
+                    0,
+                    0,
+                    current.patch - latest.patch,
+                )
             diffs_app_version.append(diff)
 
         # Check for ghga-common updates
@@ -124,11 +139,25 @@ if __name__ == "__main__":
             print(
                 f"Library version {current_ghga_common} is older than latest published {latest_ghga_common} for {chart['name']}"
             )
-            diff = semver.VersionInfo(
-                latest_ghga_common.major - current_ghga_common.major,
-                latest_ghga_common.minor - current_ghga_common.minor,
-                latest_ghga_common.patch - current_ghga_common.patch,
-            )
+            if latest_ghga_common.major > current_ghga_common.major:
+                diff = semver.VersionInfo(
+                    latest_ghga_common.major - current_ghga_common.major,
+                    0,
+                    0,
+                )
+            elif latest_ghga_common.minor > current_ghga_common.minor:
+                diff = semver.VersionInfo(
+                    0,
+                    latest_ghga_common.minor - current_ghga_common.minor,
+                    0,
+                )
+            elif latest_ghga_common.patch > current_ghga_common.patch:
+                diff = semver.VersionInfo(
+                    0,
+                    0,
+                    latest_ghga_common.patch - current_ghga_common.patch,
+                )
+
             diffs_library_version.append(diff)
 
     if not diffs_app_version and not diffs_library_version:
@@ -151,8 +180,6 @@ if __name__ == "__main__":
                         f"Bumping ghga-common from {dep['version']} to {latest_ghga_common} requires to run helm dependency update"
                     )
                     dep["version"] = latest_ghga_common
-
-        DRY_MODE = True
 
         # Dump to files
         if not DRY_MODE:
