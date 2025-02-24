@@ -157,7 +157,7 @@ if __name__ == "__main__":
                     0,
                     latest_ghga_common.patch - current_ghga_common.patch,
                 )
-
+            
             diffs_library_version.append(diff)
 
     if not diffs_app_version and not diffs_library_version:
@@ -171,7 +171,7 @@ if __name__ == "__main__":
     # Update the version in the Chart.yaml
     for chart_file, chart in charts:
         print(f"Bumping {chart['name']} from {chart['version']} to {new_version}")
-        chart["version"] = new_version
+        chart["version"] = str(new_version)
 
         if diffs_library_version:
             for dep in chart.get("dependencies"):
@@ -179,7 +179,7 @@ if __name__ == "__main__":
                     print(
                         f"Bumping ghga-common from {dep['version']} to {latest_ghga_common} requires to run helm dependency update"
                     )
-                    dep["version"] = latest_ghga_common
+                    dep["version"] = str(latest_ghga_common)
 
         # Dump to files
         if not DRY_MODE:
