@@ -63,7 +63,8 @@ jobs:
         run: |
           for chart in ${{ matrix.chart-dirs }}/*; do
             helm dependency up $chart --skip-refresh || true
-       
+          done
+
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
