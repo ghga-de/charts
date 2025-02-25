@@ -68,6 +68,10 @@ jobs:
         run: |
           chart_dirs=$(find ${{ matrix.chart-dirs }} -name "Chart.yaml" -exec dirname {} \; | xargs dirname | sort | uniq |tr '\n' ',' | sed 's/,$//')
           echo "CHART_DIRS=$chart_dirs" >> $GITHUB_ENV
+      - name: Add charts' dependency repositories
+        run: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo add ghga https://ghga-de.github.io/charts
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
