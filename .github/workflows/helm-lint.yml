@@ -10,7 +10,9 @@ on:
 jobs:
   update-charts:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     strategy:
+      fail-fast: false
       matrix:
         chart-dirs:
           - archive/
