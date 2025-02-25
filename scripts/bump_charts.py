@@ -86,6 +86,10 @@ if __name__ == "__main__":
     # Parse arguments
     args = parser.parse_args()
 
+    if "ghga-common" in args.chart_dir:
+        print("Skipping bumping of ghga-common charts")
+        exit(0)
+
     print("Bumping Helm charts in", args.chart_dir)
     helm_repo_url = "https://ghga-de.github.io/charts"
 
