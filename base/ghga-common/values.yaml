@@ -8,7 +8,7 @@ exports:
 
     deployment:
       enabled: true
-    
+
     job:
       enabled: false
 
