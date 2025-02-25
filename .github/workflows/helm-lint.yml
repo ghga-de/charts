@@ -42,7 +42,7 @@ jobs:
           python ./scripts/bump_charts.py --chart-dir ${{ matrix.chart-dirs }}
       - name: Bump Chart version and update dependencies
         run: |
-          find ${{ matrix.chart-dirs }} -name "Chart.yaml" -exec dirname {} \; | xargs -I {} helm dep up {}
+          find ${{ matrix.chart-dirs }} -name "Chart.yaml" -exec dirname {} \; | xargs -I {} helm dep up {} --skip-refresh
 
   lint-test:
     needs: update-charts
