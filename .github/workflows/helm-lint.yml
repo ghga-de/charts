@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         chart-dirs:
-          - archive/file-services-backend
+          - archive/
           - base/ghga-common
     steps:
       - name: Set variables
@@ -42,9 +42,7 @@ jobs:
           python ./scripts/bump_charts.py --chart-dir ${{ matrix.chart-dirs }}
       - name: Bump Chart version and update dependencies
         run: |
-          for chart in ${{ matrix.chart-dirs }}/*; do
-            helm dependency up $chart --skip-refresh || true
-          done
+          find ${{ matrix.chart-dirs }} -name "Chart.yaml" -exec dirname {} \; | xargs -I {} helm dep up {}
 
   lint-test:
     needs: update-charts
@@ -52,7 +50,7 @@ jobs:
     strategy:
       matrix:
         chart-dirs:
-          - archive/file-services-backend
+          - archive/
           - base/ghga-common
     steps:
       - name: Checkout
@@ -70,7 +68,6 @@ jobs:
           if [[ -n "$changed" ]]; then
             echo "changed=true" >> $GITHUB_ENV
           fi
-
       - name: Run chart-testing (lint)
         if: steps.list-changed.outputs.changed == 'true'
         run: ct lint --chart-dirs  ${{ matrix.chart-dirs }} --target-branch ${{ github.event.repository.default_branch }} --validate-maintainers=false
