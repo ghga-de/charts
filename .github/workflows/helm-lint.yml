@@ -15,6 +15,7 @@ jobs:
         chart-dirs:
           - archive/
           - base/ghga-common
+          - utils/
     steps:
       - name: Set variables
         id: vars
@@ -52,6 +53,7 @@ jobs:
         chart-dirs:
           - archive/
           - base/ghga-common
+          - utils/
     steps:
       - name: Checkout
         uses: actions/checkout@v4
