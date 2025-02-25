@@ -37,12 +37,25 @@ jobs:
         uses: helm/chart-releaser-action@v1.7.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          charts_dir: base
+
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.7.0
+        with:
+          charts_dir: archive/
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
   
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.7.0
         with:
-          skip_existing: true # Can be removed in the future
-          charts_dir: charts/file-services-backend
+          charts_dir: archive/file-services-backend
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-  
+      
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.7.0
+        with:
+          charts_dir: jobs
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
