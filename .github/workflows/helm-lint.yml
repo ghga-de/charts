@@ -63,16 +63,22 @@ jobs:
           version: v3.12.0
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.6.1   
+      - name: Set chart directories
+        id: chart-dirs
+        run: |
+          chart_dirs=$(find ${{ matrix.chart-dirs }} -name "Chart.yaml" -exec dirname {} \; | xargs dirname | sort | uniq |tr '\n' ',' | sed 's/,$//')
+          echo "CHART_DIRS=$chart_dirs" >> $GITHUB_ENV
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
-          changed=$(ct list-changed --chart-dirs ${{ matrix.chart-dirs }} --target-branch ${{ github.event.repository.default_branch }})
+          changed=$(ct list-changed --chart-dirs ${{ env.CHART_DIRS }} --target-branch ${{ github.event.repository.default_branch }})
           if [[ -n "$changed" ]]; then
-            echo "changed=true" >> $GITHUB_ENV
+            echo "CHANGED=true" >> $GITHUB_OUTPUT
           fi
       - name: Run chart-testing (lint)
-        if: steps.list-changed.outputs.changed == 'true'
-        run: ct lint --chart-dirs  ${{ matrix.chart-dirs }} --target-branch ${{ github.event.repository.default_branch }} --validate-maintainers=false
+        if: steps.list-changed.outputs.CHANGED == 'true'
+        run: |
+          ct lint --chart-dirs ${{ env.CHART_DIRS }} --target-branch ${{ github.event.repository.default_branch }} --validate-maintainers=false
 
   update-branch:
     if: |
