@@ -13,7 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        chart-dirs: [charts, charts/file-services-backend]
+        chart-dirs:
+          - archive/file-services-backend
     steps:
       - name: Set variables
         id: vars
@@ -44,10 +45,6 @@ jobs:
         run: |
           helm repo add bitnami https://charts.bitnami.com/bitnami
           helm repo add ghga https://ghga-de.github.io/charts
-
-      - name: Helm Build Dependencies
-        run: |
-          helm dependency build ./charts/ghga-common
 
       - name: Bump Chart version and update dependencies for ${{ matrix.chart-dirs }}
         if: |
