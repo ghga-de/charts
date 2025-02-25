@@ -80,16 +80,15 @@ jobs:
       contains(github.event.pull_request.labels.*.name, 'updated charts')
     needs: lint-test
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        chart-dirs:
-        - archive/file-services-backend  
     steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     - name: Commit changes
       uses: stefanzweifel/git-auto-commit-action@v5
       if: |
         github.event_name == 'pull_request' && 
         contains(github.event.pull_request.labels.*.name, 'updated charts')
       with:
-        commit_message: "Apply automatic changes in ${{ matrix.chart-dirs }}"
-        file_pattern: ${{ matrix.chart-dirs }}/*
+        commit_message: "Apply automatic changes"
