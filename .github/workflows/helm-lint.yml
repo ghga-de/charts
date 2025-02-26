@@ -18,8 +18,10 @@ jobs:
       - name: Set variables
         id: vars
         run: |
-          chart_dirs=$(git --no-pager diff --name-only --diff-filter=M origin/${{ github.event.repository.default_branch }} | grep "Chart.yaml" | grep -v "jobs" | xargs -I {} python3 -c 'from pathlib import Path; print(Path("{}").parent.parent)' | sort | uniq | tr '\n' ',' | sed 's/,$//')
+          chart_dirs_nested=$(git --no-pager diff --name-only --diff-filter=M origin/${{ github.event.repository.default_branch }} | grep "Chart.yaml" | grep -v "jobs" | xargs -I {} python3 -c 'from pathlib import Path; print(Path("{}").parent.parent)' | sort | uniq | tr '\n' ',' | sed 's/,$//')
+          chart_dirs=$(git --no-pager diff --name-only --diff-filter=M origin/${{ github.event.repository.default_branch }} | grep "Chart.yaml" | grep -v "jobs" | xargs -I {} python3 -c 'from pathlib import Path; print(Path("{}").parts[0])' | sort | uniq | tr '\n' ',' | sed 's/,$//')
           echo "Processing charts in directories: $chart_dirs"
+          echo "CHART_DIRS_NESTED=$chart_dirs_nested" >> $GITHUB_ENV
           echo "CHART_DIRS=$chart_dirs" >> $GITHUB_ENV
       - name: Set up Helm
         uses: azure/setup-helm@v4
@@ -43,9 +45,9 @@ jobs:
       - name: Set chart directories
         id: chart-dirs
         run: |
-          changed=$(ct list-changed --chart-dirs $CHART_DIRS --target-branch ${{ github.event.repository.default_branch }})
+          changed=$(ct list-changed --chart-dirs $CHART_DIRS_NESTED --target-branch ${{ github.event.repository.default_branch }})
           if [[ -n "$changed" ]]; then
-            ct lint --chart-dirs $CHART_DIRS --target-branch ${{ github.event.repository.default_branch }} --validate-maintainers=false
+            ct lint --chart-dirs $CHART_DIRS_NESTED --target-branch ${{ github.event.repository.default_branch }} --validate-maintainers=false
           fi
       - name: Update branch
         uses: stefanzweifel/git-auto-commit-action@v5
