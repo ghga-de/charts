@@ -18,7 +18,8 @@ jobs:
       - name: Set variables
         id: vars
         run: |
-          chart_dirs=$(find . -name "Chart.yaml" -exec dirname {} \; | xargs dirname | grep -v "jobs" | sort | uniq | sed 's|^./||' | tr '\n' ',' | sed 's/,$//')
+          set -x
+          chart_dirs=$(git --no-pager diff --name-only --diff-filter=M | grep Chart.yaml | grep -v "jobs" | sed 's|^./||' | cut -d'/' -f1 | sort | uniq | tr '\n' ',' | sed 's/,$//')
           echo "Processing charts in directories: $chart_dirs"
           echo "CHART_DIRS=$chart_dirs" >> $GITHUB_ENV
       - name: Set up Helm
