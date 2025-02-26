@@ -19,7 +19,7 @@ jobs:
         id: vars
         run: |
           set -x
-          chart_dirs=$(git --no-pager diff --name-only --diff-filter=M ${{ github.event.repository.default_branch }} | grep Chart.yaml | grep -v "jobs" | sed 's|^./||' | cut -d'/' -f1 | sort | uniq | tr '\n' ',' | sed 's/,$//')
+          chart_dirs=$(git --no-pager diff --name-only --diff-filter=M origin/${{ github.event.repository.default_branch }} | grep Chart.yaml | grep -v "jobs" | sed 's|^./||' | cut -d'/' -f1 | sort | uniq | tr '\n' ',' | sed 's/,$//')
           echo "Processing charts in directories: $chart_dirs"
           echo "CHART_DIRS=$chart_dirs" >> $GITHUB_ENV
       - name: Set up Helm
