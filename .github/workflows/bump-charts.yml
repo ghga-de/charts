@@ -1,4 +1,4 @@
-name: Update, Lint and Test Charts
+name: Bump and lint Charts per directory
 on:
   pull_request:
     types:
@@ -16,10 +16,15 @@ jobs:
         with:
           fetch-depth: 0
       - name: Set variables
-        id: vars
+        shell: bash
         run: |
-          chart_dirs_nested=$(git --no-pager diff --name-only --diff-filter=M origin/${{ github.event.repository.default_branch }} | grep "Chart.yaml" | grep -v "jobs" | xargs -I {} python3 -c 'from pathlib import Path; print(Path("{}").parent.parent)' | sort | uniq | tr '\n' ',' | sed 's/,$//')
-          chart_dirs=$(git --no-pager diff --name-only --diff-filter=M origin/${{ github.event.repository.default_branch }} | grep "Chart.yaml" | grep -v "jobs" | xargs -I {} python3 -c 'from pathlib import Path; print(Path("{}").parts[0])' | sort | uniq | tr '\n' ',' | sed 's/,$//')
+          # Get modified Chart.yaml files, excluding "jobs" directory
+          changed_charts=$(git --no-pager diff --name-only --diff-filter=M origin/${{ github.event.repository.default_branch }} | grep "Chart.yaml" | grep -v "jobs")
+
+          # Extract parent directories (nested and top-level)
+          chart_dirs_nested=$(echo "$changed_charts" | xargs -I {} python3 -c 'from pathlib import Path; print(Path("{}").parent.parent)' | sort -u | paste -sd "," -)
+          chart_dirs=$(echo "$changed_charts" | xargs -I {} python3 -c 'from pathlib import Path; print(Path("{}").parts[0])' | sort -u | paste -sd "," -)
+          
           echo "Processing charts in directories: $chart_dirs"
           echo "CHART_DIRS_NESTED=$chart_dirs_nested" >> $GITHUB_ENV
           echo "CHART_DIRS=$chart_dirs" >> $GITHUB_ENV
@@ -30,12 +35,18 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: '3.10'
-      - run: pip install semver ruamel.yaml requests
+      - name: Install dependencies for scripts
+        shell: bash
+        run: pip install semver ruamel.yaml requests
       - name: Add charts' dependency repositories
+        shell: bash
         run: |
           helm repo add bitnami https://charts.bitnami.com/bitnami
           helm repo add ghga https://ghga-de.github.io/charts
+      # This step should be idempotent, only bumping to the largest version difference
+      # Bumps either by appVersion or library chart version
       - name: Bump Chart version and update dependencies
+        shell: bash
         run: |
           for chart_dir in ${CHART_DIRS//,/ }; do
             python ./scripts/bump_charts.py --chart-dir $chart_dir
@@ -43,7 +54,7 @@ jobs:
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.6.1   
       - name: Set chart directories
-        id: chart-dirs
+        shell: bash
         run: |
           changed=$(ct list-changed --chart-dirs $CHART_DIRS_NESTED --target-branch ${{ github.event.repository.default_branch }})
           if [[ -n "$changed" ]]; then
@@ -53,6 +64,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         if: |
           github.event_name == 'pull_request' && 
-          contains(github.event.pull_request.labels.*.name, 'updated charts')
+          contains(github.event.pull_request.labels.*.name, 'update charts')
         with:
           commit_message: "Apply automatic changes"
