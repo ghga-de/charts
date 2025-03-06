@@ -7,6 +7,12 @@ on:
       - reopened
       - labeled
 
+  workflow_dispatch:
+    inputs:
+      library-chart-version:
+        required: true
+        default: ""
+
 jobs:
   update-charts:
     runs-on: ubuntu-latest
@@ -49,7 +55,7 @@ jobs:
         shell: bash
         run: |
           for chart_dir in ${CHART_DIRS//,/ }; do
-            python ./scripts/bump_charts.py --chart-dir $chart_dir
+            python ./scripts/bump_charts.py --chart-dir $chart_dir --library-chart-version ${{ github.event.inputs.library-chart-version }}
           done
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.6.1   
