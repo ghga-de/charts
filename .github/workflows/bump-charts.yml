@@ -2,16 +2,13 @@ name: Bump and lint Charts per directory
 on:
   pull_request:
     types:
-      - opened
-      - synchronize
-      - reopened
       - labeled
 
   workflow_dispatch:
     inputs:
       library-chart-version:
         required: true
-        default: ""
+        default: "0.0.0"
 
 jobs:
   update-charts:
@@ -68,8 +65,5 @@ jobs:
           fi
       - name: Update branch
         uses: stefanzweifel/git-auto-commit-action@v5
-        if: |
-          github.event_name == 'pull_request' && 
-          contains(github.event.pull_request.labels.*.name, 'update charts')
         with:
           commit_message: "Apply automatic changes"
