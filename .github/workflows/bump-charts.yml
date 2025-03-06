@@ -24,7 +24,7 @@ jobs:
       - name: Set variables
         shell: bash
         run: |
-          if [ ! -z "${{ github.event.inputs.chart-dirs }}" -a "${{ github.event.inputs.chart-dirs }}" != "" ]; then
+          if [ "${{ github.event.inputs.chart-dirs }}" == "" ]; then
             # Get modified Chart.yaml files, excluding "jobs" directory
             changed_charts=$(git --no-pager diff --name-only --diff-filter=M origin/${{ github.event.repository.default_branch }} | grep "Chart.yaml" | grep -v "jobs")
           else
