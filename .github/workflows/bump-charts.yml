@@ -6,6 +6,9 @@ on:
 
   workflow_dispatch:
     inputs:
+      chart-dirs:
+        required: true
+        default: ""
       library-chart-version:
         required: true
         default: "0.0.0"
@@ -21,9 +24,13 @@ jobs:
       - name: Set variables
         shell: bash
         run: |
-          # Get modified Chart.yaml files, excluding "jobs" directory
-          changed_charts=$(git --no-pager diff --name-only --diff-filter=M origin/${{ github.event.repository.default_branch }} | grep "Chart.yaml" | grep -v "jobs")
-
+          if [ ! -z "${{ github.event.inputs.chart-dirs }}" -a "${{ github.event.inputs.chart-dirs }}" != "" ]; then
+            # Get modified Chart.yaml files, excluding "jobs" directory
+            changed_charts=$(git --no-pager diff --name-only --diff-filter=M origin/${{ github.event.repository.default_branch }} | grep "Chart.yaml" | grep -v "jobs")
+          else
+            changed_charts=$(echo ${{ github.event.inputs.chart-dirs }} | tr "," "\n" | xargs -I {} find {} -name "Chart.yaml")
+          fi
+          
           # Extract parent directories (nested and top-level)
           chart_dirs_nested=$(echo "$changed_charts" | xargs -I {} python3 -c 'from pathlib import Path; print(Path("{}").parent.parent)' | sort -u | paste -sd "," -)
           chart_dirs=$(echo "$changed_charts" | xargs -I {} python3 -c 'from pathlib import Path; print(Path("{}").parts[0])' | sort -u | paste -sd "," -)
