@@ -13739,6 +13739,22 @@ entries:
   remotebackup:
   - apiVersion: v2
     appVersion: 1.1.0
+    created: "2025-03-11T12:26:42.721996184Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.1.13
+    description: remotebackup
+    digest: 4788ec4001d7bfe49ed413019d4ef08280c6b7db3c42baf80b83a61cbd03c4e2
+    name: remotebackup
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/remotebackup-2.1.0-alpha.6/remotebackup-2.1.0-alpha.6.tgz
+    version: 2.1.0-alpha.6
+  - apiVersion: v2
+    appVersion: 1.1.0
     created: "2025-03-11T10:08:12.410946689Z"
     dependencies:
     - import-values:
@@ -17221,4 +17237,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2025-03-11T12:22:36.922354064Z"
+generated: "2025-03-11T12:26:42.723524798Z"
