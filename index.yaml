@@ -4839,6 +4839,23 @@ entries:
   download-controller:
   - apiVersion: v2
     appVersion: 5.0.0
+    created: "2025-04-14T15:42:22.816976525Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.1.17
+    description: This service implements the GA4GH DRS, while providing the option
+      to serve files from localstack S3.
+    digest: 7032a30549d74a70986dd4e4b26df934656eb73da1264d53d61c65525317faf5
+    name: download-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/download-controller-10.0.2/download-controller-10.0.2.tgz
+    version: 10.0.2
+  - apiVersion: v2
+    appVersion: 5.0.0
     created: "2025-04-14T13:25:06.298595445Z"
     dependencies:
     - import-values:
@@ -6184,6 +6201,22 @@ entries:
   encryption-key-store:
   - apiVersion: v2
     appVersion: 2.0.0
+    created: "2025-04-14T15:42:23.085971574Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.1.17
+    description: providing crypt4gh file secret extraction, storage and envelope generation
+    digest: 6874d4fd2f85f5edba4a986ac7c250085387e66573bab0011479085a51736d92
+    name: encryption-key-store
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/encryption-key-store-10.0.2/encryption-key-store-10.0.2.tgz
+    version: 10.0.2
+  - apiVersion: v2
+    appVersion: 2.0.0
     created: "2025-04-14T13:25:06.472648684Z"
     dependencies:
     - import-values:
@@ -7245,6 +7278,23 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/encryption-key-store-0.0.2/encryption-key-store-0.0.2.tgz
     version: 0.0.2
   file-ingest:
+  - apiVersion: v2
+    appVersion: 7.0.0
+    created: "2025-04-14T15:42:23.205649473Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.1.17
+    description: A lightweight service to propagate file upload metadata to the GHGA
+      file backend services
+    digest: f32733fb86b55338524a092ba7a7c6b51a8fcb861328418a1a16fe6e389c16c6
+    name: file-ingest
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/file-ingest-10.0.2/file-ingest-10.0.2.tgz
+    version: 10.0.2
   - apiVersion: v2
     appVersion: 7.0.0
     created: "2025-04-14T13:25:06.666097774Z"
@@ -9630,6 +9680,23 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/ghga-common-0.1.0/ghga-common-0.1.0.tgz
     version: 0.1.0
   internal-file-registry:
+  - apiVersion: v2
+    appVersion: 4.0.0
+    created: "2025-04-14T15:42:23.360219501Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.1.17
+    description: This service acts as a registry for the internal location and representation
+      of files.
+    digest: d2970a0c968712a457577c6082de428acd23e9c7c43c42d330a7a2d77e7f9d02
+    name: internal-file-registry
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/internal-file-registry-10.0.2/internal-file-registry-10.0.2.tgz
+    version: 10.0.2
   - apiVersion: v2
     appVersion: 4.0.0
     created: "2025-04-14T13:25:06.850603378Z"
@@ -15815,6 +15882,22 @@ entries:
   purge-controller:
   - apiVersion: v2
     appVersion: 3.0.0
+    created: "2025-04-14T15:42:23.499613781Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.1.17
+    description: Purge Controller Service
+    digest: bbe958f7b4f2b99b781092a1650f5f8f71013b5b0ef12ee0ba755eb21bcf8eab
+    name: purge-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/purge-controller-10.0.2/purge-controller-10.0.2.tgz
+    version: 10.0.2
+  - apiVersion: v2
+    appVersion: 3.0.0
     created: "2025-04-14T13:25:07.060330564Z"
     dependencies:
     - import-values:
@@ -20637,4 +20720,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2025-04-14T15:41:44.600618908Z"
+generated: "2025-04-14T15:42:23.501559445Z"
