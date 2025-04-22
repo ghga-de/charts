@@ -5166,6 +5166,23 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/dataset-information-1.0.0/dataset-information-1.0.0.tgz
     version: 1.0.0
+  dead-letter-queue:
+  - apiVersion: v2
+    appVersion: 1.0.1
+    created: "2025-04-22T12:24:42.439437382Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.1.20
+    description: DLQ service
+    digest: bf905562a5af267a59aa5b73ff47bb4a6678dfed64b6d41ee1c3e1d97b4bd768
+    name: dead-letter-queue
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/dead-letter-queue-11.0.3/dead-letter-queue-11.0.3.tgz
+    version: 11.0.3
   dlq-service:
   - apiVersion: v2
     appVersion: 1.0.1
@@ -22269,4 +22286,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2025-04-22T12:20:03.932600644Z"
+generated: "2025-04-22T12:24:42.4410837Z"
