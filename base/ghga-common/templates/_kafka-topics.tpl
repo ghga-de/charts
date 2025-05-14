@@ -36,42 +36,52 @@ metadata:
   labels:
     strimzi.io/cluster: {{ .Values.kafkaUser.clusterName }}
   name: {{ .Release.Namespace }}-{{ include "common.names.fullname" . }}
-  namespace: {{ .Values.kafkaUser.clusterNamespace }}  
+  namespace: {{ .Values.kafkaUser.clusterNamespace }}
 spec:
   authentication:
     type: tls
   authorization:
     acls:
-    {{ with .Values.topics }}
-    {{- range $key, $value := . }}
-    {{- if eq $key "wildcard" }}
-    - operation: All
+    {{- with .Values.topics }}
+    {{- range $topicKey, $topicValue := . }}
+    {{- if eq $topicKey "wildcard" }}
+    - operations:
+        {{- with $topicValue.topic.roles }}
+          {{- range $role := . }}
+        - {{ $role }}
+          {{- end }}
+        {{- end }}
       resource:
-        name: '{{ $value.topic.value }}'
+        name: '{{ $topicValue.topic.value }}'
         patternType: literal
         type: topic
-    {{- else if and (eq $key "deadLetterQueueRetry") $.Values.serviceNameConsumer }}
-    - operation: All
+    {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceName }}
+    - operations:
+        {{- with $topicValue.topic.roles }}
+          {{- range $role := . }}
+        - {{ $role }}
+          {{- end }}
+        {{- end }}
       resource:
-        name: '{{ $.Values.topicPrefix | empty | ternary (cat $.Values.serviceNameConsumer "-" $value.topic.value ) (cat $.Values.topicPrefix "-" $.Values.serviceNameConsumer "-" $value.topic.value ) | nospace }}'
-        patternType: literal
-        type: topic
-    {{- else if and (eq $key "deadLetterQueueRetry") $.Values.serviceName }}
-    - operation: All
-      resource:
-        name: '{{ $.Values.topicPrefix | empty | ternary (cat $.Values.serviceName "-" $value.topic.value ) (cat $.Values.topicPrefix "-" $.Values.serviceName "-" $value.topic.value ) | nospace }}'
-        patternType: literal
+        name: '{{ $.Values.topicPrefix | empty | ternary (cat $topicValue.topic.value "-") (cat $.Values.topicPrefix "-" $topicValue.topic.value "-") | nospace }}'
+        patternType: prefix
         type: topic
     {{- else }}
-    - operation: All
+    - operations:
+        {{- with $topicValue.topic.roles }}
+          {{- range $role := . }}
+        - {{ $role }}
+          {{- end }}
+        {{- end }}
       resource:
-        name: '{{ $.Values.topicPrefix | empty | ternary $value.topic.value (cat $.Values.topicPrefix "-" $value.topic.value ) | nospace }}'
+        name: '{{ $.Values.topicPrefix | empty | ternary $topicValue.topic.value (cat $.Values.topicPrefix "-" $topicValue.topic.value ) | nospace }}'
         patternType: literal
         type: topic
     {{- end }}
     {{- end }}
     {{- end }}
-    - operation: All
+    - operations:
+        - All
       resource:
         name: '*'
         patternType: literal

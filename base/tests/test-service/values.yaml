@@ -65,6 +65,8 @@ topics:
     topic:
       name: test_event_topic
       value: "my-topic"
+      roles:
+        - Write
     types:
     - name: test_event_type
       value: searchable_resource_deleted
@@ -75,11 +77,15 @@ topics:
     topic:
       name: kafka_dlq_topic
       value: dlq
+      roles:
+        - Write
   # as consumer
   deadLetterQueueRetry:
     topic:
       name: null
       value: retry
+      roles:
+        - Read
   wildcard:
     topic:
       name: wildcard
