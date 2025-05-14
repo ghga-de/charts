@@ -53,18 +53,13 @@ topics:
     topic:
       name: kafka_dlq_topic
       value: dlq
-      permissions:
-        - Read
-  #as producer
-  deadLetterQueueRetry:
-  topic:
-     name: null
-     value: retry
-     patternType: prefix
-     permissions:
-      - Write
-  #Needs to be fixed, DLQS produces dynamically to topics with pattern `<service_name>-retry`
-  #But Strimzi handles only prefix and not suffix patterns
+  # as producer
+  #  deadLetterQueueRetry:
+  # topic:
+  #    name: null
+  #    value: retry
+  # Needs to be fixed, DLQS produces dynamically to topics with pattern `<service_name>-retry`
+  # But Strimzi handles only prefix and not suffix patterns
   wildcard:
     topic:
       name: wildcard
