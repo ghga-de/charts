@@ -46,9 +46,9 @@ spec:
     {{- range $topicKey, $topicValue := . }}
     {{- if eq $topicKey "wildcard" }}
     - operations:
-        {{- with $topicValue.topic.roles }}
-          {{- range $role := . }}
-        - {{ $role }}
+        {{- with $topicValue.topic.permissions }}
+          {{- range $permission := . }}
+        - {{ $permission }}
           {{- end }}
         {{- end }}
       resource:
@@ -57,9 +57,9 @@ spec:
         type: topic
     {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceName }}
     - operations:
-        {{- with $topicValue.topic.roles }}
-          {{- range $role := . }}
-        - {{ $role }}
+        {{- with $topicValue.topic.permissions }}
+          {{- range $permission := . }}
+        - {{ $permission }}
           {{- end }}
         {{- end }}
       resource:
@@ -68,9 +68,9 @@ spec:
         type: topic
     {{- else }}
     - operations:
-        {{- with $topicValue.topic.roles }}
-          {{- range $role := . }}
-        - {{ $role }}
+        {{- with $topicValue.topic.permissions }}
+          {{- range $permission := . }}
+        - {{ $permission }}
           {{- end }}
         {{- end }}
       resource:

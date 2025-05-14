@@ -65,7 +65,7 @@ topics:
     topic:
       name: test_event_topic
       value: "my-topic"
-      roles:
+      permissions:
         - Write
     types:
     - name: test_event_type
@@ -77,14 +77,14 @@ topics:
     topic:
       name: kafka_dlq_topic
       value: dlq
-      roles:
+      permissions:
         - Write
   # as consumer
   deadLetterQueueRetry:
     topic:
       name: null
       value: retry
-      roles:
+      permissions:
         - Read
   wildcard:
     topic:
