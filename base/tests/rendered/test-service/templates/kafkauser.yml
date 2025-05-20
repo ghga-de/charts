@@ -20,7 +20,7 @@ spec:
         patternType: literal
         type: topic
       resource:
-        name: 'retry-test-service-name'
+        name: 'test-service-name-retry'
         operations:
         - Read
         patternType: literal

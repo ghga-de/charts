@@ -54,11 +54,11 @@ spec:
       {{- include "common.tplvalues.render" (dict "value" $kafkaUser "context" $) | nindent 8 }}
     {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceNameConsumer }}
     - resource:
-        name: '{{ $.Values.topicPrefix | empty | ternary (cat $topicValue.topic.value ) (cat $.Values.topicPrefix "-" $topicValue.topic.value  "-") | nospace }}'
+        name: '{{ $.Values.topicPrefix | empty | ternary (cat $.Values.serviceNameConsumer "-" $topicValue.topic.value) (cat $.Values.topicPrefix "-" $.Values.serviceNameConsumer "-" $topicValue.topic.value) | nospace }}'
       {{- include "common.tplvalues.render" (dict "value" $kafkaUser "context" $) | nindent 8 }}
     {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceName }}
       resource:
-        name: '{{ $.Values.topicPrefix | empty | ternary (cat $topicValue.topic.value "-" $.Values.serviceName) (cat $.Values.topicPrefix "-" $topicValue.topic.value "-" $.Values.serviceName ) | nospace }}'
+        name: '{{ $.Values.topicPrefix | empty | ternary (cat $.Values.serviceName "-" $topicValue.topic.value ) (cat $.Values.topicPrefix "-" $.Values.serviceName "-" $topicValue.topic.value) | nospace }}'
       {{- include "common.tplvalues.render" (dict "value" $kafkaUser "context" $) | nindent 8 }}
     {{- else }}
     - resource:
