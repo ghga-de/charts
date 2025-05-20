@@ -1,7 +1,7 @@
 {{/* Transforms topic values to serivce config parameters. */}}
 {{- define "ghga-common.kafkaTopicsParameters" -}}
 {{- if .Values.kafkaTopicsParameters }}
-{{- $topics := merge (.Values.global.topics | default dict) .Values.topics -}}
+{{- $topics := merge (.Values.global._topics | default dict) .Values._topics -}}
 {{- range $key, $value := $topics -}}
 {{- if $value.topic }}
   {{- if or (not $value.topic.name) (eq $value.topic.name "wildcard") }}
