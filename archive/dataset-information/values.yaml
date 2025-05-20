@@ -41,7 +41,7 @@ containers:
     key: parameters-consumer
 
 
-_topics:
+topics:
 
   fileRegisteredEvent:
     # as consumer
@@ -51,9 +51,6 @@ _topics:
     types:
       - name: file_internally_registered_type
         value: internal_file_registered
-    kafkaUser:
-      operations:
-        - Read
   filesToDelete:
     # as consumer
     topic:
@@ -62,9 +59,6 @@ _topics:
     types:
     - name: file_deletion_request_type
       value: file_deletion_requested
-    kafkaUser:
-      operations:
-        - Read
   datasetUpsertionEvent:
     # as consumer
     topic:
@@ -73,9 +67,6 @@ _topics:
     types:
       - name: dataset_upsertion_type
         value: dataset_created
-    kafkaUser:
-      operations:
-        - Read
   datasetDeletionEvent:
     # as consumer
     topic:
@@ -84,22 +75,13 @@ _topics:
     types:
       - name: dataset_deletion_type
         value: dataset_deleted
-    kafkaUser:
-      operations:
-        - Write
   # as producer
   deadLetterQueue:
     topic:
       name: kafka_dlq_topic
       value: dlq
-    kafkaUser:
-      operations:
-        - Write
   # as consumer
   deadLetterQueueRetry:
     topic:
       name: null
       value: retry
-    kafkaUser:
-      operations:
-        - Read
