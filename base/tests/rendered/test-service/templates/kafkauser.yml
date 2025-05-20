@@ -15,29 +15,29 @@ spec:
     
     - resource:
         name: 'dlq'
-        patternType: literal
-        type: topic
         operations:
         - Write
+        patternType: literal
+        type: topic
       resource:
         name: 'retry-test-service-name'
-        patternType: literal
-        type: topic
         operations:
         - Read
+        patternType: literal
+        type: topic
     - resource:
         name: 'my-topic'
-        patternType: literal
-        type: topic
         operations:
         - Write
-    - resource:
-        name: '*'
         patternType: literal
         type: topic
+    - resource:
+        name: '*'
         operations:
         - Read
         - Write
+        patternType: literal
+        type: topic
     - operations:
       - All
       resource:

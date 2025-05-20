@@ -44,30 +44,26 @@ spec:
     acls:
     {{ with .Values._topics }}
     {{- range $topicKey, $topicValue := . }}
+    {{- $kafkaUser := hasKey $topicValue "kafkaUser" | ternary (get $topicValue "kafkaUser") dict -}}
+    {{- $kafkaUser := hasKey $kafkaUser "operations" | ternary $kafkaUser (merge $kafkaUser (dict "operations" (list "ALL"))) -}}
+    {{- $kafkaUser := hasKey $kafkaUser "patternType" | ternary $kafkaUser (merge $kafkaUser (dict "patternType" "literal")) -}}
+    {{- $kafkaUser := hasKey $kafkaUser "type" | ternary $kafkaUser (merge $kafkaUser (dict "type" "topic")) -}}
     {{- if eq $topicKey "wildcard" }}
     - resource:
         name: '{{ $topicValue.topic.value }}'
-        patternType: literal
-        type: topic
-      {{- include "common.tplvalues.render" (dict "value" $topicValue.kafkaUser "context" $) | nindent 8 }}
+      {{- include "common.tplvalues.render" (dict "value" $kafkaUser "context" $) | nindent 8 }}
     {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceNameConsumer }}
     - resource:
         name: '{{ $.Values.topicPrefix | empty | ternary (cat $topicValue.topic.value ) (cat $.Values.topicPrefix "-" $topicValue.topic.value  "-") | nospace }}'
-        patternType: prefix
-        type: topic
-      {{- include "common.tplvalues.render" (dict "value" $topicValue.kafkaUser "context" $) | nindent 8 }}
+      {{- include "common.tplvalues.render" (dict "value" $kafkaUser "context" $) | nindent 8 }}
     {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceName }}
       resource:
         name: '{{ $.Values.topicPrefix | empty | ternary (cat $topicValue.topic.value "-" $.Values.serviceName) (cat $.Values.topicPrefix "-" $topicValue.topic.value "-" $.Values.serviceName ) | nospace }}'
-        patternType: literal
-        type: topic
-      {{- include "common.tplvalues.render" (dict "value" $topicValue.kafkaUser "context" $) | nindent 8 }}
+      {{- include "common.tplvalues.render" (dict "value" $kafkaUser "context" $) | nindent 8 }}
     {{- else }}
     - resource:
         name: '{{ $.Values.topicPrefix | empty | ternary $topicValue.topic.value (cat $.Values.topicPrefix "-" $topicValue.topic.value ) | nospace }}'
-        patternType: literal
-        type: topic
-      {{- include "common.tplvalues.render" (dict "value" $topicValue.kafkaUser "context" $) | nindent 8 }}
+      {{- include "common.tplvalues.render" (dict "value" $kafkaUser "context" $) | nindent 8 }}
     {{- end }}
     {{- end }}
     {{- end }}
