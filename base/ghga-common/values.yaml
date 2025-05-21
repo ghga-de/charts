@@ -212,6 +212,7 @@ exports:
     environment:
       name: default
 
+    # Set `spec` of HTTPRoute here
     httpRoute:
       enabled: false
 
