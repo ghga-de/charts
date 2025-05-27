@@ -51,10 +51,12 @@ spec:
     {{- $kafkaUser := set $kafkaUser "operations" (append $kafkaUser.operations "Describe" | uniq) -}}
     {{- if eq $topicKey "wildcard" }}
     {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" $topicValue.topic.value))) -}}
+    {{- /* The services do not support a configurable topic name or prefix at the moment for the `retry` topics. */ -}}
+    {{- /* If running multiple deployments with a shared backend this may cause collisions. */ -}}
     {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceNameConsumer }}
-    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" ($.Values.topicPrefix | empty | ternary (cat $topicValue.topic.value "-" $.Values.serviceNameConsumer) (cat $topicValue.topic.value "-" $.Values.topicPrefix "-" $.Values.serviceNameConsumer) | nospace)))) -}}
+    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" (print $topicValue.topic.value "-" $.Values.serviceNameConsumer)))) -}}
     {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceName }}
-    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" ($.Values.topicPrefix | empty | ternary (cat $topicValue.topic.value "-" $.Values.serviceName) (cat $topicValue.topic.value "-" $.Values.topicPrefix "-" $.Values.serviceName) | nospace)))) -}}
+    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" (print $topicValue.topic.value "-" $.Values.serviceName)))) -}}
     {{- else }}
     {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" ($.Values.topicPrefix | empty | ternary $topicValue.topic.value (cat $.Values.topicPrefix "-" $topicValue.topic.value) | nospace )))) -}}
     {{- end }}
