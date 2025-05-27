@@ -52,9 +52,9 @@ spec:
     {{- if eq $topicKey "wildcard" }}
     {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" $topicValue.topic.value))) -}}
     {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceNameConsumer }}
-    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" ($.Values.topicPrefix | empty | ternary (cat  $topicValue.topic.value "-" $.Values.serviceNameConsumer) (cat $.Values.topicPrefix "-" $.Values.serviceNameConsumer) | nospace)))) -}}
+    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" ($.Values.topicPrefix | empty | ternary (cat  $topicValue.topic.value "-" $.Values.serviceNameConsumer) (cat $topicValue.topic.value "-" $.Values.topicPrefix "-" $.Values.serviceNameConsumer) | nospace)))) -}}
     {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceName }}
-    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" ($.Values.topicPrefix | empty | ternary (cat  $topicValue.topic.value "-" $.Values.serviceName) (cat $.Values.topicPrefix "-" $.Values.serviceName) | nospace)))) -}}
+    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" ($.Values.topicPrefix | empty | ternary (cat  $topicValue.topic.value "-" $.Values.serviceName) (cat $topicValue.topic.value "-" $.Values.topicPrefix "-" $.Values.serviceName) | nospace)))) -}}
     {{- else }}
     {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" ($.Values.topicPrefix | empty | ternary $topicValue.topic.value (cat $.Values.topicPrefix "-" $topicValue.topic.value) | nospace )))) -}}
     {{- end }}
