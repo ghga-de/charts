@@ -20,7 +20,8 @@ data:
     kafka_security_protocol: SSL
     api_root_path: /test/
     db_name: test
-    service_name: test-service-name
+    service_name:
+    test-service-name
     service_instance_id: test-service-instance-id
   parameters: |
     foo: bar
@@ -36,5 +37,6 @@ data:
     kafka_security_protocol: SSL
     api_root_path: /test/
     db_name: test
-    service_name: test-service-name
+    service_name:
+    test-service-name
     service_instance_id: test-service-instance-id
