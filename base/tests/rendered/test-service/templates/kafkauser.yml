@@ -24,7 +24,7 @@ spec:
       - Read
       - Describe
       resource:
-        name: test-service-name-retry
+        name: retry-test-service-name
         patternType: literal
         type: topic
     - operations:
