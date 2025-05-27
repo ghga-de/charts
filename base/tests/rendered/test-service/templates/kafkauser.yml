@@ -14,6 +14,7 @@ spec:
     acls:
     - operations:
       - Write
+      - Create
       - Describe
       resource:
         name: dlq
@@ -28,6 +29,7 @@ spec:
         type: topic
     - operations:
       - Write
+      - Create
       - Describe
       resource:
         name: my-topic
@@ -36,6 +38,7 @@ spec:
     - operations:
       - Read
       - Write
+      - Create
       - Describe
       resource:
         name: '*'
