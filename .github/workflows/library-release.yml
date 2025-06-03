@@ -40,8 +40,8 @@ jobs:
       - name: Get most recent release tag
         shell: bash
         run: |
-          ghga_common_version=$(curl -s "https://api.github.com/repos/ghga-de/charts/releases" | jq 'map(select(.tag_name | startswith("ghga-common"))) | sort_by(.published_at) | reverse | .[0] | .tag_name')
-          ghga_common_version=${ghga_common_version#ghga-common-}  # Remove quotes
+          ghga_common=$(curl -s "https://api.github.com/repos/ghga-de/charts/releases" | jq -r 'map(select(.tag_name | startswith("ghga-common"))) | sort_by(.published_at) | reverse | .[0] | .tag_name')
+          ghga_common_version=${ghga_common#ghga-common-}
           echo "Processing charts in directories: archive/ with library version $ghga_common_version"
           echo "GHGA_COMMON_VERSION=$ghga_common_version" >> $GITHUB_ENV
 
@@ -57,8 +57,8 @@ jobs:
           labels: chart updates
           assignees: ckaipf
           reviewers: ckaipf
-          title: Update archive charts to feature/bump-${{ github.event.release.tag_name }}
-          commit-message: Update archive charts to feature/bump-${{ github.event.release.tag_name }}
-          branch: feature/bump-${{ github.event.release.tag_name }}
+          title: Update archive charts to feature/bump-${{ env.GHGA_COMMON_VERSION }}
+          commit-message: Update archive charts to feature/bump-${{ env.GHGA_COMMON_VERSION }}
+          branch: feature/bump-${{ env.GHGA_COMMON_VERSION }}
           delete-branch: true
           base: main
