@@ -16,7 +16,6 @@ backendRefs:
   weight: 100
 {{- end -}}
 {{- end -}}
----
 {{- define "ghga-common.http-route" -}}
 {{- if .Values.httpRoute.enabled -}}
 ---
