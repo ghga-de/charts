@@ -1,0 +1,61 @@
+name: Library Release Workflow
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  update-charts:
+    if: startsWith(github.event.release.tag_name, 'ghga-common')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Set variables
+        shell: bash
+        run: |          
+          release_tag=${{ github.event.release.tag_name }}
+          ghga_common_version=${release_tag#ghga-common-}
+         
+          echo "Processing charts in directories: archive/ with library version $ghga_common_version"
+          echo "GHGA_COMMON_VERSION=$ghga_common_version" >> $GITHUB_ENV
+      
+      - name: Set up Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.12.0
+      
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies for scripts
+        shell: bash
+        run: pip install semver ruamel.yaml requests
+      
+      - name: Add charts' dependency repositories
+        shell: bash
+        run: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo add ghga https://ghga-de.github.io/charts
+     
+      - name: Bump Chart version and update dependencies
+        shell: bash
+        run: |
+          python ./scripts/bump_charts.py --chart-dir archive/ --library-chart-version $GHGA_COMMON_VERSION
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          add-paths: archive/
+          labels: chart updates
+          assignees: ckaipf
+          reviewers: ckaipf
+          title: Update archive charts to feature/bump-${{ github.event.release.tag_name }}
+          commit-message: Update archive charts to feature/bump-${{ github.event.release.tag_name }}
+          branch: feature/bump-${{ github.event.release.tag_name }}
+          delete-branch: true
+          base: main
