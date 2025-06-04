@@ -42,7 +42,7 @@ jobs:
       - name: Get most recent release tag
         shell: bash
         run: |
-          ghga_common=$(curl -s "https://api.github.com/repos/ghga-de/charts/releases" | jq -r 'map(select(.tag_name | startswith("ghga-common"))) | sort_by(.published_at) | reverse | .[0] | .tag_name')
+          ghga_common=$(curl -s "https://api.github.com/repos/ghga-de/charts/releases?per_page=300" | jq -r 'map(select(.tag_name | startswith("ghga-common"))) | sort_by(.published_at) | reverse | .[0] | .tag_name')
           ghga_common_version=${ghga_common#ghga-common-}
           echo "Processing charts in directories: archive/ with library version $ghga_common_version"
           echo "GHGA_COMMON_VERSION=$ghga_common_version" >> $GITHUB_ENV
