@@ -47,18 +47,27 @@ spec:
     {{- range $topicKey, $topicValue := . }}
     {{- $kafkaUser := hasKey $topicValue "kafkaUser" | ternary (get $topicValue "kafkaUser") dict -}}
     {{- $kafkaUser := hasKey $kafkaUser "operations" | ternary $kafkaUser (merge $kafkaUser (dict "operations" (list "All"))) -}}
-    {{- $kafkaUser := hasKey $kafkaUser "resource" | ternary $kafkaUser (merge $kafkaUser (dict "resource" (dict "patternType" "literal" "type" "topic"))) -}}
+    {{- $kafkaUser := hasKey $kafkaUser "resource" | ternary $kafkaUser (merge $kafkaUser (dict "resource" (dict "type" "topic"))) -}}
     {{- $kafkaUser := set $kafkaUser "operations" (append $kafkaUser.operations "Describe" | uniq) -}}
     {{- if eq $topicKey "wildcard" }}
     {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" $topicValue.topic.value))) -}}
+    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "patternType" "literal"))) -}}
     {{- /* The services do not support a configurable topic name or prefix at the moment for the `retry` topics. */ -}}
     {{- /* The serviceName is prefixed with the deployment name. */ -}}
     {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceNameConsumer }}
-    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" (print $topicValue.topic.value "-" (include "ghga-common.serviceNameConsumer" $))))) -}}
-    {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceName }}
-    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" (print $topicValue.topic.value "-" (include "ghga-common.serviceName" $))))) -}}
+    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" (print $topicValue.topic.value "-" (include "ghga-common.serviceNameConsumer" $)) ))) -}}
+    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "patternType" "literal"))) -}}
+    {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceName  (has "Write" $kafkaUser.operations)}}
+    {{- /* DLQ Service Writes to all retry topics. */ -}}
+    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" (print $topicValue.topic.value "-" )))) -}}
+    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "patternType" "prefix"))) -}}
+    {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceName  (has "Read" $kafkaUser.operations)}}
+    {{- /* Normal services read from their own retry- topic. */ -}}
+    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" (print $topicValue.topic.value "-" $.Values.serviceName )))) -}}
+    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "patternType" "literal"))) -}}
     {{- else }}
-    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" ($.Values.topicPrefix | empty | ternary $topicValue.topic.value (cat $.Values.topicPrefix "-" $topicValue.topic.value) | nospace )))) -}}
+    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" ($.Values.topicPrefix | empty | ternary $topicValue.topic.value (cat $.Values.topicPrefix "-" $topicValue.topic.value) | nospace ) ))) -}}
+    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "patternType" "literal"))) -}}
     {{- end }}
     {{- $topicsACL = append $topicsACL $kafkaUser -}}
     {{- end }}
