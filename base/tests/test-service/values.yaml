@@ -107,10 +107,14 @@ _topics:
   deadLetterQueueRetry:
     topic:
       name: null
-      value: retry
+      value: retry-
     kafkaUser:
       operations:
-        - Read
+        - Write
+        - Create
+        - Describe
+      resource:
+        patternType: prefix
   wildcard:
     topic:
       name: wildcard
