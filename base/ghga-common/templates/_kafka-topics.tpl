@@ -53,9 +53,9 @@ spec:
     {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" $topicValue.topic.value))) -}}
     {{- /* The services do not support a configurable topic name or prefix at the moment for the `retry` topics. */ -}}
     {{- /* The serviceName is prefixed with the deployment name. */ -}}
-    {{- else if and (eq $topicKey "deadLetterQueueRetries") $.Values.serviceNameConsumer }}
+    {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceNameConsumer }}
     {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" (print $topicValue.topic.value "-" (include "ghga-common.serviceNameConsumer" $))))) -}}
-    {{- else if and (eq $topicKey "deadLetterQueueRetries") $.Values.serviceName }}
+    {{- else if and (eq $topicKey "deadLetterQueueRetry") $.Values.serviceName }}
     {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" (print $topicValue.topic.value "-" (include "ghga-common.serviceName" $))))) -}}
     {{- else }}
     {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" ($.Values.topicPrefix | empty | ternary $topicValue.topic.value (cat $.Values.topicPrefix "-" $topicValue.topic.value) | nospace )))) -}}
