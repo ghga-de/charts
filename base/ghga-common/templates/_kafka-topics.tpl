@@ -59,7 +59,7 @@ spec:
     {{- /* DLQ Service Writes to all retry topics. */ -}}
     {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" (print $topicValue.topic.value )))) -}}
     {{- else }}
-    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" ($.Values.topicPrefix | empty | ternary $topicValue.topic.value (cat $.Values.topicPrefix "-" $topicValue.topic.value) | nospace ) ))) -}}
+    {{- $kafkaUser = (merge $kafkaUser (dict "resource" (dict "name" ($.Values.topicPrefix | empty | ternary $topicValue.topic.value (cat $.Values.topicPrefix "-" $topicValue.topic.value) | nospace )))) -}}
     {{- end }}
     {{- $topicsACL = append $topicsACL $kafkaUser -}}
     {{- end }}
