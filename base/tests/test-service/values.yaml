@@ -104,7 +104,7 @@ _topics:
         - Write
         - Create
   # as consumer
-  deadLetterQueueRetry:
+  deadLetterQueueRetries:
     topic:
       name: null
       value: retry-
