@@ -56,7 +56,7 @@ _topics:
     kafkaUser:
       operations:
         - Read
-  deadLetterQueueRetry:
+  deadLetterQueueRetries:
     topic:
       name: null
       value: retry-
