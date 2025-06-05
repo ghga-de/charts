@@ -21,12 +21,11 @@ spec:
         patternType: literal
         type: topic
     - operations:
-      - Write
-      - Create
+      - Read
       - Describe
       resource:
-        name: retry-
-        patternType: prefix
+        name: retry-test-service-name
+        patternType: literal
         type: topic
     - operations:
       - Write

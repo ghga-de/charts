@@ -104,17 +104,13 @@ _topics:
         - Write
         - Create
   # as consumer
-  deadLetterQueueRetries:
+  deadLetterQueueRetry:
     topic:
       name: null
-      value: retry-
+      value: retry
     kafkaUser:
       operations:
-        - Write
-        - Create
-        - Describe
-      resource:
-        patternType: prefix
+        - Read
   wildcard:
     topic:
       name: wildcard
