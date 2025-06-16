@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Chart Version Diff</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .input-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: end;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2d3748;
+        }
+        
+        input, button {
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .error {
+            background: #fed7d7;
+            border: 1px solid #fc8181;
+            color: #c53030;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .results {
+            margin-top: 30px;
+        }
+        
+        .diff-container {
+            background: #1a202c;
+            border-radius: 12px;
+            padding: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+        }
+        
+        .diff-line {
+            display: block;
+            padding: 2px 0;
+            margin: 0;
+        }
+        
+        .diff-removed {
+            background-color: rgba(248, 113, 113, 0.2);
+            color: #f87171;
+        }
+        
+        .diff-added {
+            background-color: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        
+        .diff-context {
+            color: #9ca3af;
+        }
+        
+        .diff-header {
+            color: #60a5fa;
+            font-weight: bold;
+        }
+        
+        .no-diff {
+            text-align: center;
+            padding: 40px;
+            color: #22c55e;
+            font-size: 18px;
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 12px;
+            border: 2px solid rgba(34, 197, 94, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .input-section {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚢 Helm Chart Version Diff</h1>
+        
+        <div class="input-section">
+            <div class="input-group">
+                <label for="repoUrl">Repository URL:</label>
+                <input type="text" id="repoUrl" value="https://ghga-de.github.io/charts" placeholder="Enter repository URL">
+            </div>
+            <div class="input-group">
+                <label for="version1">Version 1:</label>
+                <input type="text" id="version1" value="13.0.0" placeholder="e.g., 13.0.0">
+            </div>
+            <div class="input-group">
+                <label for="version2">Version 2:</label>
+                <input type="text" id="version2" value="13.0.5" placeholder="e.g., 13.0.5">
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <button onclick="performDiff()" id="diffButton">Compare Versions</button>
+        </div>
+        
+        <div id="results" class="results"></div>
+    </div>
+
+    <script>
+        async function fetchYamlData(url) {
+            // Try multiple CORS proxy services
+            const proxies = [
+                `https://corsproxy.io/?${encodeURIComponent(url)}`,
+                `https://cors-anywhere.herokuapp.com/${url}`,
+                `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`,
+                url // Try direct fetch as fallback
+            ];
+            
+            for (const proxyUrl of proxies) {
+                try {
+                    console.log(`Trying: ${proxyUrl}`);
+                    const response = await fetch(proxyUrl);
+                    if (response.ok) {
+                        const yamlText = await response.text();
+                        return jsyaml.load(yamlText);
+                    }
+                } catch (error) {
+                    console.log(`Failed with ${proxyUrl}:`, error.message);
+                    continue;
+                }
+            }
+            
+            throw new Error('Unable to fetch data. CORS restrictions may be blocking the request. Try running this from a local server or use a browser extension to disable CORS.');
+        }
+
+        function extractChartsForVersion(data, version) {
+            const charts = {};
+            
+            if (data.entries) {
+                Object.entries(data.entries).forEach(([chartName, versions]) => {
+                    const matchingVersion = versions.find(v => v.version === version);
+                    if (matchingVersion) {
+                        charts[chartName] = {
+                            appVersion: matchingVersion.appVersion || 'N/A'
+                        };
+                    }
+                });
+            }
+            
+            return charts;
+        }
+
+        function formatChartData(charts) {
+            return Object.entries(charts)
+                .sort(([a], [b]) => a.localeCompare(b))
+                .map(([name, data]) => `${name}:\n  appVersion: ${data.appVersion}`)
+                .join('\n');
+        }
+
+        function createUnifiedDiff(text1, text2, version1, version2) {
+            const lines1 = text1.split('\n');
+            const lines2 = text2.split('\n');
+            
+            if (text1 === text2) {
+                return null; // No differences
+            }
+            
+            const diff = [];
+            diff.push(`--- Version ${version1}`);
+            diff.push(`+++ Version ${version2}`);
+            
+            // Create a map of all lines for better comparison
+            const allLines = new Set([...lines1, ...lines2]);
+            const chartBlocks = {};
+            
+            // Parse both versions into chart blocks
+            [lines1, lines2].forEach((lines, versionIndex) => {
+                let currentChart = null;
+                lines.forEach(line => {
+                    if (line && !line.startsWith('  ')) {
+                        // This is a chart name line
+                        currentChart = line.replace(':', '');
+                        if (!chartBlocks[currentChart]) {
+                            chartBlocks[currentChart] = [null, null];
+                        }
+                    } else if (currentChart && line.trim()) {
+                        // This is an appVersion line
+                        chartBlocks[currentChart][versionIndex] = line;
+                    }
+                });
+            });
+            
+            // Generate diff output
+            const sortedCharts = Object.keys(chartBlocks).sort();
+            let hasChanges = false;
+            
+            sortedCharts.forEach(chartName => {
+                const [version1Line, version2Line] = chartBlocks[chartName];
+                
+                if (version1Line !== version2Line) {
+                    diff.push(`${chartName}:`);
+                    
+                    if (version1Line && version2Line) {
+                        // Both versions exist but different
+                        diff.push(`-${version1Line}`);
+                        diff.push(`+${version2Line}`);
+                    } else if (version1Line && !version2Line) {
+                        // Only in version 1 (removed)
+                        diff.push(`-${version1Line}`);
+                    } else if (!version1Line && version2Line) {
+                        // Only in version 2 (added)
+                        diff.push(`+${version2Line}`);
+                    }
+                    hasChanges = true;
+                }
+            });
+            
+            return hasChanges ? diff : null;
+        }
+
+        function renderDiff(diffLines) {
+            if (!diffLines) {
+                return '<div class="no-diff">✅ No differences found between versions</div>';
+            }
+            
+            return `<div class="diff-container">${
+                diffLines.map(line => {
+                    let className = 'diff-context';
+                    if (line.startsWith('---') || line.startsWith('+++')) {
+                        className = 'diff-header';
+                    } else if (line.startsWith('-')) {
+                        className = 'diff-removed';
+                    } else if (line.startsWith('+')) {
+                        className = 'diff-added';
+                    }
+                    return `<div class="diff-line ${className}">${escapeHtml(line)}</div>`;
+                }).join('')
+            }</div>`;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        async function performDiff() {
+            const repoUrl = document.getElementById('repoUrl').value.trim();
+            const version1 = document.getElementById('version1').value.trim();
+            const version2 = document.getElementById('version2').value.trim();
+            const resultsDiv = document.getElementById('results');
+            const button = document.getElementById('diffButton');
+            
+            if (!repoUrl || !version1 || !version2) {
+                resultsDiv.innerHTML = '<div class="error">Please fill in all fields</div>';
+                return;
+            }
+            
+            button.disabled = true;
+            resultsDiv.innerHTML = '<div class="loading">🔄 Fetching and comparing chart versions...</div>';
+            
+            try {
+                const indexUrl = `${repoUrl}/index.yaml`;
+                const data = await fetchYamlData(indexUrl);
+                
+                const charts1 = extractChartsForVersion(data, version1);
+                const charts2 = extractChartsForVersion(data, version2);
+                
+                const formatted1 = formatChartData(charts1);
+                const formatted2 = formatChartData(charts2);
+                
+                const diffResult = createUnifiedDiff(formatted1, formatted2, version1, version2);
+                
+                resultsDiv.innerHTML = `
+                    <h3>Comparison Results</h3>
+                    <p><strong>Repository:</strong> ${escapeHtml(repoUrl)}</p>
+                    <p><strong>Comparing:</strong> ${escapeHtml(version1)} ↔ ${escapeHtml(version2)}</p>
+                    ${renderDiff(diffResult)}
+                `;
+                
+            } catch (error) {
+                resultsDiv.innerHTML = `<div class="error">Error: ${escapeHtml(error.message)}</div>`;
+            } finally {
+                button.disabled = false;
+            }
+        }
+
+        // Allow Enter key to trigger comparison
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performDiff();
+            }
+        });
+    </script>
+</body>
+</html>
