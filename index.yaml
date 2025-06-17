@@ -1848,6 +1848,22 @@ entries:
   auth-km-jobs:
   - apiVersion: v2
     appVersion: 0.1.5
+    created: "2025-06-17T11:11:27.536441729Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.2.22
+    description: This job is to refresh the internal and external auth keys.
+    digest: 5b13e49d9ee1cbec5ee4fc403f28dd065e7a037132526e7d39e1dc2831961dd9
+    name: auth-km-jobs
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/auth-km-jobs-2.3.0/auth-km-jobs-2.3.0.tgz
+    version: 2.3.0
+  - apiVersion: v2
+    appVersion: 0.1.5
     created: "2025-06-06T10:53:53.599345847Z"
     dependencies:
     - import-values:
@@ -25103,6 +25119,22 @@ entries:
   remotebackup:
   - apiVersion: v2
     appVersion: 1.2.1
+    created: "2025-06-17T11:11:27.690467317Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.2.22
+    description: remotebackup
+    digest: c776ed4daf6baa69068ec3617bc9b7eb3e58eb3beaf116e78470ce5bbf7cf213
+    name: remotebackup
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/remotebackup-2.3.0/remotebackup-2.3.0.tgz
+    version: 2.3.0
+  - apiVersion: v2
+    appVersion: 1.2.1
     created: "2025-06-17T09:37:49.161658773Z"
     dependencies:
     - import-values:
@@ -25215,22 +25247,6 @@ entries:
     version: 2.1.0-alpha.5
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2025-03-11T10:07:30.537989707Z"
-    dependencies:
-    - import-values:
-      - defaults
-      name: ghga-common
-      repository: https://ghga-de.github.io/charts
-      version: 2.1.12
-    description: remotebackup
-    digest: 71d73ad82e441a86e67c94c69b0834e87aa6ae257267384892ae08dd8be08acf
-    name: remotebackup
-    type: application
-    urls:
-    - https://github.com/ghga-de/charts/releases/download/remotebackup-2.1.0-alpha.4/remotebackup-2.1.0-alpha.4.tgz
-    version: 2.1.0-alpha.4
-  - apiVersion: v2
-    appVersion: 1.1.0
     created: "2025-03-11T08:44:40.921787271Z"
     dependencies:
     - import-values:
@@ -25240,6 +25256,22 @@ entries:
       version: 2.1.11
     description: remotebackup
     digest: e48feb65a63decd2a8c0cf397b645b10c118bcaefafaac16c0678e8042ddadc8
+    name: remotebackup
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/remotebackup-2.1.0-alpha.4/remotebackup-2.1.0-alpha.4.tgz
+    version: 2.1.0-alpha.4
+  - apiVersion: v2
+    appVersion: 1.1.0
+    created: "2025-03-11T10:07:30.537989707Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.1.12
+    description: remotebackup
+    digest: 71d73ad82e441a86e67c94c69b0834e87aa6ae257267384892ae08dd8be08acf
     name: remotebackup
     type: application
     urls:
@@ -31801,4 +31833,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2025-06-17T09:37:49.166268115Z"
+generated: "2025-06-17T11:11:27.694100379Z"
