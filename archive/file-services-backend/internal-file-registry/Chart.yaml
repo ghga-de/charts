@@ -1,5 +1,5 @@
 name: internal-file-registry
-description: This service acts as a registry for the internal location and 
+description: This service acts as a registry for the internal location and
   representation of files.
 type: application
 

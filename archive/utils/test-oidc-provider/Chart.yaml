@@ -1,5 +1,5 @@
 name: test-oidc-provider
-description: A dummy OpenID Connect provider (OP) that can be user for testing 
+description: A dummy OpenID Connect provider (OP) that can be user for testing
   purposes.
 type: application
 
