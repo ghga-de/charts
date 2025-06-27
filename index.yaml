@@ -26578,6 +26578,22 @@ entries:
   state-management:
   - apiVersion: v2
     appVersion: 4.0.1
+    created: "2025-06-27T08:22:57.998547794Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.2.25
+    description: State Management Service
+    digest: 585c1216b9d24150c9f03593babd59e1e5af79e85a2705bd95e6534c3dcd3465
+    name: state-management
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/state-management-13.1.2/state-management-13.1.2.tgz
+    version: 13.1.2
+  - apiVersion: v2
+    appVersion: 4.0.1
     created: "2025-06-26T07:09:29.723724661Z"
     dependencies:
     - import-values:
@@ -28049,6 +28065,23 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/state-management-0.0.1/state-management-0.0.1.tgz
     version: 0.0.1
   test-oidc-provider:
+  - apiVersion: v2
+    appVersion: 1.2.1
+    created: "2025-06-27T08:22:58.13283845Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.2.25
+    description: A dummy OpenID Connect provider (OP) that can be user for testing
+      purposes.
+    digest: 5d39620c1a8548197e124f310de61204a6041e6ee431336f8a5f233750e21b46
+    name: test-oidc-provider
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/test-oidc-provider-13.1.2/test-oidc-provider-13.1.2.tgz
+    version: 13.1.2
   - apiVersion: v2
     appVersion: 1.2.1
     created: "2025-06-26T07:09:29.883552558Z"
@@ -33086,4 +33119,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2025-06-27T08:22:40.253602978Z"
+generated: "2025-06-27T08:22:58.136950368Z"
