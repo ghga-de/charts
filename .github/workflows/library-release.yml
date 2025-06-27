@@ -4,7 +4,7 @@ on:
     types:
       - published
   workflow_run:
-    workflows: [Release Charts]
+    workflows: [pages build and deployment]
     types:
       - completed
   workflow_dispatch:
