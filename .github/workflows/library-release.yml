@@ -4,7 +4,7 @@ on:
     types:
       - published
   workflow_run:
-    workflows: [pages build and deployment]
+    workflows: [Release Charts]
     types:
       - completed
   workflow_dispatch:
@@ -67,6 +67,21 @@ jobs:
 
           echo "Processing charts in directories: archive/ with library version $ghga_common_version"
           echo "GHGA_COMMON_VERSION=$ghga_common_version" >> $GITHUB_ENV
+
+          # Ensure no action "pages build and deployment" is currently in progress
+          # Not possible to do it on workflow call, so we check the status via the GitHub API
+          # Otherwise it will sometimes create unnecessary pull requests
+          for i in {1..10}; do
+            RESPONSE=$(curl -s "https://api.github.com/repos/ghga-de/charts/actions/runs?status=in_progress")
+            RUNS=$(echo "$RESPONSE" | jq '[.workflow_runs[] | select(.name == "pages build and deployment")] | length')
+
+            if [ "$RUNS" -eq 0 ]; then
+                break
+            else
+                echo "There are currently $RUNS in-progress runs of 'pages build and deployment'. Waiting for them to finish..."
+                sleep 5
+            fi
+          done
 
       - name: Bump Chart version and update dependencies
         shell: bash
