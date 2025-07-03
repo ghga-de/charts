@@ -43,11 +43,27 @@ jobs:
       - name: Get most recent release tag
         shell: bash
         run: |
+          # Ensure no action "pages build and deployment" is currently in progress
+          # Not possible to do it on workflow call, so we check the status via the GitHub API
+          # Otherwise it will sometimes create unnecessary pull requests
+          for i in {1..10}; do
+            RESPONSE=$(curl -s "https://api.github.com/repos/ghga-de/charts/actions/runs?status=in_progress")
+            RUNS=$(echo "$RESPONSE" | jq '[.workflow_runs[] | select(.name == "pages build and deployment")] | length')
+
+            if [ "$RUNS" -eq 0 ]; then
+                break
+            else
+                echo "There are currently $RUNS in-progress runs of 'pages build and deployment'. Waiting for them to finish..."
+                sleep 5
+            fi
+          done
+          
           ghga_common=$(curl -s "https://api.github.com/repos/ghga-de/charts/releases?per_page=300" | jq -r 'map(select(.tag_name | startswith("ghga-common"))) | sort_by(.published_at) | reverse | .[0] | .tag_name')
           ghga_common_version=${ghga_common#ghga-common-}
 
           chart_pulled=0
           # Wait until the Helm repository is updated with the new ghga-common version
+          # Not sure if this is needed anymore since we wait until all 'pages build and deployment' actions have completed
           for i in $(seq 1 10); do
               helm repo update
               echo "Attempt $i: pulling ghga/ghga-common version $CHART_VERSION..."
@@ -67,21 +83,6 @@ jobs:
 
           echo "Processing charts in directories: archive/ with library version $ghga_common_version"
           echo "GHGA_COMMON_VERSION=$ghga_common_version" >> $GITHUB_ENV
-
-          # Ensure no action "pages build and deployment" is currently in progress
-          # Not possible to do it on workflow call, so we check the status via the GitHub API
-          # Otherwise it will sometimes create unnecessary pull requests
-          for i in {1..10}; do
-            RESPONSE=$(curl -s "https://api.github.com/repos/ghga-de/charts/actions/runs?status=in_progress")
-            RUNS=$(echo "$RESPONSE" | jq '[.workflow_runs[] | select(.name == "pages build and deployment")] | length')
-
-            if [ "$RUNS" -eq 0 ]; then
-                break
-            else
-                echo "There are currently $RUNS in-progress runs of 'pages build and deployment'. Waiting for them to finish..."
-                sleep 5
-            fi
-          done
 
       - name: Bump Chart version and update dependencies
         shell: bash
