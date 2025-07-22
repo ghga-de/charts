@@ -13,7 +13,7 @@ metadata:
     app.kubernetes.io/version: "0.0.0"
     app: test-service
   annotations:
-    configmap-hash: b7ace94177d50933f2551e0cde60f088dda3f390d348ab677aef30c1668694ff
+    configmap-hash: a6bad14ccef8147af85ca1dcd375e3aa76713e83d87931e6de23bf54d8eb5756
 spec:
   replicas: 1
   revisionHistoryLimit: 1
@@ -26,7 +26,7 @@ spec:
   template:
     metadata:
       annotations:
-        configmap-hash: b7ace94177d50933f2551e0cde60f088dda3f390d348ab677aef30c1668694ff
+        configmap-hash: a6bad14ccef8147af85ca1dcd375e3aa76713e83d87931e6de23bf54d8eb5756
         vault.hashicorp.com/agent-cache-enable: "true"
         vault.hashicorp.com/agent-init-first: "true"
         vault.hashicorp.com/agent-inject: "true"
@@ -103,7 +103,7 @@ spec:
               fi;
               test;
           
-          name: test-service-rest
+          name: test-service
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -136,7 +136,7 @@ spec:
               cpu: 1000m
               memory: 1024M
           volumeMounts:
-            - name: parameters-rest
+            - name: config
               mountPath: /home/appuser/.test.yaml
               subPath: .test.yaml
               readOnly: true
@@ -147,11 +147,11 @@ spec:
               name: cluster-ca-cert
               readOnly: true
       volumes:
-        - name: parameters-rest
+        - name: config
           configMap:
             name: test-service
             items:
-            - key: parameters-rest
+            - key: config
               path: .test.yaml
         - name: kafka-secret
           secret:
