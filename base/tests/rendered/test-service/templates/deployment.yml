@@ -103,6 +103,9 @@ spec:
               fi;
               test;
           
+          env: 
+            - name: TEST_CONFIG_YAML
+              value: /etc/config.yaml
           name: test-service
           securityContext:
             allowPrivilegeEscalation: false
@@ -136,10 +139,10 @@ spec:
               cpu: 1000m
               memory: 1024M
           volumeMounts:
-            - name: config
-              mountPath: /home/appuser/.test.yaml
-              subPath: .test.yaml
+            - mountPath: /etc/config.yaml
+              name: config
               readOnly: true
+              subPath: config.yaml
             - mountPath: "/kafka-secrets/"
               name: kafka-secret
               readOnly: true
@@ -147,12 +150,12 @@ spec:
               name: cluster-ca-cert
               readOnly: true
       volumes:
-        - name: config
-          configMap:
-            name: test-service
+        - configMap:
             items:
             - key: config
-              path: .test.yaml
+              path: config.yaml
+            name: test-service
+          name: config
         - name: kafka-secret
           secret:
             secretName: test-test-service

@@ -7,7 +7,7 @@ metadata:
   namespace: {{ include "common.names.namespace" . | quote }}
 data:
   config: |
-    {{- $config := merge .Values.config -}}
+    {{- $config := .Values.config -}}
     {{- $config := omit $config "db_name" "api_root_path" "service_name" "service_instance_id" -}}  
     {{- $config | toYaml | nindent 4 }}
     {{- include "ghga-common.kafkaTopicsParameters" $ | nindent 2 }}
@@ -23,4 +23,4 @@ data:
     {{- if (include "ghga-common.serviceInstanceId" $) }}
     service_instance_id: {{ include "common.tplvalues.render" (dict "value" (include "ghga-common.serviceInstanceId" $) "context" $) }}
     {{- end }}
-    {{- end }}
+{{- end -}}

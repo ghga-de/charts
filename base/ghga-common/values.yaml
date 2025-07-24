@@ -137,7 +137,7 @@ exports:
 
     sidecars: []
 
-    envVars: null
+    envVars: []
 
     envVarsConfigMap: ""
 
@@ -198,6 +198,14 @@ exports:
     serviceInstanceId: ""
     serviceNameConsumer: ""
     serviceInstanceIdConsumer: ""
+
+    configMap:
+      enabled: true
+      mountPath: /etc/config.yaml
+      subPath: config.yaml
+      envVar:
+        enabled: true
+
     config: {}
 
     configPrefix: ""

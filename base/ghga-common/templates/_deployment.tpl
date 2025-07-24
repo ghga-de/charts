@@ -69,9 +69,7 @@ spec:
           {{- if .Values.args }}
           args: {{- include "common.tplvalues.render" (dict "value" .Values.args "context" $) | nindent 12 }}
           {{- end }}
-          {{- if .Values.envVars }}
-          env: {{ include "common.tplvalues.render" (dict "value" .Values.envVars "context" $) | nindent 12 }}
-          {{- end }}
+          env: {{ include "ghga-common.env-vars" $ | nindent 12 }}
           {{- if or .Values.envVarsConfigMap .Values.envVarsSecret }}
           envFrom:
             {{- if .Values.envVarsConfigMap }}
@@ -105,17 +103,10 @@ spec:
           resources: {{- toYaml .Values.resources | nindent 12 }}
           {{- end }}
           {{- if .Values.lifecycleHooks }}
-          lifecycle: {{- include "common.tplvalues.render" (dict "value" $.Values.lifecycleHooks "context" $) | nindent 12 }}
+          lifecycle: {{- include "common.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
           {{- end }}
           volumeMounts:
-            - name: config
-              {{- if .Values.config.mountPath }}
-              mountPath: {{ .Values.config.mountPath }}
-              {{- else }}
-              mountPath: /home/{{ .Values.config.appuser | default "appuser" }}/.{{ .Values.configPrefix }}.yaml
-              {{- end }}
-              subPath: .{{ .Values.configPrefix }}.yaml
-              readOnly: true
+            {{- include "common.tplvalues.render" (dict "value" (include "ghga-common.configVolumeMount" $ | fromYaml | list) "context" $) | nindent 12 }}
             {{- if .Values.extraVolumeMounts }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
             {{- end }}
@@ -131,12 +122,7 @@ spec:
         {{- include "common.tplvalues.render" (dict "value" $.Values.sidecars "context" $) | nindent 8 }}
         {{- end }}
       volumes:
-        - name: config
-          configMap:
-            name: {{ include "common.names.fullname" $ }}
-            items:
-            - key: config
-              path: .{{ .Values.configPrefix }}.yaml
+        {{- include "common.tplvalues.render" ( dict "value" (include "ghga-common.configVolume" $ | fromYaml | list) "context" $) | nindent 8 }}
         {{- if .Values.extraVolumes }}
         {{- include "common.tplvalues.render" ( dict "value" .Values.extraVolumes "context" $) | nindent 8 }}
         {{- end }}
