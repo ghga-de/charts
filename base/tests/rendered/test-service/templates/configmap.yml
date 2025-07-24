@@ -21,4 +21,3 @@ data:
     api_root_path: /path/v1/test
     db_name: test
     service_name: test-service-name
-    service_instance_id: test-service-instance-id
