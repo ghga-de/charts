@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: test-cronjob-test-job
+  name: test-job
   namespace: "test"
 data:
   config: |

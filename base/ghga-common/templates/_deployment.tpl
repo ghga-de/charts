@@ -69,7 +69,10 @@ spec:
           {{- if .Values.args }}
           args: {{- include "common.tplvalues.render" (dict "value" .Values.args "context" $) | nindent 12 }}
           {{- end }}
-          env: {{ include "ghga-common.env-vars" $ | nindent 12 }}
+          {{- $envVars := include "ghga-common.env-vars" $ | fromYaml | dig "envVars" list -}}
+          {{- if $envVars -}}
+          env: {{- include "common.tplvalues.render" (dict "value" $envVars "context" $) | nindent 12 }}
+          {{- end }}
           {{- if or .Values.envVarsConfigMap .Values.envVarsSecret }}
           envFrom:
             {{- if .Values.envVarsConfigMap }}

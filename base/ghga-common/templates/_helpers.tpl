@@ -43,5 +43,6 @@ readOnly: true
 {{- end -}}
 {{- end -}}
 {{- define "ghga-common.env-vars" -}}
-    {{- .Values.configMap.envVar.enabled | ternary (append .Values.envVars (dict "name" (print .Values.configPrefix "_CONFIG_YAML" | upper) "value" .Values.configMap.mountPath)) .Values.envVars | toYaml}}
+{{- $envVars := .Values.configMap.envVar.enabled | ternary (append .Values.envVars (dict "name" (print .Values.configPrefix "_CONFIG_YAML" | upper) "value" .Values.configMap.mountPath)) .Values.envVars }}
+{{- dict "envVars" $envVars | toYaml -}}
 {{- end -}}

@@ -102,8 +102,7 @@ spec:
                 done;
               fi;
               test;
-          
-          env: 
+          env:
             - name: TEST_CONFIG_YAML
               value: /etc/config.yaml
           name: test-service

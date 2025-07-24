@@ -9,6 +9,12 @@ cronSchedule: "0 0 1 1 0"
 config:
   foo: bar
 
+configMap:
+  mountPath: /home/appuser/config.yaml
+  subPath: config.yaml
+  envVar:
+    enabled: false
+
 cronjob:
   enabled: true
 
