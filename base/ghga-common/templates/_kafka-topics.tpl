@@ -63,7 +63,7 @@ spec:
     {{- $topicValue := list $topicValue.topic.value -}}
     {{- $kafkaUser = merge $kafkaUser (dict "resource" (dict "name" (join "" $topicValue))) -}}
     {{- else }}
-    {{- $aclEntry = hasKey . "resource" | ternary (merge $aclEntry .) (merge $aclEntry (dict "resource" (dict "patternType" "literal" "type" "group" "name" ($.Values.topicPrefix | empty | ternary $.Values.serviceName (print $.Values.topicPrefix "-" $.Values.serviceName))))) -}}
+    {{- $topicValue := $.Values.topicPrefix | empty | ternary (list $topicValue.topic.value) (list $.Values.topicPrefix "-" $topicValue.topic.value) -}}
     {{- $kafkaUser = merge $kafkaUser (dict "resource" (dict "name" (join "" $topicValue))) -}}
     {{- end }}
     {{- $topicsACL = append $topicsACL $kafkaUser -}}
@@ -73,7 +73,7 @@ spec:
     {{- with .Values._consumerGroup -}}
     {{- $consumerGroupACL := list -}}
     {{- $aclEntry := hasKey . "operations" | ternary . (dict "operations" (list "Read")) -}}
-    {{- $aclEntry = hasKey . "resource" | ternary (merge $aclEntry .) (merge $aclEntry (dict "resource" (dict "patternType" "literal" "type" "group" "name" (print $.Values.topicPrefix "-" $.Values.serviceName)))) -}}
+    {{- $aclEntry = hasKey . "resource" | ternary (merge $aclEntry .) (merge $aclEntry (dict "resource" (dict "patternType" "literal" "type" "group" "name" ($.Values.topicPrefix | empty | ternary $.Values.serviceName (print $.Values.topicPrefix "-" $.Values.serviceName))))) -}}
     {{- $consumerGroupACL = append $consumerGroupACL $aclEntry -}}
     {{- include "common.tplvalues.render" (dict "value" $consumerGroupACL "context" $) | nindent 4 }}
     {{- end }}
