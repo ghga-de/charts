@@ -63,7 +63,7 @@ spec:
     {{- $topicValue := list $topicValue.topic.value -}}
     {{- $kafkaUser = merge $kafkaUser (dict "resource" (dict "name" (join "" $topicValue))) -}}
     {{- else }}
-    {{- $topicValue := $.Values.topicPrefix | empty | ternary (list $topicValue.topic.value) (list $.Values.topicPrefix "-" $topicValue.topic.value) -}}
+    {{- $aclEntry = hasKey . "resource" | ternary (merge $aclEntry .) (merge $aclEntry (dict "resource" (dict "patternType" "literal" "type" "group" "name" ($.Values.topicPrefix | empty | ternary $.Values.serviceName (print $.Values.topicPrefix "-" $.Values.serviceName))))) -}}
     {{- $kafkaUser = merge $kafkaUser (dict "resource" (dict "name" (join "" $topicValue))) -}}
     {{- end }}
     {{- $topicsACL = append $topicsACL $kafkaUser -}}
