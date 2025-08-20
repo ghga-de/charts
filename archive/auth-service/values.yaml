@@ -9,7 +9,7 @@ configPrefix: auth_service
 apiBasePath: /auth-ext/
 # Name of the database
 mongodb:
-  dbName: auth-servicex§
+  dbName: auth-service
 # This parameter is used as Kafka's group id
 serviceName: auth-consumer
 
