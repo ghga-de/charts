@@ -1,0 +1,40 @@
+name: Update Library Chart Development Mode
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  update-charts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.12.0
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+        # New version of ruamel.yaml contains fix for https://sourceforge.net/p/ruamel-yaml/tickets/529/
+        # However, this adds a trailing white space to the Chart.yaml file, which is not compatible with the linter.
+      - name: Install dependencies for scripts
+        shell: bash
+        run: pip install semver ruamel.yaml==0.18.12 requests
+
+      - name: Bump Chart version and update dependencies
+        shell: bash
+        run: |
+          export CHART_DIR=archive/
+          export DEV=true
+          python ./scripts/library_update.py
+
+      - name: Update branch
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Apply automatic changes"
