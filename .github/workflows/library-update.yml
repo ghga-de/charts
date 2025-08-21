@@ -2,6 +2,8 @@ name: Update Library Chart Development Mode
 
 on:
   push:
+    branches:
+      - "library/**"
     branches-ignore:
       - main
 
