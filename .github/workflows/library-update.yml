@@ -30,9 +30,7 @@ jobs:
       - name: Bump Chart version and update dependencies
         shell: bash
         run: |
-          export CHART_DIR=archive/
-          export DEV=true
-          python ./scripts/library_update.py
+          CHART_DIR=archive/ DEV=true python ./scripts/library_update.py
 
       - name: Update branch
         uses: stefanzweifel/git-auto-commit-action@v5
