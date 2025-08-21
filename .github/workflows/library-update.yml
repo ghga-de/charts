@@ -2,8 +2,8 @@ name: Update Library Chart Development Mode
 
 on:
   push:
-    branches-ignore:
-      - main
+    branches:
+      - "library/**"
 
 jobs:
   update-charts:
