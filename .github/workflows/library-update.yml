@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - "library/**"
-    branches-ignore:
-      - main
 
 jobs:
   update-charts:
