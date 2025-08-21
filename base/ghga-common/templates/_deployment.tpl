@@ -101,9 +101,6 @@ spec:
           {{- if and .Values.startupProbe.enabled (omit .Values.startupProbe "enabled") }}
           startupProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.startupProbe "enabled") "context" $) | nindent 12 }}
           {{- end }}
-          {{- if .Values.resources }}
-          resources: {{- toYaml .Values.resources | nindent 12 }}
-          {{- end }}
           {{- if .Values.lifecycleHooks }}
           lifecycle: {{- include "common.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
           {{- end }}
