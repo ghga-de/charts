@@ -3,7 +3,7 @@ name: Update Library Chart Development Mode
 on:
   push:
     branches:
-      - "library/**"
+      - "ghga-common/**"
 
 jobs:
   update-charts:
