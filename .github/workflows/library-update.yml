@@ -36,3 +36,23 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Apply automatic changes"
+  prepare-release:
+    runs-on: ubuntu-latest
+    needs: update-charts
+    if: startsWith(github.base_ref, 'ghga-common/') && contains(github.event.pull_request.labels.*.name, 'releasable')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Revert previous development mode changes
+        shell: bash
+        run: |
+          git reset --hard HEAD
+          git checkout HEAD -- base/
+
+      - name: Update branch
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Apply automatic changes"
