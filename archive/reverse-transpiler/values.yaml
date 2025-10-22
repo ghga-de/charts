@@ -39,6 +39,13 @@ config:
     publications: Publication
 
 cmd: rts run-rest
+
+initContainers:
+- name: migrate-db
+  command: [sh, -c]
+  args:
+    - rts migrate-db
+
 # cmd: rts consume-events
 
 _topics:

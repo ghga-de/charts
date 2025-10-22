@@ -82,6 +82,12 @@ httpRoute:
 
 topicPrefix: prefix
 
+initContainers:
+- name: init-test
+  command: [sh, -c]
+  args:
+    - do_the_init
+
 kafkaUser:
   enabled: true
 
