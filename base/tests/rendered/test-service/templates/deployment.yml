@@ -89,7 +89,6 @@ spec:
       
       shareProcessNamespace: true
       initContainers:
-        
         - name: init-test
           image: docker.io/test:0.0.0
           imagePullPolicy: IfNotPresent

@@ -1,6 +1,6 @@
 {{- define "ghga-common.initContainers" -}}
 {{- if .Values.initContainers -}}
-{{- range $index, $container := .Values.initContainers }}
+{{- range $index, $container := .Values.initContainers -}}
 - name: {{ $container.name | default (printf "init-%d" $index) }}
   image: {{ $container.image | default (include "common.images.image" (dict "imageRoot" $.Values.image "global" $.Values.global "chart" $.Chart)) }}
   imagePullPolicy: {{ $container.imagePullPolicy | default (eq $.Values.image.tag "latest" | ternary "Always" "IfNotPresent") $.Values.image.pullPolicy }}
