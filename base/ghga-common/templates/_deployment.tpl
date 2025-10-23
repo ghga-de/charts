@@ -56,7 +56,7 @@ spec:
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets: {{- include "common.tplvalues.render" (dict "value" .Values.imagePullSecrets "context" $) | nindent 8 }}
       {{- end }}
-      {{- if .Values.initContainers }}
+      {{- if or .Values.initContainers .Values.migrationInitContainer.enabled }}
       initContainers:
       {{- include "ghga-common.initContainers" . | nindent 8 }}
       {{- end }}

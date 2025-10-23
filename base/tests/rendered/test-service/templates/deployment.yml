@@ -89,6 +89,30 @@ spec:
       
       shareProcessNamespace: true
       initContainers:
+        - name: migration
+          image: docker.io/test:0.0.0
+          imagePullPolicy: IfNotPresent
+          command:
+            do_the_migration
+          env:
+            - name: TEST_CONFIG_YAML
+              value: /etc/config.yaml
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+            seccompProfile:
+              type: RuntimeDefault
+          volumeMounts:
+            - mountPath: /etc/config.yaml
+              name: config
+              readOnly: true
+              subPath: config.yaml
+        
         - name: init-test
           image: docker.io/test:0.0.0
           imagePullPolicy: IfNotPresent
@@ -115,6 +139,8 @@ spec:
               name: config
               readOnly: true
               subPath: config.yaml
+        
+        
       restartPolicy: Always
       enableServiceLinks: true
       containers:

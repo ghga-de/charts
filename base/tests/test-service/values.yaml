@@ -88,6 +88,10 @@ initContainers:
   args:
     - do_the_init
 
+migrationInitContainer:
+ enabled: true
+ cmd: do_the_migration
+
 kafkaUser:
   enabled: true
 
