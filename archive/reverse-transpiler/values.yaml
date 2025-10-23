@@ -42,7 +42,8 @@ cmd: rts run-rest
 
 migrationInitContainer:
  enabled: false
- cmd: rts migrate-db
+ cmd: 
+  - rts migrate-db
 
 # cmd: rts consume-events
 
