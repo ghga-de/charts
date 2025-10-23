@@ -1,6 +1,6 @@
 name: data-portal-ui
-description: The Metadata Search Service is a service for providing a unified search
-  interface over a metadata store.
+description: The Metadata Search Service is a service for providing a unified 
+  search interface over a metadata store.
 type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
@@ -21,6 +21,6 @@ apiVersion: v2
 dependencies:
 - name: ghga-common
   version: 2.5.10
-  repository: https://ghga-de.github.io/charts
+  repository: file://../../base/ghga-common
   import-values:
   - defaults
