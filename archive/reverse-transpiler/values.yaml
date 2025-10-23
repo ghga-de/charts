@@ -41,7 +41,6 @@ config:
 cmd: rts run-rest
 
 migrationInitContainer:
- enabled: false
  cmd: 
   - rts migrate-db
 
