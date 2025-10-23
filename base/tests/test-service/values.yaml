@@ -90,7 +90,8 @@ initContainers:
 
 migrationInitContainer:
  enabled: true
- cmd: do_the_migration
+ cmd: 
+  - do_the_migration
 
 kafkaUser:
   enabled: true

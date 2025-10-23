@@ -93,7 +93,7 @@ spec:
           image: docker.io/test:0.0.0
           imagePullPolicy: IfNotPresent
           command:
-            do_the_migration
+            - do_the_migration
           env:
             - name: TEST_CONFIG_YAML
               value: /etc/config.yaml
