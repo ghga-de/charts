@@ -136,7 +136,7 @@ spec:
                   fi;
                 done;
               fi;
-              sh -c;
+              do_the_init;
           
           env:
             - name: TEST_CONFIG_YAML

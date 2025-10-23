@@ -84,13 +84,14 @@ topicPrefix: prefix
 
 initContainers:
 - name: init-test
-  command: [sh, -c]
+  cmd: [sh, -c]
   args:
     - do_the_init
 
 migrationInitContainer:
  enabled: true
- cmd: 
+ cmd: [sh, -c]
+ args:
   - do_the_migration
 
 kafkaUser:
