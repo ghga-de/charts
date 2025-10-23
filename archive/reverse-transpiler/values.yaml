@@ -42,7 +42,10 @@ cmd: rts run-rest
 
 migrationInitContainer:
  cmd: 
-  - rts migrate-db
+  - sh
+  - c
+ args:
+  - rts migrate-db 
 
 # cmd: rts consume-events
 
