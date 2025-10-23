@@ -21,9 +21,9 @@
   image: {{ $container.image | default (include "common.images.image" (dict "imageRoot" $.Values.image "global" $.Values.global "chart" $.Chart)) }}
   imagePullPolicy: {{ $container.imagePullPolicy | default (eq $.Values.image.tag "latest" | ternary "Always" "IfNotPresent") $.Values.image.pullPolicy }}
   {{- if $container.command }}
-  command: {{- toYaml $container.command | nindent 4 }}
-  {{- end }}
-  {{- if $container.args }}
+  {{- $cmdString := $container.command | join " " }}
+  {{- include "ghga-common.command-args" (list $ $cmdString)  | nindent 2 }}
+  {{- else if $container.args }}
   args: {{- toYaml $container.args | nindent 4 }}
   {{- end }}
   {{- if $container.env }}
