@@ -1,6 +1,6 @@
 name: file-ingest
-description: A lightweight service to propagate file upload metadata to the GHGA
-  file backend services
+description: A lightweight service to propagate file upload metadata to the GHGA file
+  backend services
 type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
@@ -21,6 +21,6 @@ apiVersion: v2
 dependencies:
 - name: ghga-common
   version: 2.5.10
-  repository: file://../../base/ghga-common
+  repository: https://ghga-de.github.io/charts
   import-values:
   - defaults

@@ -1,6 +1,5 @@
 name: encryption-key-store
-description: providing crypt4gh file secret extraction, storage and envelope 
-  generation
+description: providing crypt4gh file secret extraction, storage and envelope generation
 type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
@@ -21,6 +20,6 @@ apiVersion: v2
 dependencies:
 - name: ghga-common
   version: 2.5.10
-  repository: file://../../base/ghga-common
+  repository: https://ghga-de.github.io/charts
   import-values:
   - defaults
