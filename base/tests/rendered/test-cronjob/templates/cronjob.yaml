@@ -74,7 +74,7 @@ spec:
             - -c
             args:
             - if [ -d "/vault/secrets" ]; then for f in /vault/secrets/*; do if [ -f "$f" ]; then
-              . "$f"; fi; done; fi; sleep 100000000
+              . "$f"; fi; done; fi; sleep 100000000;
             securityContext:
               allowPrivilegeEscalation: false
               capabilities:
