@@ -8,7 +8,7 @@ prepends it with a failsafe routine that injects all existing secrets from vault
 {{- $argsList := (kindOf (index . 1) | eq "string") | ternary (list (index . 1)) (index . 1) }}
 {{- dict "command" (index . 2) | toYaml }}
 {{- if (index . 0).Values.vaultAgent.enabled }}
-{{- $prependedArg := (cat "if [ -d /vault/secrets ]; then for f in /vault/secrets/*; do if [ -f \"$f\" ]; then . \"$f\"; fi; done; fi;" (first $argsList)) }}
+{{- $prependedArg := (cat "if [ -d \"/vault/secrets\" ]; then for f in /vault/secrets/*; do if [ -f \"$f\" ]; then . \"$f\"; fi; done; fi;" (first $argsList)) }}
 {{- if (rest $argsList)}}
 {{ $argsList = append (list $prependedArg) (rest $argsList) }}
 {{- else }}

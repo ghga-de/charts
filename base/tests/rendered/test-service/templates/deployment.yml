@@ -97,7 +97,7 @@ spec:
           - sh
           - -c
           args:
-          - if [ -d /vault/secrets ]; then for f in /vault/secrets/*; do if [ -f "$f" ]; then
+          - if [ -d "/vault/secrets" ]; then for f in /vault/secrets/*; do if [ -f "$f" ]; then
             . "$f"; fi; done; fi; do_the_migration
           env:
             - name: TEST_CONFIG_YAML
@@ -124,7 +124,7 @@ spec:
           - sh
           - -c
           args:
-          - if [ -d /vault/secrets ]; then for f in /vault/secrets/*; do if [ -f "$f" ]; then
+          - if [ -d "/vault/secrets" ]; then for f in /vault/secrets/*; do if [ -f "$f" ]; then
             . "$f"; fi; done; fi; do_the_init
           env:
             - name: TEST_CONFIG_YAML
@@ -153,7 +153,7 @@ spec:
           - sh
           - -c
           args:
-          - if [ -d /vault/secrets ]; then for f in /vault/secrets/*; do if [ -f "$f" ]; then
+          - if [ -d "/vault/secrets" ]; then for f in /vault/secrets/*; do if [ -f "$f" ]; then
             . "$f"; fi; done; fi; test
           env:
             - name: TEST_CONFIG_YAML
