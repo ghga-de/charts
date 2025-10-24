@@ -12,29 +12,15 @@
   "env" .Values.migrationInitContainer.env
   "resources" .Values.migrationInitContainer.resources
   "volumeMounts" .Values.migrationInitContainer.volumeMounts
-}}
-{{- $initContainers = prepend $initContainers $migrationContainer }}
-{{- end }}
+-}}
+{{- $initContainers = prepend $initContainers $migrationContainer -}}
+{{- end -}}
 {{- if $initContainers -}}
-{{- range $index, $container := $initContainers -}}
+{{- range $index, $container := $initContainers }}
 - name: {{ $container.name | default (printf "init-%d" $index) }}
   image: {{ $container.image | default (include "common.images.image" (dict "imageRoot" $.Values.image "global" $.Values.global "chart" $.Chart)) }}
-  imagePullPolicy: {{ $container.imagePullPolicy | default (eq $.Values.image.tag "latest" | ternary "Always" "IfNotPresent") $.Values.image.pullPolicy }}
-  {{- if $container.cmd }}
-  {{- if and $.Values.vaultAgent.enabled $container.args }}
-  {{- $argsList := (kindOf $container.args | eq "string") | ternary (list $container.args) $container.args }}
-  {{- $argsStr := $argsList | join " " }}
-  {{- include "ghga-common.command-args" (list $ $argsStr $.Values.command) | nindent 2 }}
-  {{- else }}
-  command: {{- $container.cmd | toYaml | nindent 4 }}
-  {{- if $container.args }}
-  args: {{- toYaml $container.args | nindent 4 }}
-  {{- end }}
-  {{- end }}
-  {{- else if $container.args }}
-  {{- $argsString := $container.args | join " " }}
-  {{- include "ghga-common.command-args" (list $ $argsString $.Values.command) | nindent 2 }}
-  {{- end }}
+  imagePullPolicy: {{ $container.imagePullPolicy | default (eq $.Values.image.tag "latest" | ternary "Always" "IfNotPresent") $.Values.image.pullPolicy }} 
+  {{- include "ghga-common.command-args" (list $ $container.args $.Values.command) | nindent 2 }}
   {{- if $container.env }}
   env: {{- toYaml $container.env | nindent 4 }}
   {{- end }}
@@ -56,7 +42,6 @@
     {{- if $container.volumeMounts }}
     {{- include "common.tplvalues.render" (dict "value" $container.volumeMounts "context" $) | nindent 4 }}
     {{- end }}
-
-{{ end }}
+{{- end -}}
 {{- end -}}
 {{- end -}}

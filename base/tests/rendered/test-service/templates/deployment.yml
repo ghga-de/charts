@@ -88,22 +88,18 @@ spec:
       serviceAccountName: test-service
       
       shareProcessNamespace: true
-      initContainers:
+      initContainers: 
+        
         - name: migration
           image: docker.io/test:0.0.0
           imagePullPolicy: IfNotPresent
-          command: ["sh", "-c"]
-          
+          command:
+          - sh
+          - -c
           args:
-            - if [ -d "/vault/secrets" ]; then
-                for f in /vault/secrets/*; do
-                  if [ -f "$f" ]; then
-                    . "$f";
-                  fi;
-                done;
-              fi;
-              do_the_migration;
-          
+          - if [ -d /vault/secrets ]; then for f in /vault/secrets/*; do if [ -f "$f" ]; then
+            . "$f"; fi; done; fi
+          - do_the_migration
           env:
             - name: TEST_CONFIG_YAML
               value: /etc/config.yaml
@@ -122,22 +118,16 @@ spec:
               name: config
               readOnly: true
               subPath: config.yaml
-        
         - name: init-test
           image: docker.io/test:0.0.0
           imagePullPolicy: IfNotPresent
-          command: ["sh", "-c"]
-          
+          command:
+          - sh
+          - -c
           args:
-            - if [ -d "/vault/secrets" ]; then
-                for f in /vault/secrets/*; do
-                  if [ -f "$f" ]; then
-                    . "$f";
-                  fi;
-                done;
-              fi;
-              do_the_init;
-          
+          - if [ -d /vault/secrets ]; then for f in /vault/secrets/*; do if [ -f "$f" ]; then
+            . "$f"; fi; done; fi
+          - do_the_init
           env:
             - name: TEST_CONFIG_YAML
               value: /etc/config.yaml
@@ -156,24 +146,18 @@ spec:
               name: config
               readOnly: true
               subPath: config.yaml
-        
-        
       restartPolicy: Always
       enableServiceLinks: true
       containers:
         - image: docker.io/test:0.0.0
           imagePullPolicy: IfNotPresent
-          command: ["sh", "-c"]
-          
+          command:
+          - sh
+          - -c
           args:
-            - if [ -d "/vault/secrets" ]; then
-                for f in /vault/secrets/*; do
-                  if [ -f "$f" ]; then
-                    . "$f";
-                  fi;
-                done;
-              fi;
-              test;
+          - if [ -d /vault/secrets ]; then for f in /vault/secrets/*; do if [ -f "$f" ]; then
+            . "$f"; fi; done; fi
+          - test
           env:
             - name: TEST_CONFIG_YAML
               value: /etc/config.yaml
