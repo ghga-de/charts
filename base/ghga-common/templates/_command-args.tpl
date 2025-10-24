@@ -5,7 +5,7 @@ prepends it with a failsafe routine that injects all existing secrets from vault
 @param The original command to run the microservice
 */}}
 {{- define "ghga-common.command-args" -}}
-command: ["sh", "-c"]
+command: {{ index . 2 }}
 {{ if (index . 0).Values.vaultAgent.enabled }}
 args:
   - if [ -d "/vault/secrets" ]; then

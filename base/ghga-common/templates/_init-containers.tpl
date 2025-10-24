@@ -24,7 +24,7 @@
   {{- if and $.Values.vaultAgent.enabled $container.args }}
   {{- $argsList := (kindOf $container.args | eq "string") | ternary (list $container.args) $container.args }}
   {{- $argsStr := $argsList | join " " }}
-  {{- include "ghga-common.command-args" (list $ $argsStr) | nindent 2 }}
+  {{- include "ghga-common.command-args" (list $ $argsStr $.Values.command) | nindent 2 }}
   {{- else }}
   command: {{- $container.cmd | toYaml | nindent 4 }}
   {{- if $container.args }}
@@ -33,7 +33,7 @@
   {{- end }}
   {{- else if $container.args }}
   {{- $argsString := $container.args | join " " }}
-  {{- include "ghga-common.command-args" (list $ $argsString) | nindent 2 }}
+  {{- include "ghga-common.command-args" (list $ $argsString $.Values.command) | nindent 2 }}
   {{- end }}
   {{- if $container.env }}
   env: {{- toYaml $container.env | nindent 4 }}
