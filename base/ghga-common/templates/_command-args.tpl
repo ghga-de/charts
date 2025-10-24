@@ -7,13 +7,13 @@ prepends it with a failsafe routine that injects all existing secrets from vault
 {{- define "ghga-common.command-args" -}}
 {{- $argsList := (kindOf (index . 1) | eq "string") | ternary (list (index . 1)) (index . 1) }}
 {{- dict "command" (index . 2) | toYaml }}
-{{- if (index . 0).Values.vaultAgent.enabled }}
+{{- if (index . 0).Values.vaultAgent.enabled -}}
 {{- $prependedArg := (print "if [ -d \"/vault/secrets\" ]; then for f in /vault/secrets/*; do if [ -f \"$f\" ]; then . \"$f\"; fi; done; fi; " (first $argsList) ";") }}
-{{- if (rest $argsList)}}
+{{- if (rest $argsList) -}}
 {{ $argsList = append (list $prependedArg) (rest $argsList) }}
 {{- else }}
 {{ $argsList = list $prependedArg }}
 {{- end }}
 {{- end }}
-{{- dict "args" $argsList | toYaml }}
+{{ dict "args" $argsList | toYaml }}
 {{- end -}}

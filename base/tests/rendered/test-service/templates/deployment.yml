@@ -96,6 +96,7 @@ spec:
           command:
           - sh
           - -c
+          
           args:
           - if [ -d "/vault/secrets" ]; then for f in /vault/secrets/*; do if [ -f "$f" ]; then
             . "$f"; fi; done; fi; do_the_migration;
@@ -123,6 +124,7 @@ spec:
           command:
           - sh
           - -c
+          
           args:
           - if [ -d "/vault/secrets" ]; then for f in /vault/secrets/*; do if [ -f "$f" ]; then
             . "$f"; fi; done; fi; do_the_init;
@@ -152,6 +154,7 @@ spec:
           command:
           - sh
           - -c
+          
           args:
           - if [ -d "/vault/secrets" ]; then for f in /vault/secrets/*; do if [ -f "$f" ]; then
             . "$f"; fi; done; fi; test;
