@@ -53,11 +53,8 @@ spec:
           image: {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global "chart" .Chart ) }}
           imagePullPolicy: {{ default (eq .Values.image.tag "latest" | ternary "Always" "IfNotPresent") .Values.image.pullPolicy }}
           {{- include "ghga-common.command-args" (list $ .Values.cmd .Values.command)  | nindent 10 }}
-          {{- if .Values.args }}
-          args: {{- include "common.tplvalues.render" (dict "value" .Values.args "context" $) | nindent 12 }}
-          {{- end }}
           {{- $envVars := include "ghga-common.env-vars" $ | fromYaml | dig "envVars" list -}}
-          {{- if $envVars -}}
+          {{- if $envVars }}
           env: {{- include "common.tplvalues.render" (dict "value" $envVars "context" $) | nindent 12 }}
           {{- end }}
           volumeMounts:
