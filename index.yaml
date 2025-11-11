@@ -37783,6 +37783,22 @@ entries:
   reverse-transpiler:
   - apiVersion: v2
     appVersion: 2.1.0
+    created: "2025-11-11T12:23:09.40477865Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.6.0
+    description: Reverse Transpiler Service
+    digest: 0a27cd0298e2cbb63be3810e9b2383e8e913f0b806f23d49821a0c40ea259cd3
+    name: reverse-transpiler
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/reverse-transpiler-18.1.0/reverse-transpiler-18.1.0.tgz
+    version: 18.1.0
+  - apiVersion: v2
+    appVersion: 2.1.0
     created: "2025-11-07T13:40:42.423334421Z"
     dependencies:
     - import-values:
@@ -47987,4 +48003,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2025-11-11T08:49:07.785801078Z"
+generated: "2025-11-11T12:23:09.410038254Z"
