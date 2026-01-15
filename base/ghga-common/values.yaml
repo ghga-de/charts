@@ -99,6 +99,8 @@ exports:
 
     updateStrategy:
       type: RollingUpdate
+      rollingUpdate:
+        maxUnavailable: 0 # make sure at least one pod is available when rolling out new deployment
 
     podRestartPolicy: Always
 
