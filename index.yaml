@@ -9091,6 +9091,23 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/data-portal-ui-0.0.1/data-portal-ui-0.0.1.tgz
     version: 0.0.1
+  datahub-monitor:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2026-01-23T12:33:34.153288486Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.6.2
+    description: datahub-monitor
+    digest: 9d68cf9442e23a228fecb48fa8328fb306be2282492cdf6410405d38e2f7b5bb
+    name: datahub-monitor
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/datahub-monitor-0.1.0/datahub-monitor-0.1.0.tgz
+    version: 0.1.0
   dataset-information:
   - apiVersion: v2
     appVersion: 4.1.1
@@ -50894,4 +50911,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2026-01-21T10:52:16.480669719Z"
+generated: "2026-01-23T12:33:34.158608858Z"
