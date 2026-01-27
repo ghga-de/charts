@@ -3,6 +3,22 @@ entries:
   access-request:
   - apiVersion: v2
     appVersion: 6.1.2
+    created: "2026-01-27T10:42:53.371437324Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: Access request service
+    digest: 87cfdfbc9363a111914c8798211ae4cef590f2d409367c0a347443ac813a9563
+    name: access-request
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/access-request-19.1.6/access-request-19.1.6.tgz
+    version: 19.1.6
+  - apiVersion: v2
+    appVersion: 6.1.2
     created: "2026-01-27T08:50:48.908409334Z"
     dependencies:
     - import-values:
@@ -3199,6 +3215,23 @@ entries:
   auth-service:
   - apiVersion: v2
     appVersion: 8.2.1
+    created: "2026-01-27T10:42:53.610995519Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: The auth_adapter subpackage contains the authentication service used
+      by the API gateway via the ExtAuth protocol.
+    digest: 6c8de1989a80a3dedee53a6eae1c0f108c0f4f36bec15e6bebd97cf737a7404a
+    name: auth-service
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/auth-service-19.1.6/auth-service-19.1.6.tgz
+    version: 19.1.6
+  - apiVersion: v2
+    appVersion: 8.2.1
     created: "2026-01-27T08:50:49.083739495Z"
     dependencies:
     - import-values:
@@ -6273,6 +6306,23 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/auth-service-0.0.2/auth-service-0.0.2.tgz
     version: 0.0.2
   data-portal-ui:
+  - apiVersion: v2
+    appVersion: 2.3.3
+    created: "2026-01-27T10:42:53.913023452Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: The Metadata Search Service is a service for providing a unified
+      search interface over a metadata store.
+    digest: b4be65e496766b35034cea74c0bc99d6809b26bd0b5e2bb5ca69e9cec0fd714f
+    name: data-portal-ui
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/data-portal-ui-19.1.6/data-portal-ui-19.1.6.tgz
+    version: 19.1.6
   - apiVersion: v2
     appVersion: 2.3.3
     created: "2026-01-27T08:50:49.278302997Z"
@@ -9411,6 +9461,22 @@ entries:
   dataset-information:
   - apiVersion: v2
     appVersion: 4.1.1
+    created: "2026-01-27T10:42:54.13316645Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: Dataset Information Service
+    digest: 5ed7be394d334aad5d453b2468c86942b74acf275c6d41e8c58686f264057d43
+    name: dataset-information
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/dataset-information-19.1.6/dataset-information-19.1.6.tgz
+    version: 19.1.6
+  - apiVersion: v2
+    appVersion: 4.1.1
     created: "2026-01-27T08:50:49.478461017Z"
     dependencies:
     - import-values:
@@ -11636,6 +11702,22 @@ entries:
   dead-letter-queue:
   - apiVersion: v2
     appVersion: 3.0.2
+    created: "2026-01-27T10:42:54.365878892Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: DLQ service
+    digest: f4be8e6dd6b8b04dca27be204c2d82756c9b8a74b71333af54296e9561cc840e
+    name: dead-letter-queue
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/dead-letter-queue-19.1.6/dead-letter-queue-19.1.6.tgz
+    version: 19.1.6
+  - apiVersion: v2
+    appVersion: 3.0.2
     created: "2026-01-27T08:50:49.655086856Z"
     dependencies:
     - import-values:
@@ -13268,6 +13350,23 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/dlq-service-11.0.0/dlq-service-11.0.0.tgz
     version: 11.0.0
   download-controller:
+  - apiVersion: v2
+    appVersion: 8.0.9
+    created: "2026-01-27T10:42:54.678819441Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: This service implements the GA4GH DRS, while providing the option
+      to serve files from localstack S3.
+    digest: 650509484d246a1658e39d287908093182363509e05d4f1c0a79ca45bcf1e47d
+    name: download-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/download-controller-19.1.6/download-controller-19.1.6.tgz
+    version: 19.1.6
   - apiVersion: v2
     appVersion: 8.0.9
     created: "2026-01-27T08:50:49.815174276Z"
@@ -16349,6 +16448,22 @@ entries:
   encryption-key-store:
   - apiVersion: v2
     appVersion: 4.0.5
+    created: "2026-01-27T10:42:54.922663287Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: providing crypt4gh file secret extraction, storage and envelope generation
+    digest: afd2865cde4547090ef8a1013894d2398d72a0d9b9df1bcc93a3e9c7524bce6e
+    name: encryption-key-store
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/encryption-key-store-19.1.6/encryption-key-store-19.1.6.tgz
+    version: 19.1.6
+  - apiVersion: v2
+    appVersion: 4.0.5
     created: "2026-01-27T08:50:49.995617828Z"
     dependencies:
     - import-values:
@@ -19042,6 +19157,23 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/encryption-key-store-0.0.2/encryption-key-store-0.0.2.tgz
     version: 0.0.2
   file-ingest:
+  - apiVersion: v2
+    appVersion: 9.0.7
+    created: "2026-01-27T10:42:55.20784927Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: A lightweight service to propagate file upload metadata to the GHGA
+      file backend services
+    digest: cf1279b08ce24614112319435dd40a8a9d1adf71ba5ae04b4cb3d486af610b37
+    name: file-ingest
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/file-ingest-19.1.6/file-ingest-19.1.6.tgz
+    version: 19.1.6
   - apiVersion: v2
     appVersion: 9.0.7
     created: "2026-01-27T08:50:50.19824084Z"
@@ -24045,6 +24177,23 @@ entries:
   internal-file-registry:
   - apiVersion: v2
     appVersion: 6.0.7
+    created: "2026-01-27T10:42:55.495580014Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: This service acts as a registry for the internal location and representation
+      of files.
+    digest: 5518a3272d39011d370af12be9a9bb5b091f8f57bf97aa35c6cb1832307891d3
+    name: internal-file-registry
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/internal-file-registry-19.1.6/internal-file-registry-19.1.6.tgz
+    version: 19.1.6
+  - apiVersion: v2
+    appVersion: 6.0.7
     created: "2026-01-27T08:50:50.383813977Z"
     dependencies:
     - import-values:
@@ -26986,6 +27135,22 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/internal-file-registry-0.0.2/internal-file-registry-0.0.2.tgz
     version: 0.0.2
   mass:
+  - apiVersion: v2
+    appVersion: 6.0.2
+    created: "2026-01-27T10:42:55.727037254Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: Metadata Artifact Search Service
+    digest: 0927704a89df243e0e954fe9e02f0d4da6b81b0ee1968d7841e6800fb51c061f
+    name: mass
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/mass-19.1.6/mass-19.1.6.tgz
+    version: 19.1.6
   - apiVersion: v2
     appVersion: 6.0.2
     created: "2026-01-27T08:50:50.544759891Z"
@@ -30188,6 +30353,23 @@ entries:
   metldata:
   - apiVersion: v2
     appVersion: 4.0.5
+    created: "2026-01-27T10:42:55.993649769Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: metldata - A framework for handling metadata based on ETL, CQRS,
+      and event sourcing.
+    digest: d3d2000854e7e8f0a313451f90392024975c2d0939651aff4e1340791cbe1451
+    name: metldata
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/metldata-19.1.6/metldata-19.1.6.tgz
+    version: 19.1.6
+  - apiVersion: v2
+    appVersion: 4.0.5
     created: "2026-01-27T08:50:50.69645492Z"
     dependencies:
     - import-values:
@@ -33356,6 +33538,22 @@ entries:
   notification:
   - apiVersion: v2
     appVersion: 6.0.1
+    created: "2026-01-27T10:42:56.221860371Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: Notification service
+    digest: 3c62e4813e654b87ee43b39ea0ffaef757966467c97c484d5cd632b68eb55bdf
+    name: notification
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/notification-19.1.6/notification-19.1.6.tgz
+    version: 19.1.6
+  - apiVersion: v2
+    appVersion: 6.0.1
     created: "2026-01-27T08:50:50.889312557Z"
     dependencies:
     - import-values:
@@ -36041,6 +36239,22 @@ entries:
   notification-orchestration:
   - apiVersion: v2
     appVersion: 8.0.0
+    created: "2026-01-27T10:42:56.531555369Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: Notification orchestration service
+    digest: 8496c6fb7affcdbfb6eba2c6c4c88f2e57b9925d56cfefbd2a5c4cac6ccccfd2
+    name: notification-orchestration
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/notification-orchestration-19.1.6/notification-orchestration-19.1.6.tgz
+    version: 19.1.6
+  - apiVersion: v2
+    appVersion: 8.0.0
     created: "2026-01-27T08:50:51.048613036Z"
     dependencies:
     - import-values:
@@ -38590,6 +38804,22 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/notification-orchestration-1.0.0/notification-orchestration-1.0.0.tgz
     version: 1.0.0
   purge-controller:
+  - apiVersion: v2
+    appVersion: 5.0.5
+    created: "2026-01-27T10:42:56.843543055Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: Purge Controller Service
+    digest: e60aa06fb7c34a80969a7434b65ee880c4f330985d0d0da2222604f556547f93
+    name: purge-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/purge-controller-19.1.6/purge-controller-19.1.6.tgz
+    version: 19.1.6
   - apiVersion: v2
     appVersion: 5.0.5
     created: "2026-01-27T08:50:51.218648418Z"
@@ -41426,6 +41656,22 @@ entries:
   reverse-transpiler:
   - apiVersion: v2
     appVersion: 2.1.1
+    created: "2026-01-27T10:42:57.171931229Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: Reverse Transpiler Service
+    digest: d7fc65c3a9fc2a9878ab011719394da4b5126e336d1d12768211d33bfa10e493
+    name: reverse-transpiler
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/reverse-transpiler-19.1.6/reverse-transpiler-19.1.6.tgz
+    version: 19.1.6
+  - apiVersion: v2
+    appVersion: 2.1.1
     created: "2026-01-27T08:50:51.398894727Z"
     dependencies:
     - import-values:
@@ -42321,6 +42567,22 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/reverse-transpiler-14.0.4/reverse-transpiler-14.0.4.tgz
     version: 14.0.4
   state-management:
+  - apiVersion: v2
+    appVersion: 4.2.2
+    created: "2026-01-27T10:42:57.420473117Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: State Management Service
+    digest: 863385f1b537682735c9dc7831144f2dd1704cb52d56da1e2c4a446879ee0f5b
+    name: state-management
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/state-management-19.1.6/state-management-19.1.6.tgz
+    version: 19.1.6
   - apiVersion: v2
     appVersion: 4.2.2
     created: "2026-01-27T08:50:51.594799627Z"
@@ -44786,6 +45048,23 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/state-management-0.0.1/state-management-0.0.1.tgz
     version: 0.0.1
   test-oidc-provider:
+  - apiVersion: v2
+    appVersion: 1.2.1
+    created: "2026-01-27T10:42:57.704735324Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: A dummy OpenID Connect provider (OP) that can be user for testing
+      purposes.
+    digest: 09146700bcbb67b517ed2fedf11e2471847db6c3ac664d60b86c14e78975b7d4
+    name: test-oidc-provider
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/test-oidc-provider-19.1.6/test-oidc-provider-19.1.6.tgz
+    version: 19.1.6
   - apiVersion: v2
     appVersion: 1.2.1
     created: "2026-01-27T08:50:51.792607886Z"
@@ -47570,6 +47849,22 @@ entries:
   well-known-value:
   - apiVersion: v2
     appVersion: 2.0.0
+    created: "2026-01-27T10:42:57.986732506Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: Well-known Value Service
+    digest: 804af8eab92b9cfc30b4d8125cd6bc6e0760b9a09c0b58fd757c276a330a93ad
+    name: well-known-value
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/well-known-value-19.1.6/well-known-value-19.1.6.tgz
+    version: 19.1.6
+  - apiVersion: v2
+    appVersion: 2.0.0
     created: "2026-01-27T08:50:51.948240659Z"
     dependencies:
     - import-values:
@@ -50147,6 +50442,22 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/well-known-value-0.0.1/well-known-value-0.0.1.tgz
     version: 0.0.1
   work-package:
+  - apiVersion: v2
+    appVersion: 7.1.1
+    created: "2026-01-27T10:42:58.24203183Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.7.5
+    description: Work package service
+    digest: 5231002d223f7e8b7c65162cc52f0c8dea1ef37070d03175721897d0a108c5d6
+    name: work-package
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/work-package-19.1.6/work-package-19.1.6.tgz
+    version: 19.1.6
   - apiVersion: v2
     appVersion: 7.1.1
     created: "2026-01-27T08:50:52.138751115Z"
@@ -52861,4 +53172,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2026-01-27T10:35:36.374374834Z"
+generated: "2026-01-27T10:42:58.24856595Z"
