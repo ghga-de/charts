@@ -10026,6 +10026,22 @@ entries:
   datahub-monitor:
   - apiVersion: v2
     appVersion: 0.1.3
+    created: "2026-03-19T07:44:51.133024863Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.8.0
+    description: datahub-monitor
+    digest: 3a67c0c9351607cd701677d82d0579ebf54f48ff4a2dfdc6b8c268fe6c8997d2
+    name: datahub-monitor
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/datahub-monitor-0.1.7/datahub-monitor-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 0.1.3
     created: "2026-03-19T07:39:45.055873272Z"
     dependencies:
     - import-values:
@@ -43793,6 +43809,22 @@ entries:
   remotebackup:
   - apiVersion: v2
     appVersion: 3.1.9
+    created: "2026-03-19T07:44:51.28920212Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.8.0
+    description: remotebackup
+    digest: 3be55440364263ff51a50734b2db1793a08bdf0368e69879f579a0bc2eac4045
+    name: remotebackup
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/remotebackup-3.2.2/remotebackup-3.2.2.tgz
+    version: 3.2.2
+  - apiVersion: v2
+    appVersion: 3.1.9
     created: "2026-03-19T07:39:45.192252456Z"
     dependencies:
     - import-values:
@@ -57081,4 +57113,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2026-03-19T07:39:45.198200275Z"
+generated: "2026-03-19T07:44:51.295088346Z"
