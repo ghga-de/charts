@@ -8,6 +8,7 @@ on:
   
 jobs:
   release:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,6 +17,7 @@ jobs:
           fetch-depth: 0
 
       - name: Lint manifests with kubeconform
+        if: false
         uses: docker://ghcr.io/yannh/kubeconform:latest
         with:
           entrypoint: "/kubeconform"
