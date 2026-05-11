@@ -24,6 +24,8 @@ config:
   service_name: rs
   access_url: http://claims-repository:8080
   ucs_url: http://upload-controller:8080
+  auth_key: '{}'
+  work_order_signing_key: '{}'
 
 cmd: rs run-rest
 # cmd: dins consume-events
