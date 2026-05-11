@@ -1,40 +1,48 @@
 image:
-  repository: "ghga/internal-file-registry-service"
+  repository: "ghga/upload-controller-service"
 
-configPrefix: ifrs
+configPrefix: ucs
 
 # Service parameters
 
+# Service base path
+apiBasePath: /ucs/
 # Name of the database
 mongodb:
-  dbName: internal-file-registry
+  dbName: upload-controller
+
 # This parameter is used as Kafka's group id
-serviceName: ifrs
+serviceName: ucs-consumer
 
 config:
+  auth_key: '{}'
   mongo_dsn: null
+  host: "0.0.0.0"
   object_storages: {}
   kafka_enable_dlq: true
   enable_opentelemetry: false
-  db_version_collection: "ifrsDbVersions"
+  db_version_collection: "ucsDbVersions"
   migration_wait_sec: 10
 
-cmd: ifrs consume-events
+cmd: ucs run-rest
+# cmd: ucs consume-events
 
 _topics:
-  fileDeletedEvent:
+  fileUploadValidationSuccess:
     # as producer
     topic:
-      name: file_deleted_topic
-      value: internal-registrations
+      name: file_interrogations_topic
+      value: interrogations
     types:
-      - name: file_deleted_type
-        value: internal_file_deleted
+      - name: interrogation_success_type
+        value: file_interrogation_success
+      - name: interrogation_failure_type
+        value: file_interrogation_failed
     kafkaUser:
       operations:
         - Write
-  fileRegisteredEvent:
-    # as producer
+  filesToRegister:
+    # as consumer
     topic:
       name: file_internally_registered_topic
       value: internal-registrations
@@ -43,18 +51,7 @@ _topics:
         value: internal_file_registered
     kafkaUser:
       operations:
-        - Write
-  fileStagedEvent:
-    # as producer
-    topic:
-      name: file_staged_topic
-      value: staged-files
-    types:
-      - name: file_staged_type
-        value: internal_file_staged
-    kafkaUser:
-      operations:
-        - Write
+        - Read
   filesToDelete:
     # as consumer
     topic:
@@ -66,27 +63,16 @@ _topics:
     kafkaUser:
       operations:
         - Read
-  filesToStage:
-    # as consumer
-    topic:
-      name: files_to_stage_topic
-      value: staging-requests
-    type:
-      name: files_to_stage_type
-      value: file_staging_requested
-    kafkaUser:
-      operations:
-        - Read
-  # as producer
   deadLetterQueue:
+  # as producer
     topic:
       name: kafka_dlq_topic
       value: dlq
     kafkaUser:
       operations:
         - Write
-  # as consumer
   deadLetterQueueRetry:
+  # as consumer
     topic:
       name: null
       value: retry
