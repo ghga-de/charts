@@ -15,7 +15,6 @@ mongodb:
 serviceName: ucs-consumer
 
 config:
-  auth_key: '{}'
   mongo_dsn: null
   host: "0.0.0.0"
   object_storages: {}
