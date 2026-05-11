@@ -44036,6 +44036,23 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/purge-controller-1.0.0/purge-controller-1.0.0.tgz
     version: 1.0.0
+  registry-service:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-05-11T15:07:03.248472325Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.8.0
+    description: GHGA Registry Service
+    digest: 4b977b46a9cc0ef0b06e4f522727810e9782633c1dd149601f8fe20a1f1f6a4e
+    name: registry-service
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/registry-service-22.0.0/registry-service-22.0.0.tgz
+    version: 22.0.0
   remotebackup:
   - apiVersion: v2
     appVersion: 3.1.9
@@ -51691,6 +51708,23 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/test-oidc-provider-0.0.1/test-oidc-provider-0.0.1.tgz
     version: 0.0.1
+  upload-controller:
+  - apiVersion: v2
+    appVersion: 12.0.0
+    created: "2026-05-11T15:07:04.006194588Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.8.0
+    description: This service manages file uploads.
+    digest: dfc3dbcc87f68fdee6cba041aa67defe749fff5de4018caa6cedd90d64821d74
+    name: upload-controller
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/upload-controller-22.0.0/upload-controller-22.0.0.tgz
+    version: 22.0.0
   upload-controller-service:
   - apiVersion: v2
     appVersion: 0.3.0-23-gf1fda2f-main
@@ -57424,4 +57458,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2026-04-01T11:52:34.156586829Z"
+generated: "2026-05-11T15:07:04.594624483Z"
