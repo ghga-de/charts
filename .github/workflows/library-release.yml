@@ -58,7 +58,21 @@ jobs:
             fi
           done
           
-          ghga_common=$(curl -s "https://api.github.com/repos/ghga-de/charts/releases?per_page=300" | jq -r 'map(select(.tag_name | startswith("ghga-common"))) | sort_by(.published_at) | reverse | .[0] | .tag_name')
+          ghga_common=""
+          page=1
+          while [ -z "$ghga_common" ] || [ "$ghga_common" = "null" ]; do
+            result=$(curl -s "https://api.github.com/repos/ghga-de/charts/releases?per_page=100&page=$page" | jq -r 'map(select(.tag_name | startswith("ghga-common"))) | sort_by(.published_at) | reverse | .[0] | .tag_name')
+            if [ -n "$result" ] && [ "$result" != "null" ]; then
+              ghga_common="$result"
+            else
+              page_count=$(curl -s "https://api.github.com/repos/ghga-de/charts/releases?per_page=100&page=$page" | jq 'length')
+              if [ "$page_count" -eq 0 ]; then
+                echo "No ghga-common release found after searching all pages."
+                exit 1
+              fi
+              page=$((page + 1))
+            fi
+          done
           ghga_common_version=${ghga_common#ghga-common-}
 
           chart_pulled=0
