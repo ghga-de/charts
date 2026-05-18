@@ -45448,6 +45448,23 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/purge-controller-1.0.0/purge-controller-1.0.0.tgz
     version: 1.0.0
+  registry:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-05-18T11:50:21.81146535Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.8.0
+    description: GHGA Registry Service
+    digest: cb0b52048cc2b9a13fd905eef439c216d6b970d182a958352468b735969dbd42
+    name: registry
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/registry-24.4.0/registry-24.4.0.tgz
+    version: 24.4.0
   registry-service:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -59564,4 +59581,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2026-05-15T09:01:44.148963617Z"
+generated: "2026-05-18T11:50:21.816550229Z"
