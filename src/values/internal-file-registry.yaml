@@ -21,6 +21,10 @@ config:
 
 cmd: ifrs consume-events
 
+migrationInitContainer:
+ args:
+  - ifrs migrate-db
+
 _topics:
   fileDeletedEvent:
     # as producer

@@ -24,6 +24,10 @@ config:
 
 cmd: fis run-rest
 
+migrationInitContainer:
+ args:
+  - fis migrate-db
+
 _topics:
   fileUploadValidationSuccess:
     # as producer
