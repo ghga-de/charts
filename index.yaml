@@ -10657,6 +10657,22 @@ entries:
     - https://github.com/ghga-de/charts/releases/download/datahub-monitor-24.4.0/datahub-monitor-24.4.0.tgz
     version: 24.4.0
   - apiVersion: v2
+    appVersion: 0.2.1
+    created: "2026-05-22T10:36:17.727305262Z"
+    dependencies:
+    - import-values:
+      - defaults
+      name: ghga-common
+      repository: https://ghga-de.github.io/charts
+      version: 2.8.0
+    description: datahub-monitor
+    digest: 01f810a7b092050b393eb81b766813f26124026ebef5f26aa5da3913615b8ba0
+    name: datahub-monitor
+    type: application
+    urls:
+    - https://github.com/ghga-de/charts/releases/download/datahub-monitor-0.2.3/datahub-monitor-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
     appVersion: 0.2.2
     created: "2026-05-22T10:26:07.361456559Z"
     dependencies:
@@ -61344,4 +61360,4 @@ entries:
     urls:
     - https://github.com/ghga-de/charts/releases/download/work-package-0.0.2/work-package-0.0.2.tgz
     version: 0.0.2
-generated: "2026-05-22T10:26:07.365213029Z"
+generated: "2026-05-22T10:36:17.731152851Z"
