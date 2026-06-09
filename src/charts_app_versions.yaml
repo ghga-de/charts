@@ -2,79 +2,79 @@ charts:
   access-request:
     name: access-request
     description: Access request service
-    appVersion: "7.2.0"
+    appVersion: "7.2.0-dhi"
   auth-service:
     name: auth-service
     description: The auth_adapter subpackage contains the authentication service used by the API gateway via the ExtAuth protocol.
-    appVersion: "9.1.0"
+    appVersion: "9.1.0-dhi"
   data-portal-ui:
     name: data-portal-ui
     description: The Metadata Search Service is a service for providing a unified search interface over a metadata store.
-    appVersion: "2.4.2"
+    appVersion: "2.4.4-dhi"
   dataset-information:
     name: dataset-information
     description: Dataset Information Service
-    appVersion: "4.3.0"
+    appVersion: "4.3.0-dhi"
   dead-letter-queue:
     name: dead-letter-queue
     description: DLQ service
-    appVersion: "3.2.0"
+    appVersion: "3.2.0-dhi"
   download-controller:
     name: download-controller
     description: This service implements the GA4GH DRS, while providing the option to serve files from localstack S3.
-    appVersion: "8.2.1"
+    appVersion: "8.2.1-dhi"
   encryption-key-store:
     name: encryption-key-store
     description: providing crypt4gh file secret extraction, storage and envelope generation
-    appVersion: "4.2.1"
+    appVersion: "4.2.1-dhi"
   file-ingest:
     name: file-ingest
     description: A lightweight service to propagate file upload metadata to the GHGA file backend services
-    appVersion: "9.2.1"
+    appVersion: "9.2.1-dhi"
   internal-file-registry:
     name: internal-file-registry
     description: This service acts as a registry for the internal location and representation of files.
-    appVersion: "6.2.1"
+    appVersion: "6.2.1-dhi"
   mass:
     name: mass
     description: Metadata Artifact Search Service
-    appVersion: "6.2.0"
+    appVersion: "6.2.0-dhi"
   metldata:
     name: metldata
     description: metldata - A framework for handling metadata based on ETL, CQRS, and event sourcing.
-    appVersion: "4.0.10"
+    appVersion: "4.0.10-dhi"
   notification:
     name: notification
     description: Notification service
-    appVersion: "6.2.0"
+    appVersion: "6.2.0-dhi"
   notification-orchestration:
     name: notification-orchestration
     description: Notification orchestration service
-    appVersion: "8.1.2"
+    appVersion: "8.1.2-dhi"
   purge-controller:
     name: purge-controller
     description: Purge Controller Service
-    appVersion: "5.1.0"
+    appVersion: "5.1.0-dhi"
   reverse-transpiler:
     name: reverse-transpiler
     description: Reverse Transpiler Service
-    appVersion: "2.3.0"
+    appVersion: "2.3.0-dhi"
   state-management:
     name: state-management
     description: State Management Service
-    appVersion: "4.3.2"
+    appVersion: "4.3.2-dhi"
   test-oidc-provider:
     name: test-oidc-provider
     description: A dummy OpenID Connect provider (OP) that can be user for testing purposes.
-    appVersion: "1.2.1"
+    appVersion: "1.2.1-dhi"
   well-known-value:
     name: well-known-value
     description: Well-known Value Service
-    appVersion: "2.2.0"
+    appVersion: "2.2.0-dhi"
   work-package:
     name: work-package
     description: Work package service
-    appVersion: "7.3.0"
+    appVersion: "7.3.0-dhi"
   auth-km-jobs:
     name: auth-km-jobs
     description: This job is to refresh the internal and external auth keys.
@@ -88,5 +88,5 @@ charts:
   datahub-monitor:
     name: datahub-monitor
     description: datahub-monitor
-    appVersion: "0.1.3"
+    appVersion: "0.1.3-dhi"
     version: "0.1.7"
