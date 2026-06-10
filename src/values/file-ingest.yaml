@@ -25,7 +25,9 @@ config:
   migration_wait_sec: 10
   enable_opentelemetry: false
 
-cmd: fis run-rest
+executable: fis
+executableArgs:
+  - run-rest
 
 _topics:
   fileUploadValidationSuccess:
