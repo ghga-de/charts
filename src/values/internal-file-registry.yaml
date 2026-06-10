@@ -23,6 +23,12 @@ executable: ifrs
 executableArgs:
   - consume-events
 
+migrationInitContainer:
+  executable: ifrs
+  executableArgs:
+    - migrate-db
+
+
 _topics:
   fileDeletedEvent:
     # as producer
