@@ -29,6 +29,12 @@ executable: fis
 executableArgs:
   - run-rest
 
+migrationInitContainer:
+  executable: fis
+  executableArgs:
+    - migrate-db
+
+
 _topics:
   fileUploadValidationSuccess:
     # as producer
