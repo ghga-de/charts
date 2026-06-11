@@ -24,6 +24,8 @@ exports:
     cronjob:
       enabled: false
     
+    concurrencyPolicy: Forbid
+
     nameOverride: ""
 
     fullnameOverride: ""

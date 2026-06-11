@@ -25,6 +25,7 @@ spec:
   schedule: {{ .Values.cronSchedule }}
   successfulJobsHistoryLimit: {{ .Values.successfulJobsHistoryLimit }}
   failedJobsHistoryLimit: 1
+  concurrencyPolicy: {{ .Values.concurrencyPolicy }}          # or Replace; don't stack overlapping runs
   jobTemplate:
     metadata:
       labels: {{- include "common.labels.standard" . | nindent 8 }}
