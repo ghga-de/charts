@@ -11,7 +11,7 @@ config:
   root_files: {}
 
 configMap:
-  mountPath: /home/appuser/data-portal.yaml
+  mountPath: /app/data-portal.yaml
 
 containerSecurityContext:
   readOnlyRootFilesystem: false
@@ -20,4 +20,6 @@ containerSecurityContext:
 
 executable: node
 executableArgs:
-  - /home/appuser/run.mjs
+  - /app/run.mjs
+
+commandPrefix: /usr/bin/
