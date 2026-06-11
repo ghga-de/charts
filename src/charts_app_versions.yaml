@@ -10,7 +10,7 @@ charts:
   data-portal-ui:
     name: data-portal-ui
     description: The Metadata Search Service is a service for providing a unified search interface over a metadata store.
-    appVersion: "2.5.8"
+    appVersion: "2.5.10"
   dataset-information:
     name: dataset-information
     description: Dataset Information Service
@@ -26,7 +26,7 @@ charts:
   upload-controller:
     name: upload-controller
     description: This service manages file uploads.
-    appVersion: "12.2.0"
+    appVersion: "14.0.0"
   encryption-key-store:
     name: encryption-key-store
     description: providing crypt4gh file secret extraction, storage and envelope generation
@@ -34,11 +34,11 @@ charts:
   file-ingest:
     name: file-ingest
     description: A lightweight service to propagate file upload metadata to the GHGA file backend services
-    appVersion: "11.2.1"
+    appVersion: "11.3.0"
   internal-file-registry:
     name: internal-file-registry
     description: This service acts as a registry for the internal location and representation of files.
-    appVersion: "7.2.0"
+    appVersion: "7.2.1"
   mass:
     name: mass
     description: Metadata Artifact Search Service
@@ -82,7 +82,7 @@ charts:
   registry:
     name: registry
     description: GHGA Registry Service
-    appVersion: "2.1.0"
+    appVersion: "3.0.0"
   auth-km-jobs:
     name: auth-km-jobs
     description: This job is to refresh the internal and external auth keys.
