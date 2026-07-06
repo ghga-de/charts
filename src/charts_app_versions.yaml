@@ -22,23 +22,23 @@ charts:
   download-controller:
     name: download-controller
     description: This service implements the GA4GH DRS, while providing the option to serve files from localstack S3.
-    appVersion: "10.1.0-dhi"
+    appVersion: "10.1.1-dhi"
   upload-controller:
     name: upload-controller
     description: This service manages file uploads.
-    appVersion: "14.0.2-dhi"
+    appVersion: "14.1.0-dhi"
   encryption-key-store:
     name: encryption-key-store
     description: providing crypt4gh file secret extraction, storage and envelope generation
-    appVersion: "5.1.0-dhi"
+    appVersion: "5.1.1-dhi"
   file-ingest:
     name: file-ingest
     description: A lightweight service to propagate file upload metadata to the GHGA file backend services
-    appVersion: "11.3.0-dhi"
+    appVersion: "11.3.1-dhi"
   internal-file-registry:
     name: internal-file-registry
     description: This service acts as a registry for the internal location and representation of files.
-    appVersion: "7.2.1-dhi"
+    appVersion: "7.2.2-dhi"
   mass:
     name: mass
     description: Metadata Artifact Search Service
@@ -46,7 +46,7 @@ charts:
   metldata:
     name: metldata
     description: metldata - A framework for handling metadata based on ETL, CQRS, and event sourcing.
-    appVersion: "4.1.2-dhi"
+    appVersion: "4.2.0-dhi"
   notification:
     name: notification
     description: Notification service
@@ -58,7 +58,7 @@ charts:
   purge-controller:
     name: purge-controller
     description: Purge Controller Service
-    appVersion: "6.2.0-dhi"
+    appVersion: "6.2.1-dhi"
   reverse-transpiler:
     name: reverse-transpiler
     description: Reverse Transpiler Service
