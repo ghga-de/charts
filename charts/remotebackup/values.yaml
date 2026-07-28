@@ -4,8 +4,8 @@ image:
 
 cronSchedule: "0 3 * * *"
 
-cronjob:
-  enabled: true
+cronjobs:
+  - enabled: true
 
 deployment:
   enabled: false

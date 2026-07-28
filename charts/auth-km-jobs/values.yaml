@@ -3,8 +3,8 @@ image:
 
 configPrefix: auth_km_jobs
 
-cronjob:
-  enabled: true
+cronjobs:
+  - enabled: true
 
 deployment:
   enabled: false
