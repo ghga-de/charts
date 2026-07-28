@@ -11,7 +11,7 @@ cleanup:
   schedule: "0 3 * * *"
   successfulJobsHistoryLimit: 2
   command:
-  - /bin/bash
+  - sh
   - -c
   args:
   - /usr/local/bin/cleanup-tool --dry-run
