@@ -1,6 +1,59 @@
 from math import exp
 
 
+def test_cronjob_single_backward_compatible(rendered_chart, expected):
+    # A single, unnamed cronjobs[] entry keeps the pre-array naming (no suffix)
+    # and inherits schedule/command/history-limit from the top-level values.
+    manifests = rendered_chart("common.yaml", "cronjob_single.yaml")
+
+    assert "Deployment" not in manifests
+
+    cronjob = manifests["CronJob"]
+    assert cronjob["metadata"]["name"] == expected("cronjob_single", "metadata")["name"]
+    assert cronjob["spec"]["schedule"] == expected("cronjob_single", "spec")["schedule"]
+    assert (
+        cronjob["spec"]["successfulJobsHistoryLimit"]
+        == expected("cronjob_single", "spec")["successfulJobsHistoryLimit"]
+    )
+
+    container = cronjob["spec"]["jobTemplate"]["spec"]["template"]["spec"]["containers"][0]
+    assert container["command"] == expected("cronjob_single", "command")
+    assert container["args"] == expected("cronjob_single", "args")
+
+
+def test_cronjobs_multiple_with_overrides(rendered_objects, expected):
+    # Deployment and multiple cronjobs can be shipped side by side; each cronjob
+    # entry can override its own schedule/history-limit/entrypoint, an entry with
+    # `enabled: false` is skipped, and entries without overrides fall back to the
+    # top-level values (same as the Deployment uses).
+    objects = rendered_objects("common.yaml", "cronjobs_multiple.yaml")
+
+    deployment_expected = expected("cronjobs_multiple", "deployment")
+    deployments = [obj for obj in objects if obj["kind"] == "Deployment"]
+    assert len(deployments) == 1
+    deployment = deployments[0]
+    assert deployment["metadata"]["name"] == deployment_expected["name"]
+
+    deployment_container = deployment["spec"]["template"]["spec"]["containers"][0]
+    assert deployment_container["command"] == deployment_expected["command"]
+    assert deployment_container["args"] == deployment_expected["args"]
+
+    cronjobs = {
+        obj["metadata"]["name"]: obj for obj in objects if obj["kind"] == "CronJob"
+    }
+    cleanup_expected = expected("cronjobs_multiple", "cleanup")
+    report_expected = expected("cronjobs_multiple", "report")
+    assert set(cronjobs) == {cleanup_expected["name"], report_expected["name"]}
+
+    for exp in (cleanup_expected, report_expected):
+        job = cronjobs[exp["name"]]
+        assert job["spec"]["schedule"] == exp["schedule"]
+        assert job["spec"]["successfulJobsHistoryLimit"] == exp["successfulJobsHistoryLimit"]
+        container = job["spec"]["jobTemplate"]["spec"]["template"]["spec"]["containers"][0]
+        assert container["command"] == exp["command"]
+        assert container["args"] == exp["args"]
+
+
 def test_config(rendered_chart, expected, release_name):
     manifests = rendered_chart("common.yaml", "config.yaml")
     assert manifests["ConfigMap"]["data"]["config"] == expected("config", "configMap")["data"]

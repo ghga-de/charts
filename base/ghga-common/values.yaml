@@ -26,8 +26,13 @@ exports:
     job:
       enabled: false
     
-    cronjob:
-      enabled: false
+    # A list of CronJobs to render alongside (or instead of) the Deployment.
+    # Each entry may override `schedule`, `successfulJobsHistoryLimit`, and the
+    # entrypoint (`executable`, `executableArgs`, `command`) independently of the
+    # Deployment/other cronjobs; unset fields fall back to the top-level values.
+    # Set `name` to give a cronjob a distinct name when defining more than one.
+    cronjobs:
+      - enabled: false
     
     nameOverride: ""
 

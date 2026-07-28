@@ -1,0 +1,27 @@
+deployment:
+  name: test-my-app
+  command:
+  - sh
+  - -c
+  args:
+  - /usr/local/bin/sleep 100000000
+
+cleanup:
+  name: test-my-app-cleanup
+  schedule: "0 3 * * *"
+  successfulJobsHistoryLimit: 2
+  command:
+  - /bin/bash
+  - -c
+  args:
+  - /usr/local/bin/cleanup-tool --dry-run
+
+report:
+  name: test-my-app-report
+  schedule: "0 * * * *"
+  successfulJobsHistoryLimit: 5
+  command:
+  - sh
+  - -c
+  args:
+  - /usr/local/bin/sleep 100000000

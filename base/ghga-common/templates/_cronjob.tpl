@@ -1,83 +1,88 @@
 {{- define "ghga-common.cronjob" -}}
-{{- if .Values.cronjob.enabled -}}
+{{- range $job := .Values.cronjobs }}
+{{- if $job.enabled }}
 ---
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: {{ include "common.names.fullname" . }}
-  namespace: {{ include "common.names.namespace" . | quote }}
-  labels: {{- include "common.labels.standard" . | nindent 4 }}
-    app: {{ include "common.names.fullname" . }}
-    {{- if .Values.labels }}
-    {{- include "common.tplvalues.render" ( dict "value" .Values.labels "context" $ ) | nindent 4 }}
+  name: {{ include "common.names.fullname" $ }}{{- if $job.name }}-{{ $job.name }}{{- end }}
+  namespace: {{ include "common.names.namespace" $ | quote }}
+  labels: {{- include "common.labels.standard" $ | nindent 4 }}
+    app: {{ include "common.names.fullname" $ }}
+    {{- if $.Values.labels }}
+    {{- include "common.tplvalues.render" ( dict "value" $.Values.labels "context" $ ) | nindent 4 }}
     {{- end }}
-    {{- if .Values.commonLabels }}
-    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- if $.Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" $.Values.commonLabels "context" $ ) | nindent 4 }}
     {{- end }}
   annotations:
-    {{- if .Values.annotations }}
-    {{- include "common.tplvalues.render" ( dict "value" .Values.annotations "context" $) | nindent 4 }}
+    {{- if $.Values.annotations }}
+    {{- include "common.tplvalues.render" ( dict "value" $.Values.annotations "context" $) | nindent 4 }}
     {{- end }}
-    {{- if .Values.commonAnnotations }}
-    {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+    {{- if $.Values.commonAnnotations }}
+    {{- include "common.tplvalues.render" ( dict "value" $.Values.commonAnnotations "context" $ ) | nindent 4 }}
     {{- end }}
 spec:
-  schedule: {{ .Values.cronSchedule }}
-  successfulJobsHistoryLimit: {{ .Values.successfulJobsHistoryLimit }}
+  schedule: {{ $job.schedule | default $.Values.cronSchedule }}
+  successfulJobsHistoryLimit: {{ $job.successfulJobsHistoryLimit | default $.Values.successfulJobsHistoryLimit }}
   failedJobsHistoryLimit: 1
   jobTemplate:
     metadata:
-      labels: {{- include "common.labels.standard" . | nindent 8 }}
+      labels: {{- include "common.labels.standard" $ | nindent 8 }}
     spec:
       template:
         metadata:
           annotations:
-            {{- if .Values.podAnnotations }}
-            {{- .Values.podAnnotations | toYaml | nindent 12}}
+            {{- if $.Values.podAnnotations }}
+            {{- $.Values.podAnnotations | toYaml | nindent 12}}
             {{- end }}
-            {{- if .Values.vaultAgent.enabled }}
-            {{- include "ghga-common.vaultAgentAnnotations" . | nindent 12 }}
+            {{- if $.Values.vaultAgent.enabled }}
+            {{- include "ghga-common.vaultAgentAnnotations" $ | nindent 12 }}
             {{- end }}
-          labels: {{- include "common.labels.standard" . | nindent 12 }}
-            app: {{ include "common.names.fullname" . }}
-            {{- if .Values.podLabels }}
-            {{- include "common.tplvalues.render" (dict "value" .Values.podLabels "context" $) | nindent 12 }}
+          labels: {{- include "common.labels.standard" $ | nindent 12 }}
+            app: {{ include "common.names.fullname" $ }}
+            {{- if $.Values.podLabels }}
+            {{- include "common.tplvalues.render" (dict "value" $.Values.podLabels "context" $) | nindent 12 }}
             {{- end }}
         spec:
-          securityContext: {{- include "common.tplvalues.render" (dict "value" .Values.podSecurityContext "context" $) | nindent 12 }}
+          securityContext: {{- include "common.tplvalues.render" (dict "value" $.Values.podSecurityContext "context" $) | nindent 12 }}
           restartPolicy: "OnFailure"
-          serviceAccountName: {{ include "common.names.fullname" . }}
-          shareProcessNamespace: {{ .Values.shareProcessNamespace }}
-          {{- if .Values.imagePullSecrets }}
-          imagePullSecrets: {{- include "common.tplvalues.render" (dict "value" .Values.imagePullSecrets "context" $) | nindent 12 }}
+          serviceAccountName: {{ include "common.names.fullname" $ }}
+          shareProcessNamespace: {{ $.Values.shareProcessNamespace }}
+          {{- if $.Values.imagePullSecrets }}
+          imagePullSecrets: {{- include "common.tplvalues.render" (dict "value" $.Values.imagePullSecrets "context" $) | nindent 12 }}
           {{- end }}
           containers:
-          - image: {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global "chart" .Chart ) }}
-            imagePullPolicy: {{ default (eq .Values.image.tag "latest" | ternary "Always" "IfNotPresent") .Values.image.pullPolicy }}
-            {{- include "ghga-common.command-args" (list $ .Values.executable .Values.executableArgs .Values.command)  | nindent 12 }}
+          - image: {{ include "common.images.image" (dict "imageRoot" $.Values.image "global" $.Values.global "chart" $.Chart ) }}
+            imagePullPolicy: {{ default (eq $.Values.image.tag "latest" | ternary "Always" "IfNotPresent") $.Values.image.pullPolicy }}
+            {{- $executable := $job.executable | default $.Values.executable }}
+            {{- $executableArgs := $job.executableArgs | default $.Values.executableArgs }}
+            {{- $command := $job.command | default $.Values.command }}
+            {{- include "ghga-common.command-args" (list $ $executable $executableArgs $command)  | nindent 12 }}
             {{- $envVars := include "ghga-common.env-vars" $ | fromYaml | dig "envVars" list -}}
             {{- if $envVars }}
             env: {{- include "common.tplvalues.render" (dict "value" $envVars "context" $) | nindent 12 }}
             {{- end }}
-            {{- if or .Values.envVarsConfigMap .Values.envVarsSecret }}
+            {{- if or $.Values.envVarsConfigMap $.Values.envVarsSecret }}
             envFrom:
-              {{- if .Values.envVarsConfigMap }}
+              {{- if $.Values.envVarsConfigMap }}
               - configMapRef:
-                  name: {{ include "common.tplvalues.render" (dict "value" .Values.envVarsConfigMap "context" $) }}
+                  name: {{ include "common.tplvalues.render" (dict "value" $.Values.envVarsConfigMap "context" $) }}
               {{- end }}
-              {{- if .Values.envVarsSecret }}
+              {{- if $.Values.envVarsSecret }}
               - secretRef:
-                  name: {{ include "common.tplvalues.render" (dict "value" .Values.envVarsSecret "context" $) }}
+                  name: {{ include "common.tplvalues.render" (dict "value" $.Values.envVarsSecret "context" $) }}
               {{- end }}
             {{- end }}
-            {{- if .Values.containerSecurityContext.enabled }}
-            securityContext: {{- omit .Values.containerSecurityContext "enabled" | toYaml | nindent 14 }}
+            {{- if $.Values.containerSecurityContext.enabled }}
+            securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 14 }}
             {{- end }}
-            name: {{ .Release.Name }}
-            {{- if .Values.resources }}
-            resources: {{- toYaml .Values.resources | nindent 14 }}
+            name: {{ $.Release.Name }}
+            {{- if $.Values.resources }}
+            resources: {{- toYaml $.Values.resources | nindent 14 }}
             {{- end }}
             volumeMounts: {{- include "ghga-common.volumemounts" $ | nindent 14 }}
           volumes: {{- include "ghga-common.volumes" $ | nindent 12 }}
-{{- end -}}
+{{- end }}
+{{- end }}
 {{- end -}}

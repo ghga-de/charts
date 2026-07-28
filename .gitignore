@@ -12,3 +12,4 @@ thumbs.db
 **/.mypy_cache/
 **/.coverage
 base/tests/dummy/charts/*.tgz
+base/tests/rendered/

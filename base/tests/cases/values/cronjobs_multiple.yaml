@@ -1,0 +1,18 @@
+deployment:
+  enabled: true
+
+cronSchedule: "0 * * * *"
+
+cronjobs:
+  - enabled: true
+    name: cleanup
+    schedule: "0 3 * * *"
+    successfulJobsHistoryLimit: 2
+    executable: cleanup-tool
+    executableArgs:
+      - "--dry-run"
+    command: ["/bin/bash", "-c"]
+  - enabled: true
+    name: report
+  - enabled: false
+    name: skipped

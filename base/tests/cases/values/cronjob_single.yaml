@@ -1,0 +1,7 @@
+deployment:
+  enabled: false
+
+cronSchedule: "0 * * * *"
+
+cronjobs:
+  - enabled: true
