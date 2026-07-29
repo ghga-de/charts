@@ -50,6 +50,7 @@ def test_cronjobs_multiple_with_overrides(rendered_objects, expected):
         assert job["spec"]["schedule"] == exp["schedule"]
         assert job["spec"]["successfulJobsHistoryLimit"] == exp["successfulJobsHistoryLimit"]
         container = job["spec"]["jobTemplate"]["spec"]["template"]["spec"]["containers"][0]
+        assert container["name"] == exp["containerName"]
         assert container["command"] == exp["command"]
         assert container["args"] == exp["args"]
 

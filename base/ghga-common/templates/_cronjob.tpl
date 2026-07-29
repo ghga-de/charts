@@ -79,7 +79,7 @@ spec:
             {{- if $.Values.containerSecurityContext.enabled }}
             securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 14 }}
             {{- end }}
-            name: {{ $.Release.Name }}
+            name: {{ $.Release.Name }}{{- if ne $key "default" }}-{{ $key }}{{- end }}
             {{- if $.Values.resources }}
             resources: {{- toYaml $.Values.resources | nindent 14 }}
             {{- end }}

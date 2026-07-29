@@ -8,6 +8,7 @@ deployment:
 
 cleanup:
   name: test-my-app-cleanup
+  containerName: test-my-app-cleanup
   schedule: "0 3 * * *"
   successfulJobsHistoryLimit: 2
   command:
@@ -18,6 +19,7 @@ cleanup:
 
 report:
   name: test-my-app-report
+  containerName: test-my-app-report
   schedule: "0 * * * *"
   successfulJobsHistoryLimit: 5
   command:
