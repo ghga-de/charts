@@ -1,11 +1,11 @@
 {{- define "ghga-common.cronjob" -}}
-{{- range $_, $job := .Values.cronjobs }}
+{{- range $key, $job := .Values.cronjobs }}
 {{- if $job.enabled }}
 ---
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: {{ include "common.names.fullname" $ }}{{- if $job.name }}-{{ $job.name }}{{- end }}
+  name: {{ include "common.names.fullname" $ }}{{- if ne $key "default" }}-{{ $key }}{{- end }}
   namespace: {{ include "common.names.namespace" $ | quote }}
   labels: {{- include "common.labels.standard" $ | nindent 4 }}
     app: {{ include "common.names.fullname" $ }}
