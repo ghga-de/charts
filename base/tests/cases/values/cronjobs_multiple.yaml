@@ -4,14 +4,17 @@ deployment:
 cronSchedule: "0 * * * *"
 
 cronjobs:
-  - enabled: true
+  cleanup:
+    enabled: true
     name: cleanup
     schedule: "0 3 * * *"
     successfulJobsHistoryLimit: 2
     executable: cleanup-tool
     executableArgs:
       - "--dry-run"
-  - enabled: true
+  report:
+    enabled: true
     name: report
-  - enabled: false
+  skipped:
+    enabled: false
     name: skipped

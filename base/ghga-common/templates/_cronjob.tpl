@@ -1,5 +1,5 @@
 {{- define "ghga-common.cronjob" -}}
-{{- range $job := .Values.cronjobs }}
+{{- range $_, $job := .Values.cronjobs }}
 {{- if $job.enabled }}
 ---
 apiVersion: batch/v1

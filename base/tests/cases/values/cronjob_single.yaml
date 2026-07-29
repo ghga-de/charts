@@ -4,4 +4,5 @@ deployment:
 cronSchedule: "0 * * * *"
 
 cronjobs:
-  - enabled: true
+  default:
+    enabled: true

@@ -4,7 +4,8 @@ deployment:
 cronSchedule: "0 * * * *"
 
 cronjobs:
-  - enabled: true
+  default:
+    enabled: true
     podAnnotations:
       vault.hashicorp.com/agent-pre-populate-only: "true"
       backup.example.com/note: "cronjob-only"
