@@ -3,6 +3,14 @@ image:
 
 configPrefix: dcs
 
+
+cronjobs:
+  outbox-clean-up:
+    enabled: false
+    schedule: "0 4 1 * *"
+    executableArgs:
+      - cleanup-download-bucket
+
 # Service parameters
 
 # Service base path

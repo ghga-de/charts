@@ -4,7 +4,8 @@ image:
 configPrefix: auth_km_jobs
 
 cronjobs:
-  - enabled: true
+  default:
+    enabled: true
 
 deployment:
   enabled: false
