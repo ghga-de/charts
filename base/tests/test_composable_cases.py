@@ -54,6 +54,31 @@ def test_cronjobs_multiple_with_overrides(rendered_objects, expected):
         assert container["args"] == exp["args"]
 
 
+def test_cronjob_pod_annotations_override(rendered_objects, expected):
+    # A cronjob entry can add/override pod annotations (e.g. to run the vault
+    # agent as an init-only container for a short-lived Job) without affecting
+    # the Deployment or other cronjobs, which keep the shared/vault annotations.
+    objects = rendered_objects("common.yaml", "vault_enabled.yaml", "cronjob_pod_annotations.yaml")
+
+    deployment = next(obj for obj in objects if obj["kind"] == "Deployment")
+    deployment_annotations = deployment["spec"]["template"]["metadata"]["annotations"]
+    deployment_expected = expected("cronjob_pod_annotations", "deployment")
+    assert (
+        deployment_annotations["vault.hashicorp.com/agent-pre-populate-only"]
+        == deployment_expected["agentPrePopulateOnly"]
+    )
+    assert "backup.example.com/note" not in deployment_annotations
+
+    cronjob = next(obj for obj in objects if obj["kind"] == "CronJob")
+    cronjob_annotations = cronjob["spec"]["jobTemplate"]["spec"]["template"]["metadata"]["annotations"]
+    cronjob_expected = expected("cronjob_pod_annotations", "cronjob")
+    assert (
+        cronjob_annotations["vault.hashicorp.com/agent-pre-populate-only"]
+        == cronjob_expected["agentPrePopulateOnly"]
+    )
+    assert cronjob_annotations["backup.example.com/note"] == cronjob_expected["note"]
+
+
 def test_config(rendered_chart, expected, release_name):
     manifests = rendered_chart("common.yaml", "config.yaml")
     assert manifests["ConfigMap"]["data"]["config"] == expected("config", "configMap")["data"]
