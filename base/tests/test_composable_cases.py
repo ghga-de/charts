@@ -80,6 +80,19 @@ def test_cronjob_pod_annotations_override(rendered_objects, expected):
     assert cronjob_annotations["backup.example.com/note"] == cronjob_expected["note"]
 
 
+def test_cronjob_pod_annotations_override_no_duplicate_key(rendered_text):
+    # Regression test: annotations used to be built by concatenating three raw YAML
+    # blocks (top-level podAnnotations, vaultAgent-generated annotations, per-cronjob
+    # podAnnotations) with no deduplication. A cronjob overriding a key the vaultAgent
+    # block already sets (e.g. agent-pre-populate-only, to run a one-shot job without
+    # the agent as a long-lived sidecar) produced a literal duplicate YAML key. That
+    # happened to "work" under yaml.safe_load (last occurrence wins) but is invalid
+    # under stricter YAML consumers, so assert directly against the rendered text.
+    text = rendered_text("common.yaml", "vault_enabled.yaml", "cronjob_pod_annotations.yaml")
+    cronjob_section = text.split("kind: CronJob", 1)[1]
+    assert cronjob_section.count("vault.hashicorp.com/agent-pre-populate-only:") == 1
+
+
 def test_config(rendered_chart, expected, release_name):
     manifests = rendered_chart("common.yaml", "config.yaml")
     assert manifests["ConfigMap"]["data"]["config"] == expected("config", "configMap")["data"]

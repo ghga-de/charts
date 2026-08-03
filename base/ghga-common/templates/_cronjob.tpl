@@ -32,19 +32,26 @@ spec:
     spec:
       template:
         metadata:
+          {{- /* Merge (rather than concatenate) annotation sources so a per-cronjob
+                 podAnnotations override can actually replace a same-named vaultAgent
+                 or top-level annotation instead of emitting a duplicate YAML key. */}}
+          {{- $annotations := dict }}
+          {{- if $.Values.podAnnotations }}
+          {{- $annotations = mergeOverwrite $annotations $.Values.podAnnotations }}
+          {{- end }}
+          {{- if $.Values.vaultAgent.enabled }}
+          {{- $vaultAnnotationsRaw := include "ghga-common.vaultAgentAnnotations" $ }}
+          {{- if $.Values.vaultAgent.singleTemplate }}
+          {{- $vaultAnnotationsRaw = include "ghga-common.vaultAgentAnnotationsSingleTemplate" $ }}
+          {{- end }}
+          {{- $annotations = mergeOverwrite $annotations ($vaultAnnotationsRaw | fromYaml) }}
+          {{- end }}
+          {{- if $job.podAnnotations }}
+          {{- $annotations = mergeOverwrite $annotations $job.podAnnotations }}
+          {{- end }}
           annotations:
-            {{- if $.Values.podAnnotations }}
-            {{- $.Values.podAnnotations | toYaml | nindent 12}}
-            {{- end }}
-            {{- if $.Values.vaultAgent.enabled }}
-            {{- if $.Values.vaultAgent.singleTemplate }}
-            {{- include "ghga-common.vaultAgentAnnotationsSingleTemplate" $ | nindent 12 }}
-            {{- else }}
-            {{- include "ghga-common.vaultAgentAnnotations" $ | nindent 12 }}
-            {{- end }}
-            {{- end }}
-            {{- if $job.podAnnotations }}
-            {{- $job.podAnnotations | toYaml | nindent 12 }}
+            {{- if $annotations }}
+            {{- toYaml $annotations | nindent 12 }}
             {{- end }}
           labels: {{- include "common.labels.standard" $ | nindent 12 }}
             app: {{ include "common.names.fullname" $ }}

@@ -95,6 +95,18 @@ def compose_values(*filenames: str) -> dict[str, Any]:
 
 
 @pytest.fixture
+def rendered_text(_dependency_update, release_name):
+    # Raw manifest text, for assertions that parsed objects can't make (e.g. a
+    # literal duplicate YAML key, which yaml.safe_load would silently resolve by
+    # taking the last occurrence).
+    def _factory(*filenames: str):
+        composed_values = compose_values(*filenames)
+        return _render_chart_case(composed_values, release_name)
+
+    return _factory
+
+
+@pytest.fixture
 def rendered_chart(_dependency_update, release_name):
     def _factory(*filenames: str):
         composed_values = compose_values(*filenames)
