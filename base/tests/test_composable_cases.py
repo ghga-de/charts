@@ -23,9 +23,9 @@ def test_cronjob_single_backward_compatible(rendered_chart, expected):
 
 def test_cronjobs_multiple_with_overrides(rendered_objects, expected):
     # Deployment and multiple cronjobs can be shipped side by side; each cronjob
-    # entry can override its own schedule/history-limit/entrypoint, an entry with
-    # `enabled: false` is skipped, and entries without overrides fall back to the
-    # top-level values (same as the Deployment uses).
+    # entry can override its own schedule/history-limit/entrypoint/resources, an
+    # entry with `enabled: false` is skipped, and entries without overrides fall
+    # back to the top-level values (same as the Deployment uses).
     objects = rendered_objects("common.yaml", "cronjobs_multiple.yaml")
 
     deployment_expected = expected("cronjobs_multiple", "deployment")
@@ -53,6 +53,7 @@ def test_cronjobs_multiple_with_overrides(rendered_objects, expected):
         assert container["name"] == exp["containerName"]
         assert container["command"] == exp["command"]
         assert container["args"] == exp["args"]
+        assert container["resources"] == exp["resources"]
 
 
 def test_cronjob_pod_annotations_override(rendered_objects, expected):

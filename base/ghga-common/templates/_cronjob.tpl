@@ -91,8 +91,9 @@ spec:
             securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 14 }}
             {{- end }}
             name: {{ $.Release.Name }}{{- if ne $key "default" }}-{{ $key }}{{- end }}
-            {{- if $.Values.resources }}
-            resources: {{- toYaml $.Values.resources | nindent 14 }}
+            {{- $resources := $job.resources | default $.Values.resources }}
+            {{- if $resources }}
+            resources: {{- toYaml $resources | nindent 14 }}
             {{- end }}
             volumeMounts: {{- include "ghga-common.volumemounts" $ | nindent 14 }}
           volumes: {{- include "ghga-common.volumes" $ | nindent 12 }}

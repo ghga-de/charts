@@ -16,6 +16,13 @@ cleanup:
   - -c
   args:
   - /usr/local/bin/cleanup-tool --dry-run
+  resources:
+    limits:
+      cpu: "250m"
+      memory: "256M"
+    requests:
+      cpu: "100m"
+      memory: "128M"
 
 report:
   name: test-my-app-report
@@ -27,3 +34,10 @@ report:
   - -c
   args:
   - /usr/local/bin/sleep 100000000
+  resources:
+    limits:
+      cpu: "1500m"
+      memory: "2048M"
+    requests:
+      cpu: "1000m"
+      memory: "1024M"

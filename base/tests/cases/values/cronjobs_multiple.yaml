@@ -11,6 +11,13 @@ cronjobs:
     executable: cleanup-tool
     executableArgs:
       - "--dry-run"
+    resources:
+      limits:
+        cpu: "250m"
+        memory: "256M"
+      requests:
+        cpu: "100m"
+        memory: "128M"
   report:
     enabled: true
   skipped:
