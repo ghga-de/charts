@@ -197,4 +197,44 @@ def test_vault_single_template(rendered_chart, release_name, expected):
     args = manifests["Deployment"]["spec"]["template"]["spec"]["containers"][0]["args"]
     assert command == expected("vault_single_template", "command")
     assert args == expected("vault_single_template", "args")
-    
+
+
+def test_vault_single_template_applies_to_job_and_cronjob(rendered_chart, expected):
+    # singleTemplate mode must fold vault secrets into one combined annotation set for
+    # every workload kind (Deployment, Job, CronJob), not just the Deployment. Job and
+    # CronJob previously always used the old per-secret annotations regardless of the
+    # singleTemplate flag, while the command/args template dropped the vault-secrets
+    # sourcing wrapper for *every* kind once singleTemplate was set -- silently leaving
+    # Job/CronJob with no way to load their secrets at all.
+    manifests = rendered_chart(
+        "common.yaml", "vault_single_template.yaml", "vault_single_template_cronjob.yaml"
+    )
+
+    deployment_annotations = manifests["Deployment"]["spec"]["template"]["metadata"]["annotations"]
+    deployment_command = manifests["Deployment"]["spec"]["template"]["spec"]["containers"][0]["command"]
+    deployment_args = manifests["Deployment"]["spec"]["template"]["spec"]["containers"][0]["args"]
+
+    exp = expected("vault_single_template", "podAnnotations")
+    assert exp.items() <= deployment_annotations.items()
+    assert deployment_command == expected("vault_single_template", "command")
+    assert deployment_args == expected("vault_single_template", "args")
+
+    def strip(annotations):
+        return {
+            k: v
+            for k, v in annotations.items()
+            if k not in ("helm.sh/revision", "configmap-hash")
+        }
+
+    job = manifests["Job"]
+    job_container = job["spec"]["template"]["spec"]["containers"][0]
+    assert strip(job["spec"]["template"]["metadata"]["annotations"]) == strip(deployment_annotations)
+    assert job_container["command"] == deployment_command
+    assert job_container["args"] == deployment_args
+
+    cronjob = manifests["CronJob"]
+    cronjob_container = cronjob["spec"]["jobTemplate"]["spec"]["template"]["spec"]["containers"][0]
+    cronjob_annotations = cronjob["spec"]["jobTemplate"]["spec"]["template"]["metadata"]["annotations"]
+    assert strip(cronjob_annotations) == strip(deployment_annotations)
+    assert cronjob_container["command"] == deployment_command
+    assert cronjob_container["args"] == deployment_args

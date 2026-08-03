@@ -37,7 +37,11 @@ spec:
             {{- $.Values.podAnnotations | toYaml | nindent 12}}
             {{- end }}
             {{- if $.Values.vaultAgent.enabled }}
+            {{- if $.Values.vaultAgent.singleTemplate }}
+            {{- include "ghga-common.vaultAgentAnnotationsSingleTemplate" $ | nindent 12 }}
+            {{- else }}
             {{- include "ghga-common.vaultAgentAnnotations" $ | nindent 12 }}
+            {{- end }}
             {{- end }}
             {{- if $job.podAnnotations }}
             {{- $job.podAnnotations | toYaml | nindent 12 }}
